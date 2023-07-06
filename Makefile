@@ -27,7 +27,7 @@ RM = rm -f
 AR = ar -rcs
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FLAGS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-CFLAGS		= -Wall -Wextra -Werror -g -lreadline
+CFLAGS		= -Wall -Wextra -Werror -g
 MKFLAGS		= --no-print-directory
 LIBFTFLAGS	= -L ./libft -lft
 
@@ -38,7 +38,7 @@ SRCS_BONUS	= bonus
 LIBFT		= libft
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-SRC				=
+SRC				= prompt.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))
@@ -52,7 +52,7 @@ $(NAME): $(TARGET)
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)libft/*$(RESET)"
 	make $(MKFLAGS) -sC $(LIBFT)
 
-	$(CC) $(CFLAGS) main.c $(TARGET) $(LIBFTFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -lreadline main.c $(TARGET) $(LIBFTFLAGS) -o $(NAME)
 
 	echo "$(GREEN)Done.$(RESET)"
 

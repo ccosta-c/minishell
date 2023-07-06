@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/06 12:07:27 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/07/05 15:20:13 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/07/06 12:09:52 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	copy_envp(t_data *data, char **envp)
 {
-	t_data	data;
-	char	*txt;
-	int		i;
+	int	i;
 
 	i = 0;
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	copy_envp(&data, envp);
-	while (data.env[i])
+	while (envp[i])
+		i++;
+	data->env = malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (envp[i])
 	{
-		printf("%s\n", data.env[i]);
+		data->env[i] = strdup(envp[i]);
 		i++;
 	}
-	while (1)
-	{
-		data.prompt = getcwd(data.prompt, 0);
-		txt = readline(data.prompt);
-		printf("%s\n", txt);
-	}
+	data->env[i] = malloc(sizeof(char) * 1);
+	data->env[i] = NULL;
 }
