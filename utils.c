@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 18:09:30 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/07/10 11:18:24 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	copy_envp(t_data *data, char **envp)
 {
-	t_data	data;
-	char	*txt;
+	int	i;
 
-
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	get_prompt(&data);
-	while (1)
+	i = 0;
+	while (envp[i])
+		i++;
+	data->env = malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (envp[i])
 	{
-
-		txt = readline(data.prompt);
-		printf("%s\n", txt);
+		data->env[i] = strdup(envp[i]);
+		i++;
 	}
+	data->env[i] = NULL;
 }
