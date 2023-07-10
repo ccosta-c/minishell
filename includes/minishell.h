@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 18:07:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:19:07 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 ////////////////////////prompt.c//////////////////////
 void	get_prompt(t_data *data);
 char	*get_pc_id(void);
+char	*get_path(void);
 
 ////////////////////////utils.c//////////////////////
 void	copy_envp(t_data *data, char **envp);

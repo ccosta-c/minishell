@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:20:13 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 18:08:20 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:38:49 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 void	get_prompt(t_data *data)
 {
 	char	*user;
-	char	*pc_id;
+	char	*tmp2;
+	char	*tmp1;
+	char	*path;
 
 	user = getenv("USER");
-	pc_id = get_pc_id();
-	data->prompt = ft_strjoin(user, pc_id);
+	tmp1 = get_pc_id();
+	tmp2 = ft_strjoin(user, tmp1);
+	free(tmp1);
+	tmp1 = ft_strjoin(tmp2, ":~");
+	path = get_path();
+	free(tmp2);
+	tmp2 = ft_strjoin(tmp1, path);
+	data->prompt = ft_strjoin(tmp2, "$");
+	free(tmp1);
+	free(tmp2);
+	free (path);
 }
 
 char	*get_pc_id(void)
@@ -44,5 +55,27 @@ char	*get_pc_id(void)
 		j++;
 	}
 	result[j] = '\0';
+	return (result);
+}
+
+char	*get_path(void)
+{
+	char	*result;
+	char	*tmp;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	tmp = getcwd(0, 0);
+	while (tmp[i])
+	{
+		if (tmp[i] == 47)
+			j++;
+		if (j == 4)
+			break ;
+		i++;
+	}
+	result = strdup(tmp + i);
 	return (result);
 }
