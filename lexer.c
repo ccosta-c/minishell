@@ -10,3 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./includes/minishell.h"
+
+int	lexer(t_data *data, char *input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (1)
+	{
+		j = i;
+		while (input[i] != ' ' || input[i] != '\0')
+			i++;
+		initialize_tokens(data, i, j, input);
+		i++;
+		if (input[i] == '\0')
+			break;
+	}
+}

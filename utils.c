@@ -28,3 +28,11 @@ void	copy_envp(t_data *data, char **envp)
 	}
 	data->env[i] = NULL;
 }
+
+void	initialize_tokens(t_tokens *node, int end, int start, char *arg)
+{
+	node = malloc(sizeof(t_tokens));
+	node->data = 0;
+	node->len = 0;
+
+}

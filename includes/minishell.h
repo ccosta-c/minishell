@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/11 14:31:56 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:44:50 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,36 @@
 
 extern int	exit_st;
 
-enum	e_token
+enum	e_tokens
 {
-	WORD = 'w';
+	WORD = 'w',
+	WHITE_SPACE = ' ',
+	DOUBLE_QUOTE = '\"',
+	SINGLE_QUOTE = '\'',
+	ESCAPE = '\\',
+	PIPES = '|',
+	REDIRECT_IN = '<',
+	REDIRECT_OUT = '>',
+	ENV = '$',
+	NEW_LINE = '\n',
+	HERE_DOC,
+};
+
+enum	e_type
+{
+	GENERIC,
+	D_QUOTE,
+	S_QUOTE,
+	CMD,
 };
 
 typedef struct s_tokens
 {
-	char	*data;
-	int		len;
-	enum
+	char			*data;
+	int				len;
+	enum e_tokens	tokens;
+	enum e_type		type;
+	struct s_tokens	*next;
 }			t_tokens;
 
 typedef struct s_data
@@ -47,5 +67,8 @@ char	*get_path(void);
 
 ////////////////////////utils.c//////////////////////
 void	copy_envp(t_data *data, char **envp);
+
+////////////////////////lexer.c//////////////////////
+void	initialize_tokens(t_tokens *node, int end, int start, char *arg);
 
 #endif

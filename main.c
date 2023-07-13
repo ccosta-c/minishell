@@ -26,6 +26,6 @@ int	main(int argc, char **argv, char **envp)
 	{
 
 		txt = readline(data.prompt);
-		printf("%s\n", txt);
+		lexer(data, txt);
 	}
 }
