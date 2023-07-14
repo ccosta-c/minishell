@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 11:18:24 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:24:45 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,24 @@ void	copy_envp(t_data *data, char **envp)
 	data->env[i] = NULL;
 }
 
-void	initialize_tokens(t_tokens *node, int end, int start, char *arg)
+t_tokens	*initialize_tokens(int end, int start, char *arg)
 {
-	node = malloc(sizeof(t_tokens));
-	node->data = 0;
-	node->len = 0;
+	t_tokens	*tmp;
+	int			i;
 
+	i = 0;
+	tmp = malloc(sizeof(t_tokens));
+	tmp->next = NULL;
+	tmp->tokens = 0;
+	tmp->type = GENERIC;
+	tmp->data = malloc(sizeof(char) * ((end - start) + 1));
+	while (start < end)
+	{
+		tmp->data[i] = arg[start];
+		start++;
+		i++;
+	}
+	tmp->data[i] = '0';
+	tmp->len = strlen(tmp->data);
+	return (tmp);
 }

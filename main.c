@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 18:09:30 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:46:30 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int argc, char **argv, char **envp)
 	get_prompt(&data);
 	while (1)
 	{
-
 		txt = readline(data.prompt);
-		lexer(data, txt);
+		lexer(&data, txt);
 	}
 }

@@ -27,7 +27,7 @@ void	get_prompt(t_data *data)
 	path = get_path();
 	free(tmp2);
 	tmp2 = ft_strjoin(tmp1, path);
-	data->prompt = ft_strjoin(tmp2, "$");
+	data->prompt = ft_strjoin(tmp2, "$ ");
 	free(tmp1);
 	free(tmp2);
 	free (path);

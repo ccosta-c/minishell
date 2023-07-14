@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/13 14:44:50 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:49:40 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -57,18 +58,19 @@ typedef struct s_data
 {
 	char		**env;
 	char		*prompt;
-	t_tokens	*commands;
+	t_tokens	*top;
 }			t_data;
 
 ////////////////////////prompt.c//////////////////////
-void	get_prompt(t_data *data);
-char	*get_pc_id(void);
-char	*get_path(void);
+void		get_prompt(t_data *data);
+char		*get_pc_id(void);
+char		*get_path(void);
 
 ////////////////////////utils.c//////////////////////
-void	copy_envp(t_data *data, char **envp);
+void		copy_envp(t_data *data, char **envp);
+t_tokens	*initialize_tokens(int end, int start, char *arg);
 
 ////////////////////////lexer.c//////////////////////
-void	initialize_tokens(t_tokens *node, int end, int start, char *arg);
+int			lexer(t_data *data, char *input);
 
 #endif
