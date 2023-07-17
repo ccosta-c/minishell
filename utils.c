@@ -12,6 +12,9 @@
 
 #include "./includes/minishell.h"
 
+/// Copies the envp sent by the main function to an 2D array.
+/// \param data the minishell main structure.
+/// \param envp the environment variables sent by the main.
 void	copy_envp(t_data *data, char **envp)
 {
 	int	i;
@@ -29,6 +32,11 @@ void	copy_envp(t_data *data, char **envp)
 	data->env[i] = NULL;
 }
 
+/// Initializes the tokens node and attributes the data and the len parameters of the node.
+/// \param end the end of the string excerpt to copy.
+/// \param start the start of the string excerpt to copy.
+/// \param arg the string from which to copy.
+/// \return the tokens node with all the values initialized and the data and len already filled.
 t_tokens	*initialize_tokens(int end, int start, char *arg)
 {
 	t_tokens	*tmp;

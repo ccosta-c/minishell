@@ -12,6 +12,8 @@
 
 #include "includes/minishell.h"
 
+/// Builds the prompt with all the information obtain to replicate the original bash.
+/// \param data the main structure of minishell.
 void	get_prompt(t_data *data)
 {
 	char	*user;
@@ -33,6 +35,8 @@ void	get_prompt(t_data *data)
 	free (path);
 }
 
+/// Obtains the pc id of the school computers.
+/// \return the pc id in a string format.
 char	*get_pc_id(void)
 {
 	char	*session_manager;
@@ -58,6 +62,8 @@ char	*get_pc_id(void)
 	return (result);
 }
 
+/// Obtains the path we are currently in with our minishell.
+/// \return the path in a string format.
 char	*get_path(void)
 {
 	char	*result;
