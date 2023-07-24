@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   debugging.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/24 15:22:24 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/07/24 15:12:48 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/07/24 15:21:17 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-int	lexer(t_data *data, char *input)
+void	print_list(t_data *data)
 {
-	int	i;
-	int	j;
+	t_tokens	*tmp;
 
-	i = 0;
-	j = 0;
-	while (1)
+	tmp = data->top;
+	while (tmp != NULL)
 	{
-		j = i;
-		while (input[i] != ' ' && input[i] != '\0')
-			i++;
-		add_to_list(&data->top, initialize_tokens(i, j, input));
-		i++;
-		if (input[i] == '\0')
-			break ;
+		printf("Content-%s\n", tmp->data);
+		printf("Length-%i\n", tmp->len);
+		tmp = tmp->next;
 	}
-	print_list(data);
-	return (0);
 }

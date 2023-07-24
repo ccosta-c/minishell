@@ -12,7 +12,8 @@
 
 #include "includes/minishell.h"
 
-/// Builds the prompt with all the information obtain to replicate the original bash.
+/// Builds the prompt with all the information obtain to replicate the
+/// original bash.
 /// \param data the main structure of minishell.
 void	get_prompt(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/14 14:49:40 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:22:04 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,12 @@ char		*get_path(void);
 ////////////////////////utils.c//////////////////////
 void		copy_envp(t_data *data, char **envp);
 t_tokens	*initialize_tokens(int end, int start, char *arg);
+void		add_to_list(t_tokens **lst, t_tokens *new);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
+
+//////////////////////debugging.c////////////////////
+void	print_list(t_data *data);
 
 #endif
