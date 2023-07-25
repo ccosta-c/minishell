@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/24 15:09:27 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:06:06 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 
 /// this function adds a node to the tokens list.
 /// \param lst a pointer to the top of the list.
-/// \param new the new content to tbe added.
+/// \param new the new content to be added.
 void	add_to_list(t_tokens **lst, t_tokens *new)
 {
 	t_tokens	*ptr;
@@ -82,7 +82,22 @@ void	add_to_list(t_tokens **lst, t_tokens *new)
 	}
 }
 
-void	free_tokens_list(t_data *data)
+/// deletes all the nodes from the tokens structure.
+/// \param lst the tokens structure.
+void	ft_cleartokens(t_tokens **lst)
 {
+	t_tokens	*temp;
+	t_tokens	*prox;
 
+	if (!lst)
+		return ;
+	temp = *lst;
+	while (temp != NULL)
+	{
+		prox = temp->next;
+		free(temp->data);
+		free(temp);
+		temp = prox;
+	}
+	*lst = NULL;
 }
