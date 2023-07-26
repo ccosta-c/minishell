@@ -1,0 +1,14 @@
+a
+debugging.c
+debugging.o
+includes
+lexer.c
+lexer.o
+libft
+main.c
+Makefile
+minishell
+prompt.c
+prompt.o
+utils.c
+utils.o

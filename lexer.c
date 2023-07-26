@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/25 11:09:01 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:34:03 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	lexer(t_data *data, char *input)
 		while (str[i] != ' ' && str[i] != '\0')
 			i++;
 		add_to_list(&data->top, initialize_tokens(i, j, str));
-		i++;
 		if (str[i] == '\0')
 			break ;
+		i++;
 	}
 	free(str);
 	print_list(data);
@@ -48,8 +48,8 @@ char	*handle_whitespaces(char *input)
 
 	i = 0;
 	j = 0;
-	ret = (char *)malloc((ft_strlen(input)) * sizeof(char));
-	tmp = ft_split(input, ' ');f
+	ret = (char *)malloc(((ft_strlen(input)) + 1) * sizeof(char));
+	tmp = ft_split(input, ' ');
 	while (tmp[i] != NULL)
 	{
 		k = 0;
@@ -60,7 +60,10 @@ char	*handle_whitespaces(char *input)
 			k++;
 		}
 		if (tmp[i + 1] == NULL)
+		{
+			ret[j] = '\0';
 			break ;
+		}
 		ret[j] = ' ';
 		j++;
 		i++;
