@@ -46,28 +46,21 @@ char	*handle_whitespaces(char *input)
 	int		j;
 	int		k;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	ret = (char *)malloc(((ft_strlen(input)) + 1) * sizeof(char));
 	tmp = ft_split(input, ' ');
-	while (tmp[i] != NULL)
+	while (tmp[++i] != NULL)
 	{
 		k = 0;
 		while (tmp[i][k] != '\0')
-		{
-			ret[j] = tmp[i][k];
-			j++;
-			k++;
-		}
+			ret[j++] = tmp[i][k++];
 		if (tmp[i + 1] == NULL)
 		{
 			ret[j] = '\0';
 			break ;
 		}
-		ret[j] = ' ';
-		j++;
-		i++;
+		ret[j++] = ' ';
 	}
-	free(tmp);
-	return (ret);
+	return (free(tmp), ret);
 }
