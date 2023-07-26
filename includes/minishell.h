@@ -20,7 +20,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-extern int	exit_st;
+extern int	g_exit;
 
 enum	e_tokens
 {
@@ -74,7 +74,7 @@ void		ft_cleartokens(t_tokens **lst);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
-char 		*handle_whitespaces(char *input);
+char		*handle_whitespaces(char *input);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);

@@ -16,7 +16,7 @@ int	lexer(t_data *data, char *input)
 {
 	int		i;
 	int		j;
-	char 	*str;
+	char	*str;
 
 	i = 0;
 	str = handle_whitespaces(input);
@@ -38,18 +38,18 @@ int	lexer(t_data *data, char *input)
 	return (0);
 }
 
-char *handle_whitespaces(char *input)
+char	*handle_whitespaces(char *input)
 {
-	int i;
-	int j;
-	int k;
-	char **tmp;
-	char *ret;
+	char	**tmp;
+	char	*ret;
+	int		i;
+	int		j;
+	int		k;
 
 	i = 0;
 	j = 0;
 	ret = (char *)malloc((ft_strlen(input)) * sizeof(char));
-	tmp = ft_split(input, ' ');
+	tmp = ft_split(input, ' ');f
 	while (tmp[i] != NULL)
 	{
 		k = 0;
