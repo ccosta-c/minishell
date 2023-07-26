@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	(void)envp;
 	if (argc > 1)
-		return (printf("Wrong arguments!"));
+		return (printf("Wrong arguments!\n"));
 	get_prompt(&data);
 	while (1)
 	{

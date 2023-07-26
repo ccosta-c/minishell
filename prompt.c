@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "./includes/minishell.h"
 
 /// Builds the prompt with all the information obtain to replicate the
 /// original bash.

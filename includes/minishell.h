@@ -70,11 +70,13 @@ char		*get_path(void);
 void		copy_envp(t_data *data, char **envp);
 t_tokens	*initialize_tokens(int end, int start, char *arg);
 void		add_to_list(t_tokens **lst, t_tokens *new);
+void		ft_cleartokens(t_tokens **lst);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
+char 		*handle_whitespaces(char *input);
 
 //////////////////////debugging.c////////////////////
-void	print_list(t_data *data);
+void		print_list(t_data *data);
 
 #endif

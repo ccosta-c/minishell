@@ -14,23 +14,57 @@
 
 int	lexer(t_data *data, char *input)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char 	*str;
 
 	i = 0;
 	str = handle_whitespaces(input);
-	while (1)1
+	printf("str antes da lista: %s\n", str);
+	while (1)
 	{
 		j = i;
-		while (input[i] != ' ' && input[i] != '\0')
+		while (str[i] != ' ' && str[i] != '\0')
 			i++;
-		add_to_list(&data->top, initialize_tokens(i, j, input));
+		add_to_list(&data->top, initialize_tokens(i, j, str));
 		i++;
-		if (input[i] == '\0')
+		if (str[i] == '\0')
 			break ;
 	}
+	free(str);
 	print_list(data);
 	ft_cleartokens(&data->top);
 	print_list(data);
 	return (0);
+}
+
+char *handle_whitespaces(char *input)
+{
+	int i;
+	int j;
+	int k;
+	char **tmp;
+	char *ret;
+
+	i = 0;
+	j = 0;
+	ret = (char *)malloc((ft_strlen(input)) * sizeof(char));
+	tmp = ft_split(input, ' ');
+	while (tmp[i] != NULL)
+	{
+		k = 0;
+		while (tmp[i][k] != '\0')
+		{
+			ret[j] = tmp[i][k];
+			j++;
+			k++;
+		}
+		if (tmp[i + 1] == NULL)
+			break ;
+		ret[j] = ' ';
+		j++;
+		i++;
+	}
+	free(tmp);
+	return (ret);
 }
