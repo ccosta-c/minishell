@@ -12,7 +12,7 @@
 
 #include "./includes/minishell.h"
 
-void	frees(t_data *data)
-{
-
-}
+//void	frees(t_data *data)
+//{
+//
+//}
