@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/24 15:22:04 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:15:45 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <signal.h>
 
 extern int	g_exit;
 
@@ -78,5 +79,12 @@ char		*handle_whitespaces(char *input);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
+
+//////////////////////signals.c//////////////////////
+void		handle_signals(void);
+void		handler(int sig);
+
+//////////////////////frees.c////////////////////////
+void		frees(t_data *data);
 
 #endif
