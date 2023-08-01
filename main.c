@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/31 17:01:12 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:22:52 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		txt = readline(data.prompt);
 		add_history(txt);
-		lexer(&data, txt);
+		if ((lexer(&data, txt)) == -1)
+		{
+			printf("exit");
+			return (0);
+		}
 	}
 }

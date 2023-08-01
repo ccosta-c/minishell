@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/26 14:34:03 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:20:31 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	lexer(t_data *data, char *input)
 	char	*str;
 
 	i = 0;
+	if (!input)
+		return (-1);
 	str = handle_whitespaces(input);
 	printf("str antes da lista: %s\n", str);
 	while (1)
@@ -27,9 +29,8 @@ int	lexer(t_data *data, char *input)
 		while (str[i] != ' ' && str[i] != '\0')
 			i++;
 		add_to_list(&data->top, initialize_tokens(i, j, str));
-		if (str[i] == '\0')
+		if (str[i++] == '\0')
 			break ;
-		i++;
 	}
 	free(str);
 	print_list(data);
