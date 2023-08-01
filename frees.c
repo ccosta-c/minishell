@@ -6,13 +6,14 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:13:46 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/27 15:14:48 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:29:07 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-//void	frees(t_data *data)
-//{
-//
-//}
+void	frees(t_data *data)
+{
+	free (data->prompt);
+	rl_clear_history();
+}

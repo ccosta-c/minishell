@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:20:13 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/10 18:38:49 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:37:09 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_pc_id(void)
 	session_manager = getenv("SESSION_MANAGER");
 	while (session_manager[i] != 47 && session_manager[i])
 		i++;
-	result = malloc(sizeof(char) * 8);
+	result = malloc(sizeof(char) * 10);
 	i++;
 	result[j++] = '@';
 	while (session_manager[i] != '.' && session_manager[i])
@@ -84,5 +84,6 @@ char	*get_path(void)
 		i++;
 	}
 	result = strdup(tmp + i);
+	free(tmp);
 	return (result);
 }
