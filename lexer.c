@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/01 15:20:31 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:44:42 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	lexer(t_data *data, char *input)
 	if (!input)
 		return (-1);
 	str = handle_whitespaces(input);
-	printf("str antes da lista: %s\n", str);
 	while (1)
 	{
 		j = i;
