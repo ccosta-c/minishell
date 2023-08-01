@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/01 15:31:55 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:51:36 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int argc, char **argv, char **envp)
 		if ((lexer(&data, txt)) == -1)
 		{
 			printf("exit\n");
-			free (txt);
-			return (frees(&data), 0);
+			return (frees(&data), free(txt), 0);
 		}
+		ft_cleartokens(&data.top);
 	}
 }

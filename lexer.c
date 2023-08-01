@@ -33,8 +33,6 @@ int	lexer(t_data *data, char *input)
 	}
 	free(str);
 	print_list(data);
-	ft_cleartokens(&data->top);
-	print_list(data);
 	return (0);
 }
 
