@@ -23,7 +23,6 @@ int	main(int argc, char **argv, char **envp)
 	(void)envp;
 	if (argc > 1)
 		return (printf("Wrong arguments!\n"));
-	handle_signals();
 	get_prompt(&data);
 	handle_signals();
 	while (1)
