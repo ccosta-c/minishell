@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/07/25 11:06:06 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/02 11:57:55 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,20 @@ void	ft_cleartokens(t_tokens **lst)
 		temp = prox;
 	}
 	*lst = NULL;
+}
+
+int	len_of(char *str)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	while (str[i] != 47 && str[i])
+		i++;
+	i++;
+	j = i;
+	while (str[i] != '.' && str[i])
+		i++;
+	return ((i - j) + 2);
 }
