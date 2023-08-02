@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/01 16:51:36 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:22:56 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	g_exit;
 int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
-	char	*txt;
 
 	(void)argv;
 	(void)envp;
@@ -25,15 +24,24 @@ int	main(int argc, char **argv, char **envp)
 		return (printf("Wrong arguments!\n"));
 	get_prompt(&data);
 	handle_signals();
+	prompt_loop(&data);
+}
+
+void	prompt_loop(t_data *data)
+{
+	char	*txt;
+
 	while (1)
 	{
-		txt = readline(data.prompt);
+		txt = readline(data->prompt);
 		add_history(txt);
-		if ((lexer(&data, txt)) == -1)
+		if ((lexer(data, txt)) == -1)
 		{
 			printf("exit\n");
-			return (frees(&data), free(txt), 0);
+			frees(data);
+			free(txt);
+			exit(0);
 		}
-		ft_cleartokens(&data.top);
+		ft_cleartokens(&data->top);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/02 11:55:12 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:20:34 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ typedef struct s_data
 	char		*prompt;
 	t_tokens	*top;
 }			t_data;
+
+////////////////////////main.c//////////////////////
+void		prompt_loop(t_data *data);
 
 ////////////////////////prompt.c//////////////////////
 void		get_prompt(t_data *data);
