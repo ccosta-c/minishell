@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/02 12:20:34 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:01:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int			len_of(char *str);
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
 char		*handle_whitespaces(char *input);
+int			check_quotes(char	*input);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);

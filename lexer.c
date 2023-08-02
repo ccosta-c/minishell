@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/01 16:44:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:28:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	lexer(t_data *data, char *input)
 	i = 0;
 	if (!input)
 		return (-1);
+	check_quotes(input);
 	str = handle_whitespaces(input);
 	while (1)
 	{
@@ -61,4 +62,26 @@ char	*handle_whitespaces(char *input)
 		ret[j++] = ' ';
 	}
 	return (free(tmp), ret);
+}
+
+int	check_quotes(char	*input)
+{
+	int	i;
+	int	single;
+	int	duble;
+
+	i = 0;
+	single = 0;
+	duble = 0;
+	while (input[i])
+	{
+		if (input[i] == 39)
+			single++;
+		if (input[i] == 34)
+			duble++;
+		i++;
+	}
+	if ((single % 2 != 0) || (duble % 2 != 0))
+		exit (1);
+	return (0);
 }
