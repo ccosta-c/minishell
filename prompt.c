@@ -50,7 +50,7 @@ char	*get_pc_id(void)
 	session_manager = getenv("SESSION_MANAGER");
 	while (session_manager[i] != 47 && session_manager[i])
 		i++;
-	result = malloc(sizeof(char) * 10);
+	result = malloc(sizeof(char) * len_of(session_manager));
 	i++;
 	result[j++] = '@';
 	while (session_manager[i] != '.' && session_manager[i])
