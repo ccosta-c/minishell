@@ -80,7 +80,7 @@ int			len_of(char *str);
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
 char		*handle_whitespaces(char *input);
-int			check_quotes(char	*input);
+int			check_quotes(char	*input, int i);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
@@ -91,5 +91,10 @@ void		handler(int sig);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);
+
+//////////////////////first_checks.c/////////////////
+int         check_first(char *input);
+int         check_pipes(char *input);
+int         check_redirect(char *input);
 
 #endif

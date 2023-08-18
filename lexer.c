@@ -21,8 +21,9 @@ int	lexer(t_data *data, char *input)
 	i = 0;
 	if (!input)
 		return (-1);
-	check_quotes(input);
 	str = handle_whitespaces(input);
+	if (check_first(str) == -1)
+		return (0);
 	while (1)
 	{
 		j = i;
@@ -64,24 +65,27 @@ char	*handle_whitespaces(char *input)
 	return (free(tmp), ret);
 }
 
-int	check_quotes(char	*input)
+int	check_quotes(char *input, int i)
 {
-	int	i;
-	int	single;
-	int	duble;
+	char q;
 
-	i = 0;
-	single = 0;
-	duble = 0;
-	while (input[i])
+	q = 0;
+	while (input[i] && q == 0)
 	{
-		if (input[i] == 39)
-			single++;
-		if (input[i] == 34)
-			duble++;
+		if (ft_strrchr("\"\'", input[i]))
+			q = input[i];
 		i++;
 	}
-	if ((single % 2 != 0) || (duble % 2 != 0))
-		exit (1);
-	return (0);
+	while (input[i] && q != 0)
+	{
+		if (input[i] == q)
+			q = 0;
+		i++;
+	}
+	if (input[i])
+		return (check_quotes(input,i));
+	else if (q == 0)
+		return (1);
+	else
+		return (0);
 }
