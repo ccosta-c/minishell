@@ -12,13 +12,10 @@
 
 #include "./includes/minishell.h"
 
-int	lexer(t_data *data, char *input)
+int	lexer(t_data *data, char *input, int i, int j)
 {
-	int		i;
-	int		j;
 	char	*str;
 
-	i = 0;
 	if (!input)
 		return (-1);
 	str = handle_whitespaces(input);
@@ -28,7 +25,11 @@ int	lexer(t_data *data, char *input)
 	{
 		j = i;
 		while (str[i] != ' ' && str[i] != '\0')
-			i++;
+        {
+            if (str[i] == '\'' || str[i] == '\"')
+                i = list_quote(str, i);
+            i++;
+        }
 		add_to_list(&data->top, initialize_tokens(i, j, str));
 		if (str[i++] == '\0')
 			break ;
@@ -65,27 +66,21 @@ char	*handle_whitespaces(char *input)
 	return (free(tmp), ret);
 }
 
-int	check_quotes(char *input, int i)
+int	list_quote(char *input, int i)
 {
-	char q;
-
-	q = 0;
-	while (input[i] && q == 0)
+	if (input[i] == '\'')
 	{
-		if (ft_strrchr("\"\'", input[i]))
-			q = input[i];
 		i++;
+		while (input[i] != '\'')
+			i++;
+		return (i);
 	}
-	while (input[i] && q != 0)
+	else if (input[i] == '\"')
 	{
-		if (input[i] == q)
-			q = 0;
 		i++;
+		while (input[i] != '\"')
+			i++;
+		return (i);
 	}
-	if (input[i])
-		return (check_quotes(input,i));
-	else if (q == 0)
-		return (1);
-	else
-		return (0);
+	return (i);
 }

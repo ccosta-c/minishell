@@ -26,7 +26,7 @@ void	copy_envp(t_data *data, char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		data->env[i] = strdup(envp[i]);
+		data->env[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	data->env[i] = NULL;
@@ -48,7 +48,7 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 	tmp = malloc(sizeof(t_tokens));
 	tmp->next = NULL;
 	tmp->tokens = 0;
-	tmp->type = GENERIC;
+	tmp->type = get_type(arg, i);
 	tmp->data = malloc(sizeof(char) * ((end - start) + 1));
 	while (start < end)
 	{
@@ -57,7 +57,7 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 		i++;
 	}
 	tmp->data[i] = '\0';
-	tmp->len = strlen(tmp->data);
+	tmp->len = ft_strlen(tmp->data);
 	return (tmp);
 }
 

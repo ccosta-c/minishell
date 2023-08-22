@@ -78,9 +78,12 @@ void		ft_cleartokens(t_tokens **lst);
 int			len_of(char *str);
 
 ////////////////////////lexer.c//////////////////////
-int			lexer(t_data *data, char *input);
+int			lexer(t_data *data, char *input, int i, int j);
 char		*handle_whitespaces(char *input);
-int			check_quotes(char	*input, int i);
+int			list_quote(char *input, int i);
+
+////////////////////////lexer2.c/////////////////////
+enum e_type		get_type(char *str, int i);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
@@ -96,5 +99,6 @@ void		frees(t_data *data);
 int         check_first(char *input);
 int         check_pipes(char *input);
 int         check_redirect(char *input);
+int			check_quotes(char	*input, int i);
 
 #endif

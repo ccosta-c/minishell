@@ -16,19 +16,19 @@ int check_first(char *input)
 {
 	if (check_quotes(input, 0) == 0)
 	{
-		printf("minshell: unclosed quotes\n");
+		printf("minishell: unclosed quotes\n");
 		g_exit = 2;
 		return (-1);
 	}
 	if (check_pipes(input) == 0)
 	{
-		printf("minshell: syntax error near unexpected token '|'\n");
+		printf("minishell: syntax error near unexpected token '|'\n");
 		g_exit = 2;
 		return (-1);
 	}
 	if (check_redirect(input) == 0)
 	{
-		printf("minshell: syntax error near unexpected token `newline'\n");
+		printf("minishell: syntax error near unexpected token `newline'\n");
 		g_exit = 2;
 		return (-1);
 	}
@@ -53,4 +53,29 @@ int check_redirect(char *input)
 	if (input[ft_strlen(input) - 1] == '>')
 		return (0);
 	return (1);
+}
+
+int	check_quotes(char *input, int i)
+{
+    char q;
+
+    q = 0;
+    while (input[i] && q == 0)
+    {
+        if (ft_strrchr("\"\'", input[i]))
+            q = input[i];
+        i++;
+    }
+    while (input[i] && q != 0)
+    {
+        if (input[i] == q)
+            q = 0;
+        i++;
+    }
+    if (input[i])
+        return (check_quotes(input,i));
+    else if (q == 0)
+        return (1);
+    else
+        return (0);
 }

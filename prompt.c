@@ -83,7 +83,7 @@ char	*get_path(void)
 			break ;
 		i++;
 	}
-	result = strdup(tmp + i);
+	result = ft_strdup(tmp + i);
 	free(tmp);
 	return (result);
 }
