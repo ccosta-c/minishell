@@ -24,4 +24,5 @@ void	print_list(t_data *data)
 		printf("Type-%u\n", tmp->type);
 		tmp = tmp->next;
 	}
+	free(tmp);
 }

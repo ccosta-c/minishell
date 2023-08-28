@@ -83,7 +83,8 @@ char		*handle_whitespaces(char *input);
 int			list_quote(char *input, int i);
 
 ////////////////////////lexer2.c/////////////////////
-enum e_type		get_type(char *str);
+enum e_type	get_type(char *str);
+int			pipes_num(t_data *data);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
@@ -96,12 +97,12 @@ void		handler(int sig);
 void		frees(t_data *data);
 
 //////////////////////first_checks.c/////////////////
-int         check_first(char *input);
-int         check_pipes(char *input);
-int         check_redirect(char *input);
+int			check_first(char *input);
+int			check_pipes(char *input);
+int			check_redirect(char *input);
 int			check_quotes(char	*input, int i);
 
 //////////////////////execution.c///////////////////
-void 		execution(t_data *data);
+void		execution(t_data *data);
 
 #endif

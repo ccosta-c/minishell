@@ -22,7 +22,19 @@ enum e_type	get_type(char *str)
 		return (0);
 }
 
-int pipes_num(t_data *data)
+int	pipes_num(t_data *data)
 {
+	int	p;
+	t_tokens	*tmp;
 
+	p = 0;
+	tmp = data->top;
+	while (tmp != NULL)
+	{
+		if (tmp->data[0] == '|')
+			p++;
+		tmp = tmp->next;
+	}
+	free(tmp);
+	return (p);
 }
