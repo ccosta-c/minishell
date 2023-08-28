@@ -36,6 +36,7 @@ int	lexer(t_data *data, char *input, int i, int j)
 	}
 	free(str);
 	print_list(data);
+	execution(data);
 	return (0);
 }
 

@@ -101,4 +101,7 @@ int         check_pipes(char *input);
 int         check_redirect(char *input);
 int			check_quotes(char	*input, int i);
 
+//////////////////////execution.c///////////////////
+void 		execution(t_data *data);
+
 #endif

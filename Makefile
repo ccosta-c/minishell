@@ -38,7 +38,7 @@ SRCS_BONUS	= bonus
 LIBFT		= libft
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-SRC				= prompt.c lexer.c utils.c debugging.c signals.c frees.c first_checks.c lexer2.c
+SRC				= prompt.c lexer.c utils.c debugging.c signals.c frees.c first_checks.c lexer2.c execution.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))
