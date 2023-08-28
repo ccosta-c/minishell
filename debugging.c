@@ -21,7 +21,7 @@ void	print_list(t_data *data)
 	{
 		printf("Content-%s\n", tmp->data);
 		printf("Length-%i\n", tmp->len);
-		printf("Type-%s\n", tmp->type);
+		printf("Type-%u\n", tmp->type);
 		tmp = tmp->next;
 	}
 }

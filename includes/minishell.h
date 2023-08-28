@@ -83,7 +83,7 @@ char		*handle_whitespaces(char *input);
 int			list_quote(char *input, int i);
 
 ////////////////////////lexer2.c/////////////////////
-enum e_type		get_type(char *str, int i);
+enum e_type		get_type(char *str);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);

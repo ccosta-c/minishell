@@ -48,7 +48,7 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 	tmp = malloc(sizeof(t_tokens));
 	tmp->next = NULL;
 	tmp->tokens = 0;
-	tmp->type = get_type(arg, i);
+	tmp->type = get_type(arg);
 	tmp->data = malloc(sizeof(char) * ((end - start) + 1));
 	while (start < end)
 	{
