@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/02 16:01:54 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:39:04 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		*handle_whitespaces(char *input);
 int			list_quote(char *input, int i);
 
 ////////////////////////lexer2.c/////////////////////
-enum e_type	get_type(char *str);
+enum e_type	get_type(char *str, int start);
 int			pipes_num(t_data *data);
 
 //////////////////////debugging.c////////////////////

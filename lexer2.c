@@ -6,17 +6,17 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:43:13 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/28 10:43:16 by macastan         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:38:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-enum e_type	get_type(char *str)
+enum e_type	get_type(char *str, int start)
 {
-	if (str[0] == '\"')
+	if (str[start] == '\"')
 		return (1);
-	else if (str[0] == '\'')
+	else if (str[start] == '\'')
 		return (2);
 	else
 		return (0);
