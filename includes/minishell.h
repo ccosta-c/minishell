@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 10:37:00 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:54:37 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 {
 	char		**env;
 	char		*prompt;
+	char		**paths;
 	t_tokens	*top;
 }			t_data;
 
@@ -68,6 +69,7 @@ int			len_of(char *str);
 
 ////////////////////////utils_2.c//////////////////////
 char		**list_to_array(t_data *data);
+void		get_envpaths(t_data *data);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input, int i, int j);
