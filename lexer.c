@@ -20,7 +20,7 @@ int	lexer(t_data *data, char *input, int i, int j)
 		return (-1);
 	str = handle_whitespaces(input);
 	if (check_first(str) == -1)
-		return (-1);
+		return (free(str), 0);
 	while (1)
 	{
 		j = i;

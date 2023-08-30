@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 10:54:37 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:57:05 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int			check_quotes(char	*input, int i);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
+void		execution_single(t_data *data);
 
 #endif

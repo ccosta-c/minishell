@@ -42,7 +42,6 @@ void	prompt_loop(t_data *data)
 			free(txt);
 			exit(0);
 		}
-		get_envpaths(data);
 		ft_cleartokens(&data->top);
 	}
 }

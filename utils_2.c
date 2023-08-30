@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 11:04:59 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:13:56 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void	get_envpaths(t_data *data)
 
 	tmp = getenv("PATH");
 	data->paths = ft_split(tmp, ':');
-	print_array(data->paths);
 }
