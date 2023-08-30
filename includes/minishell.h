@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 11:57:05 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:00:16 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+# include <sys/wait.h>
 
 extern int	g_exit;
 

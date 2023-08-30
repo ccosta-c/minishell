@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/30 12:26:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:02:02 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	execution_single(t_data *data)
 	char	*tmp;
 	char	*tmp2;
 	char	**arg;
+	pid_t	pid;
 
 	i = 0;
 	get_envpaths(data);
@@ -40,7 +41,15 @@ void	execution_single(t_data *data)
 		tmp = ft_strjoin("/", data->top->data);
 		tmp2 = ft_strjoin(data->paths[i], tmp);
 		if (access(tmp2, X_OK) == 0)
-			execve(tmp2, arg, NULL);
+		{
+			pid = fork();
+			if (pid == 0)
+			{
+				execve(tmp2, arg, NULL);
+				waitpid(pid, 0, 0);
+				return ;
+			}
+		}
 		free(tmp);
 		free(tmp2);
 		i++;
