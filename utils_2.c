@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debugging.c                                        :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 15:12:48 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 10:41:32 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/08/30 10:40:15 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-void	print_list(t_data *data)
+char	**list_to_array(t_data *data)
 {
 	t_tokens	*tmp;
+	char		**array;
+	int			i;
 
+	i = 0;
 	tmp = data->top;
 	while (tmp != NULL)
 	{
-		printf("Content-%s\n", tmp->data);
-		printf("Length-%i\n", tmp->len);
-		printf("Type-%u\n", tmp->type);
+		i++;
 		tmp = tmp->next;
 	}
 	free(tmp);
-}
-
-void	print_array(char **array)
-{
-	int	i;
-
+	array = malloc(sizeof(char *) * (i + 1));
+	tmp = data->top;
 	i = 0;
-	while (array[i] != NULL)
+	while (tmp != NULL)
 	{
-		printf("%s", array[i]);
+		array[i] = malloc(sizeof(char) * (tmp->len + 1));
+		array[i] = tmp->data;
 		i++;
-		printf("\n");
+		tmp = tmp->next;
 	}
+	array[i] = NULL;
+	free(tmp);
+	return (array);
 }

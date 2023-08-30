@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/02 12:22:56 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:37:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv, char **envp)
 void	prompt_loop(t_data *data)
 {
 	char	*txt;
+	char	**test;
 
 	while (1)
 	{
@@ -42,6 +43,8 @@ void	prompt_loop(t_data *data)
 			free(txt);
 			exit(0);
 		}
+		test = list_to_array(data);
+		print_array(test);
 		ft_cleartokens(&data->top);
 	}
 }

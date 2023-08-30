@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:43:13 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/29 15:38:54 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:49:14 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,26 @@
 enum e_type	get_type(char *str, int start)
 {
 	if (str[start] == '\"')
-		return (1);
+		return (D_QUOTE);
 	else if (str[start] == '\'')
-		return (2);
+		return (S_QUOTE);
+	else if (str[start] == '|')
+		return (PIPE);
+	else if (str[start] == '<' && str[start + 1] != '<' )
+		return (R_IN);
+	else if (str[start] == '>' && str[start + 1] != '>' )
+		return (R_OUT);
+	else if (str[start] == '<' && str[start + 1] == '<' )
+		return (RR_IN);
+	else if (str[start] == '>' && str[start + 1] == '>' )
+		return (RR_OUT);
 	else
-		return (0);
+		return (GENERIC);
 }
 
 int	pipes_num(t_data *data)
 {
-	int	p;
+	int			p;
 	t_tokens	*tmp;
 
 	p = 0;

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/29 15:39:04 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:37:00 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,16 @@
 
 extern int	g_exit;
 
-enum	e_tokens
-{
-	WORD = 'w',
-	WHITE_SPACE = ' ',
-	DOUBLE_QUOTE = '\"',
-	SINGLE_QUOTE = '\'',
-	ESCAPE = '\\',
-	PIPES = '|',
-	REDIRECT_IN = '<',
-	REDIRECT_OUT = '>',
-	ENV = '$',
-	NEW_LINE = '\n',
-	HERE_DOC,
-};
-
 enum	e_type
 {
 	GENERIC,
 	D_QUOTE,
 	S_QUOTE,
+	PIPE,
+	R_IN,
+	R_OUT,
+	RR_IN,
+	RR_OUT,
 	CMD,
 };
 
@@ -50,7 +40,6 @@ typedef struct s_tokens
 {
 	char			*data;
 	int				len;
-	enum e_tokens	tokens;
 	enum e_type		type;
 	struct s_tokens	*next;
 }			t_tokens;
@@ -77,6 +66,9 @@ void		add_to_list(t_tokens **lst, t_tokens *new);
 void		ft_cleartokens(t_tokens **lst);
 int			len_of(char *str);
 
+////////////////////////utils_2.c//////////////////////
+char		**list_to_array(t_data *data);
+
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input, int i, int j);
 char		*handle_whitespaces(char *input);
@@ -88,6 +80,7 @@ int			pipes_num(t_data *data);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
+void		print_array (char **array);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
