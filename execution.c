@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/30 17:02:02 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 12:13:20 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void	execution(t_data *data)
 {
-	int	j;
-
-	j = pipes_num(data);
-	printf("Pipes: %i\n", j);
 	if (pipes_num(data) != 0)
 		printf("exec pipe\n");
 		//execution_pipe(data);
@@ -32,7 +28,9 @@ void	execution_single(t_data *data)
 	char	*tmp2;
 	char	**arg;
 	pid_t	pid;
+	int		j;
 
+	j = 0;
 	i = 0;
 	get_envpaths(data);
 	arg = list_to_array(data);
@@ -42,16 +40,22 @@ void	execution_single(t_data *data)
 		tmp2 = ft_strjoin(data->paths[i], tmp);
 		if (access(tmp2, X_OK) == 0)
 		{
+			j++;
 			pid = fork();
 			if (pid == 0)
 			{
 				execve(tmp2, arg, NULL);
-				waitpid(pid, 0, 0);
-				return ;
+				exit (0);
 			}
+			wait(NULL);
+			return ;
 		}
 		free(tmp);
 		free(tmp2);
 		i++;
+	}
+	if (j == 0)
+	{
+		printf("%s: command not found\n", data->top->data);
 	}
 }
