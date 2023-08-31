@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 12:28:08 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:02:40 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int argc, char **argv, char **envp)
 		return (printf("Wrong arguments!\n"));
 	get_prompt(&data);
 	handle_signals();
+	copy_envp(&data, envp);
+	export_builtin(data.export);
 	prompt_loop(&data);
 }
 

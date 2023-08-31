@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/29 15:38:40 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:04:07 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	copy_envp(t_data *data, char **envp)
 	while (envp[i])
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
+	data->export = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (envp[i])
 	{
 		data->env[i] = ft_strdup(envp[i]);
+		data->export[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	data->env[i] = NULL;
+	data->export[i] = NULL;
 }
 
 /// Initializes the tokens node and attributes the data and the

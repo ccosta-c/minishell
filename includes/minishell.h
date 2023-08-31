@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 17:00:16 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:03:12 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_tokens
 typedef struct s_data
 {
 	char		**env;
+	char		**export;
 	char		*prompt;
 	char		**paths;
 	t_tokens	*top;
@@ -101,5 +102,15 @@ int			check_quotes(char	*input, int i);
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
 void		execution_single(t_data *data);
+
+//////////////////////test.c///////////////////
+void		ft_swap(char **a, char **b);
+void		ft_putchar2(char **b, int a, int i);
+void		export_builtin(char **array);
+void		print_export(char **array);
+
+//////////////////////builtins.c///////////////////
+int			check_builtins(t_data *data);
+int			check_builtins2(t_data *data);
 
 #endif
