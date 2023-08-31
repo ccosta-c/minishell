@@ -18,7 +18,10 @@ void	execution(t_data *data)
 		printf("exec pipe\n");
 		//execution_pipe(data);
 	else
-		execution_single(data);
+	{
+//		if (check_builtins(data) == 0)
+//			execution_single(data);
+	}
 }
 
 void	execution_single(t_data *data)
