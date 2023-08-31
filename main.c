@@ -25,7 +25,6 @@ int	main(int argc, char **argv, char **envp)
 	get_prompt(&data);
 	handle_signals();
 	copy_envp(&data, envp);
-	export_builtin(data.export);
 	prompt_loop(&data);
 }
 

@@ -12,6 +12,8 @@
 
 #include "./includes/minishell.h"
 
+//NAO DA HANDLE QUANDO ESTA ALGO EM ESPERA NO TERMINAL!!!!!!!!!!!!!
+
 void	handle_signals(void)
 {
 	struct sigaction	si;

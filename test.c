@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 15:09:46 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:29:24 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,21 @@ void	print_export(char **array)
 	int	i;
 	int	j;
 
-	j = 0;
 	i = 0;
 	while (array[i] != NULL)
 	{
-		printf("declare -x ");
-
+		j = 0;
+		write(1, "declare -x ", 11);
+		while (array[i][j])
+		{
+			write(1, &array[i][j], 1);
+			if (array[i][j] == '=')
+				write (1, "\"", 1);
+			if (array[i][j + 1] == '\0')
+				write (1, "\"", 1);
+			j++;
+		}
 		i++;
+		write(1, "\n", 1);
 	}
 }
