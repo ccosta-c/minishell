@@ -14,29 +14,31 @@
 
 void	execution(t_data *data)
 {
+	char	**arg;
+
+	arg = list_to_array(data);
 	if (pipes_num(data) != 0)
 		printf("exec pipe\n");
 		//execution_pipe(data);
 	else
 	{
-//		if (check_builtins(data) == 0)
-//			execution_single(data);
+		if (check_builtins(data) == 0)
+		{
+			get_envpaths(data);
+			execution_single(data, 0, arg);
+		}
 	}
+	free(arg);
 }
 
-void	execution_single(t_data *data)
+void	execution_single(t_data *data, int j, char **arg)
 {
 	int		i;
 	char	*tmp;
 	char	*tmp2;
-	char	**arg;
 	pid_t	pid;
-	int		j;
 
-	j = 0;
 	i = 0;
-	get_envpaths(data);
-	arg = list_to_array(data);
 	while (data->paths[i] != NULL)
 	{
 		tmp = ft_strjoin("/", data->top->data);

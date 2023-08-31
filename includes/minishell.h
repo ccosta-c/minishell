@@ -101,7 +101,7 @@ int			check_quotes(char	*input, int i);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
-void		execution_single(t_data *data);
+void		execution_single(t_data *data, int j, char **arg);
 
 //////////////////////test.c///////////////////
 void		ft_swap(char **a, char **b);
