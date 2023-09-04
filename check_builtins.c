@@ -59,18 +59,19 @@ int	check_builtins2(t_data *data)
 	{
 		if (data->top->next)
 		{
-			if (ft_strncmp("-n", data->top->next->data, 2) == 0)
+			if (ft_strncmp("-n", data->top->next->data, data->top->next->len) == 0)
 			{
 				printf("cd execution\n");
 				//execut_cd(data);
+				return (1);
 			}
 		}
 		else
 		{
 			printf("cd execution\n");
 			//execut_cd(data);
+			return (1);
 		}
-		return (1);
 	}
 	return (0);
 }

@@ -34,18 +34,20 @@ void	execution(t_data *data)
 void	execution_single(t_data *data, int j, char **arg)
 {
 	int		i;
+	char	*tmp_path;
 	pid_t	pid;
 
 	i = 0;
 	while (data->paths[i] != NULL)
 	{
-		if (access(get_tmp_path(data), X_OK) == 0)
+		tmp_path = get_tmp_path(data, i);
+		if (access(tmp_path, X_OK) == 0)
 		{
 			j++;
 			pid = fork();
 			if (pid == 0)
 			{
-				execve(get_tmp_path(data), arg, NULL);
+				execve(tmp_path, arg, NULL);
 				exit (0);
 			}
 			wait(NULL);
@@ -58,7 +60,7 @@ void	execution_single(t_data *data, int j, char **arg)
 		printf("%s: command not found\n", data->top->data);
 }
 
-char	*get_tmp_path(t_data *data)
+char	*get_tmp_path(t_data *data, int i)
 {
 	char	*tmp;
 	char	*final;
