@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 16:29:24 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:09:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,16 @@ void	print_export(char **array)
 		i++;
 		write(1, "\n", 1);
 	}
+}
+
+void	add_export(char	**array, t_data *data)
+{
+	int		size;
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	size = count_variables(array);
+
+	return ;
 }

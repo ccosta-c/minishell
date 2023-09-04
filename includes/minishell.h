@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 15:03:12 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:47:03 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int			len_of(char *str);
 ////////////////////////utils_2.c//////////////////////
 char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
+void		free_array(char **array, int y);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input, int i, int j);
@@ -110,6 +111,7 @@ void		ft_swap(char **a, char **b);
 void		ft_putchar2(char **b, int a, int i);
 void		export_builtin(char **array);
 void		print_export(char **array);
+void		add_export(char	**array, t_data *data);
 
 //////////////////////builtins.c///////////////////
 int			check_builtins(t_data *data);

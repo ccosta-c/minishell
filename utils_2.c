@@ -47,3 +47,16 @@ void	get_envpaths(t_data *data)
 	tmp = getenv("PATH");
 	data->paths = ft_split(tmp, ':');
 }
+
+void	free_array(char **array, int y)
+{
+	int	i;
+
+	i = 0;
+	while (i < y)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:44:34 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 16:36:55 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:43:03 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_builtins(t_data *data)
 	{
 		if (!data->top->next)
 		{
-			export_builtin(*(data->export));
+			export_builtin(data->export);
 			g_exit = 0;
 			return (1);
 		}

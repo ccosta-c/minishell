@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/31 15:04:07 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:15:06 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 void	copy_envp(t_data *data, char **envp)
 {
 	int	i;
+	int	j;
 
+	j = 0;
 	i = 0;
 	while (envp[i])
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
-	data->export = malloc(sizeof(char *) * (i + 1));
+	data->export = malloc(sizeof(char *) * (i + 6));
 	i = 0;
 	while (envp[i])
 	{
@@ -31,6 +33,7 @@ void	copy_envp(t_data *data, char **envp)
 		data->export[i] = ft_strdup(envp[i]);
 		i++;
 	}
+	while ()
 	data->env[i] = NULL;
 	data->export[i] = NULL;
 }
