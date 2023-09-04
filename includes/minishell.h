@@ -98,6 +98,7 @@ int			check_first(char *input);
 int			check_pipes(char *input);
 int			check_redirect(char *input);
 int			check_quotes(char	*input, int i);
+int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);

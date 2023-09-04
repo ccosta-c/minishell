@@ -14,6 +14,8 @@
 
 int	check_builtins(t_data *data)
 {
+	if (search_red(data) == 1)
+		printf("Go to Redirections/n");
 	if (ft_strncmp("echo", data->top->data, data->top->len) == 0)
 	{
 		printf("echo execution\n");
@@ -28,14 +30,32 @@ int	check_builtins(t_data *data)
 	}
 	else if (ft_strncmp("export", data->top->data, data->top->len) == 0)
 	{
-		export_builtin(data->export);
-		return (1);
+		if (!data->top->next)
+		{
+			export_builtin(*(data->export));
+			g_exit = 0;
+			return (1);
+		}
+		else
+		{
+			add_export(data->export, data);
+			g_exit = 0;
+			return (1);
+		}
 	}
 	else if (ft_strncmp("unset", data->top->data, data->top->len) == 0)
 	{
-		printf("unset execution\n");
-		//execut_unset(data);
-		return (1);
+		if (!data->top->next)
+		{
+			printf("\n");
+			g_exit = 0;
+			return (1);
+		}
+		else
+		{
+			printf("unset execution\n");
+			return (1);
+		}
 	}
 	else if (check_builtins2(data) == 1)
 		return (1);
@@ -46,13 +66,23 @@ int	check_builtins2(t_data *data)
 {
 	if (ft_strncmp("env", data->top->data, data->top->len) == 0)
 	{
-		print_array(data->env);
-		return (1);
+		if (!data->top->next)
+		{
+			print_array(data->env);
+			g_exit = 0;
+			return (1);
+		}
+		else
+		{
+			printf("env: No options or arguments supported\n");
+			g_exit = 127;
+			return (1);
+		}
 	}
 	else if (ft_strncmp("exit", data->top->data, data->top->len) == 0)
 	{
 		printf("exit execution\n");
-		//execut_exit(data);
+		//execut_exit(data); please check if t !data->top->next
 		return (1);
 	}
 	else if (ft_strncmp("cd", data->top->data, data->top->len) == 0)

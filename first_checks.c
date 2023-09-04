@@ -79,3 +79,18 @@ int	check_quotes(char *input, int i)
 	else
 		return (0);
 }
+
+int	search_red(t_data *data)
+{
+	t_tokens	*tmp;
+
+	tmp = data->top;
+	while (tmp != NULL)
+	{
+		if (ft_strchr(tmp->data, '<') || ft_strchr(tmp->data, '>'))
+			return (1);
+		tmp = tmp->next;
+	}
+	free(tmp);
+	return (0);
+}
