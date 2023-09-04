@@ -84,7 +84,7 @@ int			pipes_num(t_data *data);
 
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
-void		print_array (char **array);
+void		print_array(char **array);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
@@ -102,6 +102,7 @@ int			check_quotes(char	*input, int i);
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
 void		execution_single(t_data *data, int j, char **arg);
+char		*get_tmp_path(t_data *data);
 
 //////////////////////test.c///////////////////
 void		ft_swap(char **a, char **b);
