@@ -18,14 +18,12 @@
 void	copy_envp(t_data *data, char **envp)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = 0;
 	while (envp[i])
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
-	data->export = malloc(sizeof(char *) * (i + 6));
+	data->export = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (envp[i])
 	{
@@ -33,7 +31,6 @@ void	copy_envp(t_data *data, char **envp)
 		data->export[i] = ft_strdup(envp[i]);
 		i++;
 	}
-	while ()
 	data->env[i] = NULL;
 	data->export[i] = NULL;
 }

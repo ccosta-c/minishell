@@ -83,7 +83,7 @@ void	print_export(char **array)
 	}
 }
 
-void	add_export(char	**array, t_data *data)
+/*void	add_export(char	**array, t_data *data)
 {
 	int		size;
 	char	**tmp;
@@ -93,4 +93,4 @@ void	add_export(char	**array, t_data *data)
 	size = count_variables(array);
 
 	return ;
-}
+}*/

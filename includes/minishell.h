@@ -106,9 +106,8 @@ void		execution(t_data *data);
 void		execution_single(t_data *data, int j, char **arg);
 char		*get_tmp_path(t_data *data, int i);
 
-//////////////////////test.c///////////////////
+//////////////////////export.c/////////////////////
 void		ft_swap(char **a, char **b);
-void		ft_putchar2(char **b, int a, int i);
 void		export_builtin(char **array);
 void		print_export(char **array);
 void		add_export(char	**array, t_data *data);
@@ -116,5 +115,11 @@ void		add_export(char	**array, t_data *data);
 //////////////////////builtins.c///////////////////
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);
+
+//////////////////////execution2.c/////////////////
+void        execution_pwd(t_data *data);
+void        execution_env(t_data *data);
+void        execution_export(t_data *data);
+void        execution_unset(t_data *data);
 
 #endif
