@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/04 15:47:03 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:53:13 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ enum	e_type
 	CMD,
 };
 
+typedef struct s_charlist
+{
+	char				*content;
+	struct s_charlist	*next;
+}			t_charlist;
+
 typedef struct s_tokens
 {
 	char			*data;
@@ -47,8 +53,8 @@ typedef struct s_tokens
 
 typedef struct s_data
 {
-	char		**env;
-	char		**export;
+	t_charlist	*env;
+	t_charlist	*export;
 	char		*prompt;
 	char		**paths;
 	t_tokens	*top;
@@ -62,17 +68,22 @@ void		get_prompt(t_data *data);
 char		*get_pc_id(void);
 char		*get_path(void);
 
-////////////////////////utils.c//////////////////////
+////////////////////////lstops.c//////////////////////
 void		copy_envp(t_data *data, char **envp);
 t_tokens	*initialize_tokens(int end, int start, char *arg);
 void		add_to_list(t_tokens **lst, t_tokens *new);
 void		ft_cleartokens(t_tokens **lst);
-int			len_of(char *str);
 
-////////////////////////utils_2.c//////////////////////
+////////////////////////utils.c//////////////////////
 char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
 void		free_array(char **array, int y);
+int			len_of(char *str);
+
+////////////////////////lstops2.c//////////////////////
+void		add_to_charlist(t_charlist **top, char *content);
+t_charlist	*ft_addnew(char *content);
+t_charlist	*ft_golast(t_charlist *lst);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input, int i, int j);
@@ -86,6 +97,7 @@ int			pipes_num(t_data *data);
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
 void		print_array(char **array);
+void		print_lstchar(t_charlist *data);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
@@ -108,24 +120,28 @@ char		*get_tmp_path(t_data *data, int i);
 
 //////////////////////export.c/////////////////////
 void		ft_swap(char **a, char **b);
-void		export_builtin(char **array);
+void		export_builtin(t_charlist *list);
 void		print_export(char **array);
 void		add_export(char	**array, t_data *data);
+int			count_variables(t_charlist *list);
+
 
 //////////////////////builtins.c///////////////////
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);
 
 //////////////////////execution2.c/////////////////
-void        execution_pwd(t_data *data);
-void        execution_env(t_data *data);
-void        execution_export(t_data *data);
-void        execution_unset(t_data *data);
+void		execution_pwd(t_data *data);
+void		execution_env(t_data *data);
+void		execution_export(t_data *data);
+void		execution_unset(t_data *data);
 
 //////////////////////execution_echo.c///////////////
-void        execution_echo(t_data *data);
-void        simple_echo(char *str);
-void        echo_normal(t_data *data);
+void		execution_echo(t_data *data);
+void		simple_echo(char *str);
+void		double_echo(char *str);
+void		echo_normal(t_data *data);
+void		handle_spaces_echo(char *str);
 
 //////////////////////execution_echo2.c//////////////
 void        echo_minus_n(t_data *data);

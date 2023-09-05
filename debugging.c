@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:12:48 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 10:41:32 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:13:02 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ void	print_list(t_data *data)
 	}
 	free(tmp);
 }
+
+void	print_lstchar(t_charlist *data)
+{
+	while (data != NULL)
+	{
+		printf("Content-%s\n", data->content);
+		data = data->next;
+	}
+}
+
 
 void	print_array(char **array)
 {

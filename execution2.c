@@ -35,7 +35,7 @@ void execution_env(t_data *data)
 {
 	if (!data->top->next)
 	{
-		print_array(data->env);
+		//print_array(data->env);
 		g_exit = 0;
 	}
 	else
@@ -60,7 +60,7 @@ void execution_export(t_data *data)
 	}
 	else
 	{
-		export_builtin(data->export);
+		//gitexport_builtin(data->export);
 		g_exit = 0;
 	}
 }
