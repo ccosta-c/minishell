@@ -18,7 +18,7 @@ int	check_builtins(t_data *data)
 		printf("Go to Redirections/n");
 	if (ft_strncmp("echo", data->top->data, data->top->len) == 0)
 	{
-		printf("echo execution\n");
+		execution_echo(data);
 		return (1);
 	}
 	else if (ft_strncmp("pwd", data->top->data, data->top->len) == 0)
@@ -58,12 +58,9 @@ int	check_builtins2(t_data *data)
 	{
 		if (data->top->next)
 		{
-			if (ft_strncmp("-n", data->top->next->data, data->top->next->len) == 0)
-			{
 				printf("cd execution\n");
 				//execut_cd(data);
 				return (1);
-			}
 		}
 		else
 		{

@@ -122,4 +122,13 @@ void        execution_env(t_data *data);
 void        execution_export(t_data *data);
 void        execution_unset(t_data *data);
 
+//////////////////////execution_echo.c///////////////
+void        execution_echo(t_data *data);
+void        simple_echo(char *str);
+void        echo_normal(t_data *data);
+
+//////////////////////execution_echo2.c//////////////
+void        echo_minus_n(t_data *data);
+void        simple_echo_minus_n(char *str);
+
 #endif

@@ -55,7 +55,7 @@ void execution_export(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return  ;
 		}
-		//add_export(data->export, data);
+		//add_export(data->export, data); nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
 		g_exit = 0;
 	}
 	else
@@ -79,7 +79,7 @@ void execution_unset(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return  ;
 		}
-		printf("unset execution\n");
+		printf("unset execution\n"); //nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
 		g_exit = 0;
 	}
 }
