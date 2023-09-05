@@ -12,9 +12,9 @@
 
 #include "./includes/minishell.h"
 
-void execution_pwd(t_data *data)
+void	execution_pwd(t_data *data)
 {
-	char *path;
+	char	*path;
 
 	if (data->top->next)
 	{
@@ -22,7 +22,7 @@ void execution_pwd(t_data *data)
 		{
 			printf("pwd: No options supported\n");
 			g_exit = 127; //ou 2 decidir
-			return  ;
+			return ;
 		}
 	}
 	path = getcwd(0, 0);
@@ -31,7 +31,7 @@ void execution_pwd(t_data *data)
 	free(path);
 }
 
-void execution_env(t_data *data)
+void	execution_env(t_data *data)
 {
 	if (!data->top->next)
 	{
@@ -45,7 +45,7 @@ void execution_env(t_data *data)
 	}
 }
 
-void execution_export(t_data *data)
+void	execution_export(t_data *data)
 {
 	if (data->top->next)
 	{
@@ -53,7 +53,7 @@ void execution_export(t_data *data)
 		{
 			printf("export: No options supported\n");
 			g_exit = 127; //ou 2 decidir
-			return  ;
+			return ;
 		}
 		//add_export(data->export, data); nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
 		g_exit = 0;
@@ -65,7 +65,7 @@ void execution_export(t_data *data)
 	}
 }
 
-void execution_unset(t_data *data)
+void	execution_unset(t_data *data)
 {
 	if (!data->top->next)
 	{
@@ -77,7 +77,7 @@ void execution_unset(t_data *data)
 		{
 			printf("unset: No options supported\n");
 			g_exit = 127; //ou 2 decidir
-			return  ;
+			return ;
 		}
 		printf("unset execution\n"); //nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
 		g_exit = 0;

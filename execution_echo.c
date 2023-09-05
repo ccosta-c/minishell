@@ -12,7 +12,7 @@
 
 #include "./includes/minishell.h"
 
-void execution_echo(t_data *data)
+void	execution_echo(t_data *data)
 {
 	if (!data->top->next)
 	{
@@ -33,23 +33,46 @@ void execution_echo(t_data *data)
 		return ;
 	}
 	else
+	{
 		echo_normal(data);
+		write (1, "\n", 1);
+	}
 }
 
-void simple_echo(char *str)
+void	simple_echo(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		write(1,&str[i], 1);
+		write (1, &str[i], 1);
 		i++;
 	}
-	write(1,"\n", 1);
 }
 
-void echo_normal(t_data *data)
+void	double_echo(char *str)
+{
+	if (ft_strchr(str, ' '))
+	{
+		handle_spaces_echo(str);
+	}
+	else if (str[0] == '$')
+	{
+		if (str[1] == '?')
+		{
+			printf("%d\n", g_exit);
+			g_exit = 0;
+			return ;
+		}
+		else
+			printf("check se eh explandivel");
+	}
+	else
+		simple_echo(str);
+}
+
+void	echo_normal(t_data *data)
 {
 	t_tokens	*tmp;
 
@@ -58,10 +81,39 @@ void echo_normal(t_data *data)
 	{
 		if (tmp->type == S_QUOTE)
 			simple_echo(tmp->data);
+		if (tmp->type == D_QUOTE)
+			double_echo(tmp->data);
 		else
-			printf("b\n");
+		{
+			if (tmp->data[0] == '$' && tmp->data[1] == '?')
+			{
+				printf("%d\n", g_exit);
+				g_exit = 0;
+				return ;
+			}
+			else if (tmp->data[0] == '$' && tmp->data[1])
+				printf("check se eh explandivel");
+			else
+				simple_echo(tmp->data);
+		}
+		write(1, " ", 1);
 		tmp = tmp->next;
 	}
 	free(tmp);
 }
 
+void	handle_spaces_echo(char *str)
+{
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	tmp = ft_split(str, ' ');
+	while (tmp[i])
+	{
+		double_echo(tmp[i]);
+		write(1, " ", 1);
+		i++;
+	}
+	free(tmp);
+}

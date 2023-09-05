@@ -144,7 +144,6 @@ void		echo_normal(t_data *data);
 void		handle_spaces_echo(char *str);
 
 //////////////////////execution_echo2.c//////////////
-void        echo_minus_n(t_data *data);
-void        simple_echo_minus_n(char *str);
+void		echo_minus_n(t_data *data);
 
 #endif
