@@ -46,8 +46,13 @@ void	simple_echo(char *str)
 	i = 0;
 	while (str[i])
 	{
-		write (1, &str[i], 1);
-		i++;
+		if (str[i] == '\"' || str[i] == '\'')
+			i++;
+		else
+		{
+			write (1, &str[i], 1);
+			i++;
+		}
 	}
 }
 
@@ -61,7 +66,7 @@ void	double_echo(char *str)
 	{
 		if (str[1] == '?')
 		{
-			printf("%d\n", g_exit);
+			printf("%d", g_exit);
 			g_exit = 0;
 			return ;
 		}
@@ -87,7 +92,7 @@ void	echo_normal(t_data *data)
 		{
 			if (tmp->data[0] == '$' && tmp->data[1] == '?')
 			{
-				printf("%d\n", g_exit);
+				printf("%d", g_exit);
 				g_exit = 0;
 				return ;
 			}

@@ -43,30 +43,14 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 	i = 0;
 	tmp = malloc(sizeof(t_tokens));
 	tmp->next = NULL;
-	tmp->type = get_type(arg, start);
-	if (tmp->type == S_QUOTE || tmp->type == D_QUOTE)
+	tmp->data = malloc(sizeof(char) * ((end - start) + 1));
+	while (start < end)
 	{
-		tmp->data = malloc(sizeof(char) * ((end - start) - 1));
+		tmp->data[i] = arg[start];
 		start++;
-		while (start < (end - 1))
-		{
-			tmp->data[i] = arg[start];
-			start++;
-			i++;
-		}
-		printf("%s\n", tmp->data);
+		i++;
 	}
-	else
-	{
-		tmp->data = malloc(sizeof(char) * ((end - start) + 1));
-		while (start < end)
-		{
-			tmp->data[i] = arg[start];
-			start++;
-			i++;
-		}
-		printf("%s\n", tmp->data);
-	}
+	tmp->type = get_type(tmp->data, 0);
 	tmp->data[i] = '\0';
 	tmp->len = ft_strlen(tmp->data);
 	return (tmp);
