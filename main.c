@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/05 15:42:36 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:44:48 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int argc, char **argv, char **envp)
 	data.env = NULL;
 	data.export = NULL;
 	copy_envp(&data, envp);
-	printf("%d\n", count_variables(data.env));
-
 	prompt_loop(&data);
 }
 

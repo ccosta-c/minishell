@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:20:04 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/05 15:16:21 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:27:35 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_charlist	*ft_addnew(char *content)
 	ptr = malloc(sizeof(t_charlist));
 	if (!ptr)
 		return (NULL);
-	ptr->content = content;
+	ptr->content = strdup(content);
 	ptr->next = NULL;
 	return (ptr);
 }
