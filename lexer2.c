@@ -39,8 +39,10 @@ enum e_type	get_type(char *str, int start)
 	}
 	if (d_q > 0 && s_q == 0)
 		return (D_QUOTE);
-	if (s_q > 0 && d_q == 0)
+	else if (s_q > 0 && d_q == 0)
 		return (S_QUOTE);
+	else if (s_q > 0 && d_q > 0)
+		return (SPECIAL_QUOTE);
 	return (GENERIC);
 }
 

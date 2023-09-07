@@ -29,6 +29,7 @@ enum	e_type
 	GENERIC,
 	D_QUOTE,
 	S_QUOTE,
+	SPECIAL_QUOTE,
 	PIPE,
 	R_IN,
 	R_OUT,
