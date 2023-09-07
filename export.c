@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:18:29 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:28:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,30 @@ void	export_builtin(t_charlist *list)
 		tmp = tmp->next;
 		i++;
 	}
-	print_export(list);
 }
 
-void	print_export(t_charlist *list)
+void	print_export(t_charlist *list, int size)
 {
-	int	i;
-	int	j;
-	int	size;
+	int			i;
+	int			j;
+	t_charlist	*tmp;
 
 	i = 0;
-	while (array[i] != NULL)
+	tmp = list;
+	while (i < (size - 1))
 	{
 		j = 0;
 		write(1, "declare -x ", 11);
-		while (array[i][j])
+		while (tmp->content[j])
 		{
-			write(1, &array[i][j], 1);
-			if (array[i][j] == '=')
+			write(1, &tmp->content[j], 1);
+			if (tmp->content[j] == '=')
 				write (1, "\"", 1);
-			if (array[i][j + 1] == '\0')
+			if (tmp->content[j + 1] == '\0')
 				write (1, "\"", 1);
 			j++;
 		}
+		tmp = tmp->next;
 		i++;
 		write(1, "\n", 1);
 	}

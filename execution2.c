@@ -60,6 +60,7 @@ void	execution_export(t_data *data)
 	}
 	else
 	{
+		print_export(list, size);
 		export_builtin(data->export);
 		g_exit = 0;
 	}
