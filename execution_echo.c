@@ -88,6 +88,8 @@ void	echo_normal(t_data *data)
 			simple_echo(tmp->data);
 		if (tmp->type == D_QUOTE)
 			double_echo(tmp->data);
+		if (tmp->type == SPECIAL_QUOTE)
+			printf("have to do it");
 		else
 		{
 			if (tmp->data[0] == '$' && tmp->data[1] == '?')
