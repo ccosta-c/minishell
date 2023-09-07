@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:47:21 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:54:33 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,10 @@ void	print_export(t_charlist *list, int size)
 		i++;
 		write(1, "\n", 1);
 	}
+}
+
+void	add_export(t_charlist *list, t_data *data)
+{
+	while (data->)
+	add_to_charlist(&list, data->top->next->data);
 }
