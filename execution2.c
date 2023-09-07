@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/07 16:54:44 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:45:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	execution_export(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return ;
 		}
-		add_export(data->export, data);
+		//add_export(data->export, data); nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
 		g_exit = 0;
 	}
 	else

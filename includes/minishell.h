@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:55:05 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:26:58 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		frees(t_data *data);
 //////////////////////first_checks.c/////////////////
 int			check_first(char *input);
 int			check_pipes(char *input);
-int			check_redirect(char *input);
+int			check_redirect(char *input, int i);
 int			check_quotes(char	*input, int i);
 int			search_red(t_data *data);
 
@@ -123,7 +123,7 @@ char		*get_tmp_path(t_data *data, int i);
 void		ft_swap(t_charlist *list);
 void		export_builtin(t_charlist *list);
 void		print_export(t_charlist *list, int size);
-void		add_export(t_charlist *list, t_data	*data);
+void		add_export(char	**array, t_data *data);
 int			count_variables(t_charlist *list);
 
 
@@ -146,5 +146,7 @@ void		handle_spaces_echo(char *str);
 
 //////////////////////execution_echo2.c//////////////
 void		echo_minus_n(t_data *data);
+char		*remove_quote(char *data);
+int			num_of_quotes(char *data);
 
 #endif

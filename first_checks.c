@@ -26,7 +26,7 @@ int	check_first(char *input)
 		g_exit = 2;
 		return (-1);
 	}
-	if (check_redirect(input) == 0)
+	if (check_redirect(input, 0) == 0)
 	{
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		g_exit = 2;
@@ -46,8 +46,24 @@ int	check_pipes(char *input)
 	return (1);
 }
 
-int	check_redirect(char *input)
+int	check_redirect(char *input, int i)
 {
+	while (input[i])
+	{
+		if (input[i] == '<' && (input[i + 1] == '>' || (input[i + 1] == ' ' && input[i + 2] == '>')))
+				return (0);
+		if (input[i] == '>' && (input[i + 1] == '<' || (input[i + 1] == ' ' && input[i + 2] == '<')))
+				return (0);
+		if (input[i] == '<' && input[i + 1] == '<' && input[i + 2] == '<')
+			return (0);
+		if (input[i] == '<' && input[i + 1] == ' ' && input[i + 2] == '<')
+			return (0);
+		if (input[i] == '>' && input[i + 1] == '>' && input[i + 2] == '>')
+			return (0);
+		if (input[i] == '<' && input[i + 1] == ' ' && input[i + 2] == '<')
+			return (0);
+		i++;
+	}
 	if (input[ft_strlen(input) - 1] == '<')
 		return (0);
 	if (input[ft_strlen(input) - 1] == '>')

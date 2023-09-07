@@ -35,7 +35,6 @@ int	lexer(t_data *data, char *input, int i, int j)
 			break ;
 	}
 	free(str);
-	print_list(data);
 	execution(data);
 	return (0);
 }
@@ -69,7 +68,6 @@ char	*handle_whitespaces(char *input)
 
 int	list_quote(char *input, int i)
 {
-	printf("aquui");
 	if (input[i] == '\'')
 	{
 		i++;
