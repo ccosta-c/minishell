@@ -43,3 +43,42 @@ void	echo_minus_n(t_data *data)
 	}
 	free(tmp);
 }
+
+char	*remove_quote(char *data)
+{
+	int	i;
+	int	j;
+	char	*new;
+
+	i = 0;
+	j = 0;
+	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)));
+	while (data[i])
+	{
+		if (data[i] == '\'' || data[i] == '\"')
+		{
+			i++;
+		}
+		new[j] = data[i];
+		j++;
+		i++;
+	}
+	new[j] = '\0';
+	return (new);
+}
+
+int	num_of_quotes(char *data)
+{
+	int	i;
+	int	quote;
+
+	i = 0;
+	quote = 0;
+	while (data[i])
+	{
+		if (data[i] == '\'' || data[i] == '\"')
+			quote++;
+		i++;
+	}
+	return (quote);
+}

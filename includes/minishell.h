@@ -110,7 +110,7 @@ void		frees(t_data *data);
 //////////////////////first_checks.c/////////////////
 int			check_first(char *input);
 int			check_pipes(char *input);
-int			check_redirect(char *input);
+int			check_redirect(char *input, int i);
 int			check_quotes(char	*input, int i);
 int			search_red(t_data *data);
 
@@ -146,5 +146,7 @@ void		handle_spaces_echo(char *str);
 
 //////////////////////execution_echo2.c//////////////
 void		echo_minus_n(t_data *data);
+char		*remove_quote(char *data);
+int			num_of_quotes(char *data);
 
 #endif

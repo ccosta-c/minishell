@@ -65,7 +65,6 @@ int	pipes_num(t_data *data)
 		}
 		tmp = tmp->next;
 	}
-	printf("%i\n", p);
 	free(tmp);
 	return (p);
 }
