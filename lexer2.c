@@ -47,16 +47,23 @@ enum e_type	get_type(char *str, int start)
 int	pipes_num(t_data *data)
 {
 	int			p;
+	int 		i;
 	t_tokens	*tmp;
 
 	p = 0;
 	tmp = data->top;
 	while (tmp != NULL)
 	{
-		if (tmp->data[0] == '|')
-			p++;
+		i = 0;
+		while (tmp->data[i])
+		{
+			if (tmp->data[i] == '|')
+				p++;
+			i++;
+		}
 		tmp = tmp->next;
 	}
+	printf("%i\n", p);
 	free(tmp);
 	return (p);
 }
