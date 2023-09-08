@@ -20,10 +20,11 @@ void	execution_echo(t_data *data)
 		g_exit = 0;
 		return ;
 	}
-	if (ft_strncmp("-n", remove_quote(data->top->next->data), data->top->next->len) == 0)
+	if (ft_strncmp("-n", data->top->next->data, data->top->next->len) == 0)
 	{
 		if (!data->top->next->next)
 		{
+			printf("\n");
 			g_exit = 0;
 			return ;
 		}
@@ -42,33 +43,38 @@ void	simple_echo(char *str)
 {
 	size_t	i;
 
-	i = 1;
-	while (str[i] != '\'')
+	i = 0;
+	while (str[i])
 	{
+		if (str[i] == '\"' || str[i] == '\'')
+			i++;
+		else
+		{
 			write (1, &str[i], 1);
 			i++;
+		}
 	}
 }
 
 void	double_echo(char *str)
 {
-	size_t	i;
-
-	i = 1;
-	while (str[i] != '\"')
+	if (ft_strchr(str, ' '))
 	{
-		if (str[i] == '$')
-		{
-			write (1, "expandir", 8);
-			i++;
-			while ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9'))
-			{
-				i++;
-			}
-		}
-		write (1, &str[i], 1);
-		i++;
+		handle_spaces_echo(str);
 	}
+	else if (str[0] == '$')
+	{
+		if (str[1] == '?')
+		{
+			printf("%d", g_exit);
+			g_exit = 0;
+			return ;
+		}
+		else
+			printf("check se eh explandivel");
+	}
+	else
+		simple_echo(str);
 }
 
 void	echo_normal(t_data *data)
@@ -80,10 +86,8 @@ void	echo_normal(t_data *data)
 	{
 		if (tmp->type == S_QUOTE)
 			simple_echo(tmp->data);
-		else if (tmp->type == D_QUOTE)
-		{
+		if (tmp->type == D_QUOTE)
 			double_echo(tmp->data);
-		}
 		else
 		{
 			if (tmp->data[0] == '$' && tmp->data[1] == '?')
