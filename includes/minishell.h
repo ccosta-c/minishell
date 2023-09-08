@@ -139,9 +139,10 @@ void		execution_unset(t_data *data);
 
 //////////////////////execution_echo.c///////////////
 void		execution_echo(t_data *data);
-void		simple_echo(char *str);
-void		double_echo(char *str);
+void		simpleq_echo(char *str);
+void		doubleq_echo(char *str);
 void		echo_normal(t_data *data);
+void		echo_normal2(char *str);
 void		handle_spaces_echo(char *str);
 
 //////////////////////execution_echo2.c//////////////

@@ -39,42 +39,42 @@ void	execution_echo(t_data *data)
 	}
 }
 
-void	simple_echo(char *str)
+void	simpleq_echo(char *str)
 {
 	size_t	i;
 
-	i = 0;
-	while (str[i])
+	i = 1;
+	while (str[i] != '\'')
 	{
-		if (str[i] == '\"' || str[i] == '\'')
-			i++;
+		write (1, &str[i], 1);
+		i++;
+	}
+}
+
+void	doubleq_echo(char *str)
+{
+	int	i;
+
+	i = 1;
+	while (str[i] != '\"')
+	{
+		if (str[i] == '$' && str[i + 1] == '?')
+		{
+			printf("%d", g_exit);
+			i = i + 2;
+		}
+		else if (str[i] == '$' && str[i])
+		{
+			printf("check se eh explandivel");
+			while (str[i] != ' ')
+				i++;
+		}
 		else
 		{
 			write (1, &str[i], 1);
 			i++;
 		}
 	}
-}
-
-void	double_echo(char *str)
-{
-	if (ft_strchr(str, ' '))
-	{
-		handle_spaces_echo(str);
-	}
-	else if (str[0] == '$')
-	{
-		if (str[1] == '?')
-		{
-			printf("%d", g_exit);
-			g_exit = 0;
-			return ;
-		}
-		else
-			printf("check se eh explandivel");
-	}
-	else
-		simple_echo(str);
 }
 
 void	echo_normal(t_data *data)
@@ -85,26 +85,41 @@ void	echo_normal(t_data *data)
 	while (tmp != NULL)
 	{
 		if (tmp->type == S_QUOTE)
-			simple_echo(tmp->data);
-		if (tmp->type == D_QUOTE)
-			double_echo(tmp->data);
+			simpleq_echo(tmp->data);
+		else if (tmp->type == D_QUOTE)
+			doubleq_echo(tmp->data);
 		else
-		{
-			if (tmp->data[0] == '$' && tmp->data[1] == '?')
-			{
-				printf("%d", g_exit);
-				g_exit = 0;
-				return ;
-			}
-			else if (tmp->data[0] == '$' && tmp->data[1])
-				printf("check se eh explandivel");
-			else
-				simple_echo(tmp->data);
-		}
+			echo_normal2(tmp->data);
 		write(1, " ", 1);
 		tmp = tmp->next;
 	}
 	free(tmp);
+}
+
+void	echo_normal2(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$' && str[i + 1] == '?')
+		{
+			printf("%d", g_exit);
+			i = i + 2;
+		}
+		else if (str[i] == '$' && str[i])
+		{
+			printf("check se eh explandivel");
+			while (str[i] != ' ')
+				i++;
+		}
+		else
+		{
+			write (1, &str[i], 1);
+			i++;
+		}
+	}
 }
 
 void	handle_spaces_echo(char *str)
@@ -116,7 +131,7 @@ void	handle_spaces_echo(char *str)
 	tmp = ft_split(str, ' ');
 	while (tmp[i])
 	{
-		double_echo(tmp[i]);
+		doubleq_echo(tmp[i]);
 		write(1, " ", 1);
 		i++;
 	}
