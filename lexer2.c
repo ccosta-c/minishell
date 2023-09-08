@@ -21,9 +21,9 @@ enum e_type	get_type(char *str, int start)
 	s_q = 0;
 	while (str[start])
 	{
-		if (str[start] == '\"')
+		if (str[0] == '\"')
 			d_q++;
-		else if (str[start] == '\'')
+		else if (str[0] == '\'')
 			s_q++;
 		else if (str[start] == '|')
 			return (PIPE);
@@ -41,8 +41,6 @@ enum e_type	get_type(char *str, int start)
 		return (D_QUOTE);
 	else if (s_q > 0 && d_q == 0)
 		return (S_QUOTE);
-	else if (s_q > 0 && d_q > 0)
-		return (SPECIAL_QUOTE);
 	return (GENERIC);
 }
 
