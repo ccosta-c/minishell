@@ -14,18 +14,13 @@
 
 enum e_type	get_type(char *str, int start)
 {
-	int	d_q;
-	int s_q;
-
-	d_q = 0;
-	s_q = 0;
 	while (str[start])
 	{
-		if (str[0] == '\"')
-			d_q++;
-		else if (str[0] == '\'')
-			s_q++;
-		else if (str[start] == '|')
+		if (str[0] == '\"' && str[ft_strlen(str) - 1] == '\"')
+			return (D_QUOTE);
+		if (str[0] == '\'' && str[ft_strlen(str) - 1] == '\'')
+			return (S_QUOTE);
+		if (str[start] == '|')
 			return (PIPE);
 		else if (str[start] == '<' && str[start + 1] != '<' )
 			return (R_IN);
@@ -37,10 +32,6 @@ enum e_type	get_type(char *str, int start)
 			return (RR_OUT);
 		start++;
 	}
-	if (d_q > 0 && s_q == 0)
-		return (D_QUOTE);
-	else if (s_q > 0 && d_q == 0)
-		return (S_QUOTE);
 	return (GENERIC);
 }
 

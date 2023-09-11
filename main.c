@@ -21,7 +21,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	(void)envp;
 	if (argc > 1)
-		return (printf("Wrong arguments!\n"));
+		return (printf("minishell: %s: No such file or directory\n", argv[1]));
 	get_prompt(&data);
 	handle_signals();
 	data.env = NULL;
