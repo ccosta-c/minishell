@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/30 12:13:56 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/11 14:23:28 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,32 @@ int	len_of(char *str)
 	while (str[i] != '.' && str[i])
 		i++;
 	return ((i - j) + 2);
+}
+
+int	name_variable(char *str, t_data *data)
+{
+	t_charlist	*tmp;
+
+	tmp = data->export;
+	while (tmp != NULL)
+	{
+		if (ft_strncmp(tmp->content, str, check_name(str)) == 0)
+		{
+			free(tmp->content);
+			tmp->content = strdup(str);
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int	check_name(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '=')
+		i++;
+	return (i);
 }

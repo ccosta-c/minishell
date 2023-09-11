@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/07 16:45:54 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/11 13:16:12 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	execution_env(t_data *data)
 	}
 	else
 	{
-		//print_array(data->env);
+		print_lstchar(data->env);
 		g_exit = 0;
 	}
 }
@@ -55,7 +55,7 @@ void	execution_export(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return ;
 		}
-		//add_export(data->export, data); nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
+		add_export(data);
 		g_exit = 0;
 	}
 	else
