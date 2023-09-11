@@ -17,7 +17,7 @@ void	echo_minus_n(t_data *data)
 	t_tokens	*tmp;
 
 	tmp = data->top->next->next;
-	while (ft_strncmp("-n", tmp->data, tmp->len) == 0)
+	while (ft_strncmp("-n", remove_quote(tmp->data), ft_strlen(remove_quote(tmp->data))) == 0)
 		tmp = tmp->next;
 	while (tmp != NULL)
 	{
