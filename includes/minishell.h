@@ -150,14 +150,13 @@ void		simpleq_echo(char *str);
 void		doubleq_echo(char *str, t_data *data);
 void		echo_normal(t_data *data);
 void		echo_normal2(char *str, t_data *data);
-int		handle_specials1(char *str, int i);
-int		handle_specials2(char *str, int i, t_data *data);
-void		handle_spaces_echo(char *str);
-int		handle_exp(char *str, int i, t_data *data);
-void		search_print(char *str, t_charlist *list, int size);
 
 //////////////////////execution_echo2.c//////////////
 void		echo_minus_n(t_data *data);
+int		handle_specials1(char *str, int i);
+int		handle_specials2(char *str, int i, t_data *data);
+int		handle_exp(char *str, int i, t_data *data);
+void		search_print(char *str, t_charlist *list, int size);
 
 
 #endif
