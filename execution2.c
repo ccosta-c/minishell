@@ -33,15 +33,15 @@ void	execution_pwd(t_data *data)
 
 void	execution_env(t_data *data)
 {
-	if (!data->top->next)
-	{
-		//print_array(data->env);
-		g_exit = 0;
-	}
-	else
+	if (data->top->next)
 	{
 		printf("env: No options or arguments supported\n");
 		g_exit = 127; //ou 2 decidir
+	}
+	else
+	{
+		//print_array(data->env);
+		g_exit = 0;
 	}
 }
 
