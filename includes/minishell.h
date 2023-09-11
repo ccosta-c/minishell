@@ -85,6 +85,7 @@ int			name_variable(char *str, t_charlist *data);
 ////////////////////////utils2.c//////////////////////
 int			check_name(char *str);
 char		*remove_quote(char *data);
+int			num_of_quotes(char *data);
 
 
 ////////////////////////lstops2.c//////////////////////
@@ -157,7 +158,6 @@ void		search_print(char *str, t_charlist *list, int size);
 
 //////////////////////execution_echo2.c//////////////
 void		echo_minus_n(t_data *data);
-char		*remove_quote(char *data);
-int			num_of_quotes(char *data);
+
 
 #endif

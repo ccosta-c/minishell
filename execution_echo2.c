@@ -17,19 +17,3 @@ void	echo_minus_n(t_data *data)
 	(void)data;
 	printf("fazer este caralho\n");
 }
-
-int	num_of_quotes(char *data)
-{
-	int	i;
-	int	quote;
-
-	i = 0;
-	quote = 0;
-	while (data[i])
-	{
-		if (data[i] == '\'' || data[i] == '\"')
-			quote++;
-		i++;
-	}
-	return (quote);
-}

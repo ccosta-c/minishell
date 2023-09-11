@@ -160,28 +160,28 @@ void	search_print(char *str, t_charlist *list, int size)
 {
 	int			i;
 	int			j;
-	t_charlist	*tmp;
+	t_charlist	*l_tmp;
 
 	i = 0;
 	j = 0;
-	tmp = list;
+	l_tmp = list;
 	while (i < (size - 1))
 	{
-		if (ft_strncmp(str, tmp->content, ft_strlen(str)) == 0)
+		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
 		{
-			while (tmp->content[j] != '=')
+			while (l_tmp->content[j] != '=')
 				j++;
 			j++;
-			while (tmp->content[j])
+			while (l_tmp->content[j])
 			{
-				printf("%c", tmp->content[j]);
+				printf("%c", l_tmp->content[j]);
 				j++;
 			}
 		}
 		i++;
-		tmp = tmp->next;
+		l_tmp = l_tmp->next;
 	}
-	free(tmp);
+	free(l_tmp);
 }
 
 int	handle_specials1(char *str, int i)

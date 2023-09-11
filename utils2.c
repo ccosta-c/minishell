@@ -44,3 +44,19 @@ char	*remove_quote(char *data)
 	new[j] = '\0';
 	return (new);
 }
+
+int	num_of_quotes(char *data)
+{
+	int	i;
+	int	quote;
+
+	i = 0;
+	quote = 0;
+	while (data[i])
+	{
+		if (data[i] == '\'' || data[i] == '\"')
+			quote++;
+		i++;
+	}
+	return (quote);
+}
