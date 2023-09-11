@@ -28,11 +28,7 @@ int	lexer(t_data *data, char *input, int i, int j)
 		{
 			if (str[i] == '\'' || str[i] == '\"')
 				i = list_quote(str, i);
-			else
-			{
-				while (str[i] != ' ')
-					i++;
-			}
+			i++;
 		}
 		add_to_list(&data->top, initialize_tokens(i, j, str));
 		if (str[i++] == '\0')
