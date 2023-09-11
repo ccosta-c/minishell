@@ -14,6 +14,7 @@
 
 void	echo_minus_n(t_data *data)
 {
+	(void)data;
 	printf("fazer este caralho\n");
 }
 
