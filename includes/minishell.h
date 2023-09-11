@@ -80,7 +80,7 @@ char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
 void		free_array(char **array, int y);
 int			len_of(char *str);
-int			name_variable(char *str, t_data *data);
+int			name_variable(char *str, t_charlist *data);
 int			check_name(char *str);
 
 ////////////////////////lstops2.c//////////////////////

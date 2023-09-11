@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 14:24:31 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/11 14:56:09 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,23 @@ void	print_export(t_charlist *list, int size)
 void	add_export(t_data *data)
 {
 	t_tokens	*tmp;
+	char		*no_quotes;
 
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
-		if (name_variable(tmp->data, data) == 1)
+		if (tmp->data[0] == '\'' || tmp->data[0] == '\"')
+		{
+			no_quotes = remove_quote(tmp->data);
+			free(tmp->data);
+			tmp->data = strdup(no_quotes);
+			free (no_quotes);
+		}
+		if (name_variable(tmp->data, data->export) == 1)
+		{
+			name_variable(tmp->data, data->env);
 			return ;
+		}
 		else
 		{
 			add_to_charlist(&data->export, tmp->data);
