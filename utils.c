@@ -94,13 +94,3 @@ int	name_variable(char *str, t_charlist *data)
 	}
 	return (0);
 }
-
-int	check_name(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	return (i);
-}

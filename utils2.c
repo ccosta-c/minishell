@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution_echo2.c                                  :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 12:33:38 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/11 15:23:38 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/09/11 15:22:38 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/09/11 15:22:38 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-void	echo_minus_n(t_data *data)
-{
-	(void)data;
-	printf("fazer este caralho\n");
-}
-
-int	num_of_quotes(char *data)
+int	check_name(char *str)
 {
 	int	i;
-	int	quote;
 
 	i = 0;
-	quote = 0;
+	while (str[i] != '=')
+		i++;
+	return (i);
+}
+
+char	*remove_quote(char *data)
+{
+	int	i;
+	int	j;
+	char	*new;
+
+	i = 0;
+	j = 0;
+	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)));
 	while (data[i])
 	{
 		if (data[i] == '\'' || data[i] == '\"')
-			quote++;
+		{
+			i++;
+		}
+		new[j] = data[i];
+		j++;
 		i++;
 	}
-	return (quote);
+	new[j] = '\0';
+	return (new);
 }
