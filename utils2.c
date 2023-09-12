@@ -63,3 +63,18 @@ int	num_of_quotes(char *data)
 	}
 	return (quote);
 }
+
+int	ft_stop_exp(char c)
+{
+	if (c == ' '|| (c >= 34 && c <= 37))
+		return (0);
+	if (c == 58 || (c >= 40 && c <= 47))
+		return (0);
+	if (c == 61 || c == 63 || c == 64)
+		return (0);
+	if (c >= 91 && c <= 94)
+		return (0);
+	if (c == 123 || c == 125 || c == 126)
+		return (0);
+	return (1);
+}

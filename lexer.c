@@ -23,6 +23,8 @@ int	lexer(t_data *data, char *input)
 		return (free(str), 0);
 	lexer_continuation(data, str, 0, 0);
 	free(str);
+	if (check_second(data) == -1)
+		return (0);
 	//print_list(data);
 	execution(data);
 	return (0);
@@ -47,13 +49,56 @@ void	lexer_continuation(t_data *data, char *str, int i, int j)
 	}
 }
 
-/*char	*handle_whitespaces(char *input)
+int	check_first(char *input)
 {
-	char	*ret;
+	if (check_quotes(input, 0) == 0)
+	{
+		printf("minishell: unclosed quotes\n");
+		return (g_exit = 2, -1);
+	}
+	if (check_pipes(input) == 0)
+	{
+		printf("minishell: syntax error near unexpected token '|'\n");
+		return (g_exit = 2, -1);
+	}
+	if (check_redirect(input, 0) == 0)
+	{
+		printf("minishell: syntax error near unexpected token `newline'\n");
+		return (g_exit = 2, -1);
+	}
+	if (check_exclamation(input, 0) == 0)
+	{
+		printf("minishell: don't handle double exclamations points\n");
+		return (g_exit = 2, -1);
+	}
+	return (0);
+}
 
-	ret = ft_strtrim(input, " ");
-	return (ret);
-}*/
+int	check_second(t_data *data)
+{
+	int 		i;
+	t_tokens	*tmp;
+
+	tmp = data->top;
+	while (tmp != NULL)
+	{
+		i = 0;
+		if (tmp->type == GENERIC)
+		{
+			while (tmp->data[i])
+			{
+				if (tmp->data[i] == '(' || tmp->data[i] == ')')
+				{
+					printf("minishell:bash: syntax error near unexpected token '%c'\n", tmp->data[i]);
+					return (g_exit = 2, -1);
+				}
+				i++;
+			}
+		}
+		tmp = tmp->next;
+	}
+	return (free(tmp), 0);
+}
 
 int	list_quote(char *input, int i)
 {

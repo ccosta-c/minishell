@@ -91,7 +91,7 @@ int	handle_exp(char *str, int i, t_data *data)
 	i++;
 	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '$' || str[i] == '\"' || str[i] == '-')
+		if (ft_stop_exp(str[i]) == 0)
 			break ;
 		i++;
 	}
