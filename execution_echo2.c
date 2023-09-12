@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:33:38 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/11 15:23:38 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:02:04 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	handle_exp(char *str, int i, t_data *data)
 	i++;
 	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '$' || str[i] == '\"')
+		if (str[i] == ' ' || str[i] == '$' || str[i] == '\"' || str[i] == '-')
 			break ;
 		i++;
 	}
@@ -134,5 +134,4 @@ void	search_print(char *str, t_charlist *list, int size)
 		i++;
 		l_tmp = l_tmp->next;
 	}
-	free(l_tmp);
 }
