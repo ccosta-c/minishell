@@ -32,7 +32,24 @@ int	check_first(char *input)
 		g_exit = 2;
 		return (-1);
 	}
+	if (check_exclamation(input, 0) == 0)
+	{
+		printf("minishell: don't handle double exclamations points\n");
+		g_exit = 2;
+		return (-1);
+	}
 	return (0);
+}
+
+int	check_exclamation(char *input, int i)
+{
+	while (input[i])
+	{
+		if (input[i] == '!' && input[i + 1] == '!')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	check_pipes(char *input)

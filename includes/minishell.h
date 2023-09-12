@@ -117,6 +117,7 @@ void		frees(t_data *data);
 
 //////////////////////first_checks.c/////////////////
 int			check_first(char *input);
+int			check_exclamation(char *input, int i);
 int			check_pipes(char *input);
 int			check_redirect(char *input, int i);
 int			check_quotes(char	*input, int i);
