@@ -18,7 +18,7 @@ void	execution_pwd(t_data *data)
 
 	if (data->top->next)
 	{
-		if (data->top->next->data[0] == '-')
+		if (remove_quote(data->top->next->data)[0] == '-')
 		{
 			printf("pwd: No options supported\n");
 			g_exit = 127; //ou 2 decidir
@@ -49,7 +49,7 @@ void	execution_export(t_data *data)
 {
 	if (data->top->next)
 	{
-		if (data->top->next->data[0] == '-')
+		if (remove_quote(data->top->next->data)[0] == '-')
 		{
 			printf("export: No options supported\n");
 			g_exit = 127; //ou 2 decidir
@@ -74,7 +74,7 @@ void	execution_unset(t_data *data)
 	}
 	else
 	{
-		if (data->top->next->data[0] == '-')
+		if (remove_quote(data->top->next->data)[0] == '-')
 		{
 			printf("unset: No options supported\n");
 			g_exit = 127; //ou 2 decidir

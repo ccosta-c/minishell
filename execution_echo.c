@@ -17,7 +17,6 @@ void	execution_echo(t_data *data)
 	if (!data->top->next)
 	{
 		printf("\n");
-		g_exit = 0;
 		return ;
 	}
 	if (ft_strncmp("-n", remove_quote(data->top->next->data), ft_strlen(remove_quote(data->top->next->data))) == 0)
@@ -25,7 +24,6 @@ void	execution_echo(t_data *data)
 		if (!data->top->next->next)
 		{
 			printf("\n");
-			g_exit = 0;
 			return ;
 		}
 		echo_minus_n(data);
@@ -35,7 +33,6 @@ void	execution_echo(t_data *data)
 		echo_normal(data);
 		printf("\n");
 	}
-	g_exit = 0;
 }
 
 void	simpleq_echo(char *str)

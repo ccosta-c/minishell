@@ -19,6 +19,7 @@ int	check_builtins(t_data *data)
 	if (ft_strncmp("echo", data->top->data, data->top->len) == 0)
 	{
 		execution_echo(data);
+		g_exit = 0;
 		return (1);
 	}
 	else if (ft_strncmp("pwd", data->top->data, data->top->len) == 0)
