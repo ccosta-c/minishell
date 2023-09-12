@@ -119,7 +119,6 @@ void	search_print(char *str, t_charlist *list, int size)
 	l_tmp = list;
 	while (i < (size - 1))
 	{
-		printf("\n%s && %s\n", str, l_tmp->content);
 		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
 		{
 			while (l_tmp->content[j] != '=')

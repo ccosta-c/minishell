@@ -20,9 +20,7 @@ void	execution_echo(t_data *data)
 		g_exit = 0;
 		return ;
 	}
-	if (ft_strncmp("-n", data->top->next->data, data->top->next->len) == 0 ||
-			ft_strncmp("\"-n\"", data->top->next->data, data->top->next->len) ||
-				ft_strncmp("\'-n\'", data->top->next->data, data->top->next->len))
+	if (ft_strncmp("-n", remove_quote(data->top->next->data), ft_strlen(remove_quote(data->top->next->data))) == 0)
 	{
 		if (!data->top->next->next)
 		{

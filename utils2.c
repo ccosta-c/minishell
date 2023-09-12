@@ -30,16 +30,19 @@ char	*remove_quote(char *data)
 
 	i = 0;
 	j = 0;
-	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)));
+	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)) + 1);
 	while (data[i])
 	{
 		if (data[i] == '\'' || data[i] == '\"')
 		{
 			i++;
 		}
-		new[j] = data[i];
-		j++;
-		i++;
+		else
+		{
+			new[j] = data[i];
+			j++;
+			i++;
+		}
 	}
 	new[j] = '\0';
 	return (new);
