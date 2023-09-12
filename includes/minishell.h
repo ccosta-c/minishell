@@ -86,6 +86,7 @@ int			name_variable(char *str, t_charlist *data);
 int			check_name(char *str);
 char		*remove_quote(char *data);
 int			num_of_quotes(char *data);
+int			ft_stop_exp(char c);
 
 
 ////////////////////////lstops2.c//////////////////////
@@ -95,7 +96,8 @@ t_charlist	*ft_golast(t_charlist *lst);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
-char		*handle_whitespaces(char *input);
+int			check_first(char *input);
+int			check_second(t_data *data);
 int			list_quote(char *input, int i);
 void		lexer_continuation(t_data *data, char *str, int i, int j);
 
@@ -116,7 +118,6 @@ void		handler(int sig);
 void		frees(t_data *data);
 
 //////////////////////first_checks.c/////////////////
-int			check_first(char *input);
 int			check_exclamation(char *input, int i);
 int			check_pipes(char *input);
 int			check_redirect(char *input, int i);

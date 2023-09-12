@@ -12,35 +12,6 @@
 
 #include "./includes/minishell.h"
 
-int	check_first(char *input)
-{
-	if (check_quotes(input, 0) == 0)
-	{
-		printf("minishell: unclosed quotes\n");
-		g_exit = 2;
-		return (-1);
-	}
-	if (check_pipes(input) == 0)
-	{
-		printf("minishell: syntax error near unexpected token '|'\n");
-		g_exit = 2;
-		return (-1);
-	}
-	if (check_redirect(input, 0) == 0)
-	{
-		printf("minishell: syntax error near unexpected token `newline'\n");
-		g_exit = 2;
-		return (-1);
-	}
-	if (check_exclamation(input, 0) == 0)
-	{
-		printf("minishell: don't handle double exclamations points\n");
-		g_exit = 2;
-		return (-1);
-	}
-	return (0);
-}
-
 int	check_exclamation(char *input, int i)
 {
 	while (input[i])

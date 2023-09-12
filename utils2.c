@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/12 14:42:16 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:22:38 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_name(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '=' && str[i])
+	while (str[i] != '=')
 		i++;
 	return (i);
 }
@@ -62,4 +62,19 @@ int	num_of_quotes(char *data)
 		i++;
 	}
 	return (quote);
+}
+
+int	ft_stop_exp(char c)
+{
+	if (c == ' '|| (c >= 34 && c <= 37))
+		return (0);
+	if (c == 58 || (c >= 40 && c <= 47))
+		return (0);
+	if (c == 61 || c == 63 || c == 64)
+		return (0);
+	if (c >= 91 && c <= 94)
+		return (0);
+	if (c == 123 || c == 125 || c == 126)
+		return (0);
+	return (1);
 }
