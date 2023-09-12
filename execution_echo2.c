@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:33:38 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/12 14:02:04 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:07:35 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	echo_minus_n(t_data *data)
 
 int	handle_specials1(char *str, int i)
 {
-	int	j;
-	int	k;
+	int		j;
+	int		k;
 	char	*tmp;
 
 	j = i;
@@ -59,8 +59,8 @@ int	handle_specials1(char *str, int i)
 
 int	handle_specials2(char *str, int i, t_data *data)
 {
-	int	j;
-	int	k;
+	int		j;
+	int		k;
 	char	*tmp;
 
 	j = i;
@@ -82,9 +82,9 @@ int	handle_specials2(char *str, int i, t_data *data)
 
 int	handle_exp(char *str, int i, t_data *data)
 {
-	int j;
-	int k;
-	char *tmp;
+	int		j;
+	int		k;
+	char	*tmp;
 
 	j = i;
 	k = 0;
