@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 15:23:54 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:12:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,10 +155,13 @@ void		echo_normal2(char *str, t_data *data);
 
 //////////////////////execution_echo2.c//////////////
 void		echo_minus_n(t_data *data);
-int		handle_specials1(char *str, int i);
-int		handle_specials2(char *str, int i, t_data *data);
-int		handle_exp(char *str, int i, t_data *data);
+int			handle_specials1(char *str, int i);
+int			handle_specials2(char *str, int i, t_data *data);
+int			handle_exp(char *str, int i, t_data *data);
 void		search_print(char *str, t_charlist *list, int size);
 
+//////////////////////unset.c////////////////////////
+void		unset_builtin(t_data *data);
+int			search_env(char *str, t_charlist *actualone, t_charlist *behind);
 
 #endif

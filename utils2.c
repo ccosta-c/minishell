@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 15:22:38 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:42:16 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_name(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '=')
+	while (str[i] != '=' && str[i])
 		i++;
 	return (i);
 }

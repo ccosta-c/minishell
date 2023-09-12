@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 14:56:09 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:48:44 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void	print_export(t_charlist *list, int size)
 	int			i;
 	int			j;
 	t_charlist	*tmp;
+	int			check_equal;
 
+	check_equal = 0;
 	i = 0;
 	tmp = list;
 	while (i < (size - 1))
@@ -86,8 +88,11 @@ void	print_export(t_charlist *list, int size)
 		{
 			write(1, &tmp->content[j], 1);
 			if (tmp->content[j] == '=')
+			{
 				write (1, "\"", 1);
-			if (tmp->content[j + 1] == '\0')
+				check_equal = 1;
+			}
+			if (tmp->content[j + 1] == '\0' && check_equal == 0)
 				write (1, "\"", 1);
 			j++;
 		}
