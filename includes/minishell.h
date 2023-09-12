@@ -94,9 +94,10 @@ t_charlist	*ft_addnew(char *content);
 t_charlist	*ft_golast(t_charlist *lst);
 
 ////////////////////////lexer.c//////////////////////
-int			lexer(t_data *data, char *input, int i, int j);
+int			lexer(t_data *data, char *input);
 char		*handle_whitespaces(char *input);
 int			list_quote(char *input, int i);
+void		lexer_continuation(t_data *data, char *str, int i, int j);
 
 ////////////////////////lexer2.c/////////////////////
 enum e_type	get_type(char *str, int start);

@@ -12,17 +12,28 @@
 
 #include "./includes/minishell.h"
 
-int	lexer(t_data *data, char *input, int i, int j)
+int	lexer(t_data *data, char *input)
 {
 	char	*str;
 
 	if (!input)
 		return (-1);
-	str = handle_whitespaces(input);
+	str = ft_strtrim(input, " ");
 	if (check_first(str) == -1)
 		return (free(str), 0);
+	lexer_continuation(data, str, 0, 0);
+	free(str);
+	//print_list(data);
+	execution(data);
+	return (0);
+}
+
+void	lexer_continuation(t_data *data, char *str, int i, int j)
+{
 	while (1)
 	{
+		while (str[i] == ' ')
+			i++;
 		j = i;
 		while (str[i] != ' ' && str[i] != '\0')
 		{
@@ -34,38 +45,15 @@ int	lexer(t_data *data, char *input, int i, int j)
 		if (str[i++] == '\0')
 			break ;
 	}
-	free(str);
-	//print_list(data);
-	execution(data);
-	return (0);
 }
 
-char	*handle_whitespaces(char *input)
+/*char	*handle_whitespaces(char *input)
 {
-	char	**tmp;
 	char	*ret;
-	int		i;
-	int		j;
-	int		k;
 
-	i = -1;
-	j = 0;
-	ret = (char *)malloc(((ft_strlen(input)) + 1) * sizeof(char));
-	tmp = ft_split(input, ' ');
-	while (tmp[++i] != NULL)
-	{
-		k = 0;
-		while (tmp[i][k] != '\0')
-			ret[j++] = tmp[i][k++];
-		if (tmp[i + 1] == NULL)
-		{
-			ret[j] = '\0';
-			break ;
-		}
-		ret[j++] = ' ';
-	}
-	return (free(tmp), ret);
-}
+	ret = ft_strtrim(input, " ");
+	return (ret);
+}*/
 
 int	list_quote(char *input, int i)
 {

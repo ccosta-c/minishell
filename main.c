@@ -38,7 +38,7 @@ void	prompt_loop(t_data *data)
 	{
 		txt = readline(data->prompt);
 		add_history(txt);
-		if ((lexer(data, txt, 0, 0)) == -1)
+		if ((lexer(data, txt)) == -1)
 		{
 			printf("exit\n");
 			frees(data);
