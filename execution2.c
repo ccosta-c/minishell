@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/11 13:16:12 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:25:27 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	execution_unset(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return ;
 		}
-		printf("unset execution\n"); //nao esquecer de botar um while (tmp[i] != NULL) para pegar todos os nodes da lista
+		unset_builtin(data);
 		g_exit = 0;
 	}
 }

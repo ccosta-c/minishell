@@ -34,7 +34,7 @@ int	check_builtins(t_data *data)
 	}
 	else if (ft_strncmp("unset", data->top->data, data->top->len) == 0)
 	{
-		unset_builtin(data);
+		execution_unset(data);
 		return (1);
 	}
 	else if (check_builtins2(data) == 1)
