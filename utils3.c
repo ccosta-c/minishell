@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:17:41 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/14 12:17:43 by macastan         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:36:10 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	remove_quote_list(t_data *data)
 {
-	char	*tmp;
+	char		*tmp;
+	t_tokens	*tmp_list;
 
-	while (data->top != NULL)
+	tmp_list = data->top;
+	while (tmp_list != NULL)
 	{
-		tmp = data->top->data;
-		free(data->top->data);
-		data->top->data = remove_quote(tmp);
+		tmp = strdup(tmp_list->data);
+		free(tmp_list->data);
+		tmp_list->data = remove_quote(tmp);
 		free(tmp);
-		data->top = data->top->next;
+		tmp_list = tmp_list->next;
 	}
 }
 

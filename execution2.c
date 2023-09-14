@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/13 12:25:27 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:14:02 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	execution_unset(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return ;
 		}
-		//unset_builtin(data);
+		unset_builtin(data);
 		g_exit = 0;
 	}
 }
