@@ -34,7 +34,7 @@ t_charlist	*ft_addnew(char *content)
 	ptr = malloc(sizeof(t_charlist));
 	if (!ptr)
 		return (NULL);
-	ptr->content = strdup(content);
+	ptr->content = ft_strdup(content);
 	ptr->next = NULL;
 	return (ptr);
 }

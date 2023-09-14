@@ -87,7 +87,7 @@ int	name_variable(char *str, t_charlist *data)
 		if (ft_strncmp(tmp->content, str, check_name(str)) == 0)
 		{
 			free(tmp->content);
-			tmp->content = strdup(str);
+			tmp->content = ft_strdup(str);
 			return (1);
 		}
 		tmp = tmp->next;

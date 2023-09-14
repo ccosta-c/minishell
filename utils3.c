@@ -20,7 +20,7 @@ void	remove_quote_list(t_data *data)
 	tmp_list = data->top;
 	while (tmp_list != NULL)
 	{
-		tmp = strdup(tmp_list->data);
+		tmp = ft_strdup(tmp_list->data);
 		free(tmp_list->data);
 		tmp_list->data = remove_quote(tmp);
 		free(tmp);

@@ -16,11 +16,11 @@ void	ft_swap(t_charlist *list)
 {
 	char	*tmp;
 
-	tmp = strdup(list->content);
+	tmp = ft_strdup(list->content);
 	free(list->content);
-	list->content = strdup(list->next->content);
+	list->content = ft_strdup(list->next->content);
 	free(list->next->content);
-	list->next->content = strdup(tmp);
+	list->next->content = ft_strdup(tmp);
 	free(tmp);
 }
 
@@ -114,7 +114,7 @@ void	add_export(t_data *data)
 		{
 			no_quotes = remove_quote(tmp->data);
 			free(tmp->data);
-			tmp->data = strdup(no_quotes);
+			tmp->data = ft_strdup(no_quotes);
 			free (no_quotes);
 		}
 		if (name_variable(tmp->data, data->export) == 1)
