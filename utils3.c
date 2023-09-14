@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
+/*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:22:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 15:22:38 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/09/14 12:17:41 by macastan          #+#    #+#             */
+/*   Updated: 2023/09/14 12:17:43 by macastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-int	check_name(char *str)
+void	remove_quote_list(t_data *data)
 {
-	int	i;
+	char	*tmp;
 
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	return (i);
+	while (data->top != NULL)
+	{
+		tmp = data->top->data;
+		free(data->top->data);
+		data->top->data = remove_quote(tmp);
+		free(tmp);
+		data->top = data->top->next;
+	}
 }
 
-/*char	*remove_quote(char *data)
+char	*remove_quote(char *data)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	q;
 	char	*new;
 
 	i = 0;
@@ -35,6 +40,14 @@ int	check_name(char *str)
 	{
 		if (data[i] == '\'' || data[i] == '\"')
 		{
+			q = data[i];
+			i++;
+			while (data[i] != q)
+			{
+				new[j] = data[i];
+				j++;
+				i++;
+			}
 			i++;
 		}
 		else
@@ -50,31 +63,24 @@ int	check_name(char *str)
 
 int	num_of_quotes(char *data)
 {
-	int	i;
-	int	quote;
+	int		i;
+	int		quote;
+	char	q;
 
 	i = 0;
 	quote = 0;
 	while (data[i])
 	{
 		if (data[i] == '\'' || data[i] == '\"')
+		{
+			q = data[i];
 			quote++;
+			i++;
+			while (data[i] != q)
+				i++;
+			quote++;
+		}
 		i++;
 	}
 	return (quote);
-}*/
-
-int	ft_stop_exp(char c)
-{
-	if (c == ' '|| (c >= 34 && c <= 37))
-		return (0);
-	if (c == 58 || (c >= 40 && c <= 47))
-		return (0);
-	if (c == 61 || c == 63 || c == 64)
-		return (0);
-	if (c >= 91 && c <= 94)
-		return (0);
-	if (c == 123 || c == 125 || c == 126)
-		return (0);
-	return (1);
 }

@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
+
+void	cd(t_data *data)
+{
+	(void)data;
+	printf("lets do it\n");
+}

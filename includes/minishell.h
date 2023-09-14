@@ -86,6 +86,7 @@ int			check_name(char *str);
 char		*remove_quote(char *data);
 int			num_of_quotes(char *data);
 int			ft_stop_exp(char c);
+void		remove_quote_list(t_data *data);
 
 
 ////////////////////////lstops2.c//////////////////////
@@ -146,19 +147,22 @@ void		execution_env(t_data *data);
 void		execution_export(t_data *data);
 void		execution_unset(t_data *data);
 
-//////////////////////execution_echo.c///////////////
+//////////////////////echo.c/////////////////////////
 void		execution_echo(t_data *data);
 void		simpleq_echo(char *str);
 void		doubleq_echo(char *str, t_data *data);
 void		echo_normal(t_data *data);
 void		echo_normal2(char *str, t_data *data);
 
-//////////////////////execution_echo2.c//////////////
+//////////////////////echo2.c////////////////////////
 void		echo_minus_n(t_data *data);
 int			handle_specials1(char *str, int i);
 int			handle_specials2(char *str, int i, t_data *data);
 int			handle_exp(char *str, int i, t_data *data);
 void		search_print(char *str, t_charlist *list, int size);
+
+//////////////////////cd.c///////////////////////////
+void		cd(t_data *data);
 
 //////////////////////unset.c////////////////////////
 void		unset_builtin(t_data *data);

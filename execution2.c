@@ -80,7 +80,7 @@ void	execution_unset(t_data *data)
 			g_exit = 127; //ou 2 decidir
 			return ;
 		}
-		unset_builtin(data);
+		//unset_builtin(data);
 		g_exit = 0;
 	}
 }
