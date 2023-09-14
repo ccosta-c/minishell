@@ -87,6 +87,7 @@ char		*remove_quote(char *data);
 int			num_of_quotes(char *data);
 int			ft_stop_exp(char c);
 void		remove_quote_list(t_data *data);
+void		remove_quote_topdata(t_data *data);
 
 
 ////////////////////////lstops2.c//////////////////////

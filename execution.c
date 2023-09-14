@@ -22,6 +22,7 @@ void	execution(t_data *data)
 		//execution_pipe(data);
 	else
 	{
+		remove_quote_topdata(data);
 		if (check_builtins(data) == 0)
 		{
 			get_envpaths(data);

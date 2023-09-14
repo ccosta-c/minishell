@@ -14,6 +14,27 @@
 
 void	cd(t_data *data)
 {
-	(void)data;
-	printf("lets do it\n");
+	remove_quote_list(data);
+	if (data->top->next->next)
+	{
+		printf("minishell: cd: too many arguments\n");
+		g_exit = 1;
+		return ;
+	}
+	if (ft_strncmp("-", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	{
+		printf("exec volta 1\n");
+	}
+	else if (ft_strncmp("..", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	{
+		printf("exec volta 1\n");
+	}
+	else if (ft_strncmp(".", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	{
+		printf("faz nada\n");
+	}
+	else
+	{
+		printf("check se pode mudar e muda\n");
+	}
 }

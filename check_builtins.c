@@ -21,7 +21,6 @@ int	check_builtins(t_data *data)
 		execution_echo(data);
 		return (g_exit = 0, 1);
 	}
-	remove_quote_list(data);
 	if (ft_strncmp("pwd", data->top->data, data->top->len) == 0)
 	{
 		execution_pwd(data);

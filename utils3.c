@@ -12,6 +12,16 @@
 
 #include "./includes/minishell.h"
 
+void	remove_quote_topdata(t_data *data)
+{
+	char		*tmp;
+
+		tmp = ft_strdup(data->top->data);
+		free(data->top->data);
+		data->top->data = remove_quote(tmp);
+		free(tmp);
+}
+
 void	remove_quote_list(t_data *data)
 {
 	char		*tmp;
