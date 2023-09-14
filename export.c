@@ -92,7 +92,7 @@ void	print_export(t_charlist *list, int size)
 				write (1, "\"", 1);
 				check_equal = 1;
 			}
-			if (tmp->content[j + 1] == '\0' && check_equal == 0)
+			if (tmp->content[j + 1] == '\0' && check_equal == 1)
 				write (1, "\"", 1);
 			j++;
 		}

@@ -24,8 +24,8 @@ int	check_name(char *str)
 
 /*char	*remove_quote(char *data)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*new;
 
 	i = 0;
