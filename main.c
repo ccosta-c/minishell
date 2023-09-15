@@ -27,6 +27,9 @@ int	main(int argc, char **argv, char **envp)
 	data.env = NULL;
 	data.export = NULL;
 	copy_envp(&data, envp);
+	data.pwd = get_variable("PWD", data.env, count_variables(data.env));
+	data.old_pwd = get_variable("OLDPWD", data.env, count_variables(data.env));
+	data.home = get_variable("HOME", data.env, count_variables(data.env));
 	prompt_loop(&data);
 }
 

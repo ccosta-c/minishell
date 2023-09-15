@@ -57,6 +57,9 @@ typedef struct s_data
 	t_charlist	*export;
 	char		*prompt;
 	char		**paths;
+	char		*pwd;
+	char		*old_pwd;
+	char		*home;
 	t_tokens	*top;
 }			t_data;
 
@@ -83,11 +86,14 @@ int			name_variable(char *str, t_charlist *data);
 
 ////////////////////////utils2.c//////////////////////
 int			check_name(char *str);
-char		*remove_quote(char *data);
-int			num_of_quotes(char *data);
 int			ft_stop_exp(char c);
+
+////////////////////////utils3.c//////////////////////
 void		remove_quote_list(t_data *data);
 void		remove_quote_topdata(t_data *data);
+char		*remove_quote(char *data);
+int			num_of_quotes(char *data);
+char		*get_variable(char *str, t_charlist *list, int size);
 
 
 ////////////////////////lstops2.c//////////////////////
@@ -164,6 +170,10 @@ void		search_print(char *str, t_charlist *list, int size);
 
 //////////////////////cd.c///////////////////////////
 void		cd(t_data *data);
+void		cd_home_dir(t_data *data);
+void		cd_minus_dir(t_data *data);
+void		cd_double_dot_dir(t_data *data);
+void		cd_else_dir(t_data *data, char *dir);
 
 //////////////////////unset.c////////////////////////
 void		unset_builtin(t_data *data);

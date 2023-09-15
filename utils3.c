@@ -96,3 +96,37 @@ int	num_of_quotes(char *data)
 	}
 	return (quote);
 }
+
+char	*get_variable(char *str, t_charlist *list, int size)
+{
+	int			i;
+	int			j;
+	char		*ret;
+	t_charlist	*l_tmp;
+
+	i = 0;
+	j = 0;
+	l_tmp = list;
+	while (i < (size - 1))
+	{
+		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
+		{
+			while (l_tmp->content[j] != '=')
+				j++;
+			ret = malloc(sizeof(char) * (ft_strlen(l_tmp->content) - j));
+			j++;
+			i = 0;
+			while (l_tmp->content[j])
+			{
+				ret[i] = l_tmp->content[j];
+				j++;
+				i++;
+			}
+			ret[i] = '\0';
+			return (ret);
+		}
+		i++;
+		l_tmp = l_tmp->next;
+	}
+	return (0);
+}
