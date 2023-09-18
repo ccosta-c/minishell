@@ -22,48 +22,6 @@ int	check_name(char *str)
 	return (i);
 }
 
-/*char	*remove_quote(char *data)
-{
-	int		i;
-	int		j;
-	char	*new;
-
-	i = 0;
-	j = 0;
-	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)) + 1);
-	while (data[i])
-	{
-		if (data[i] == '\'' || data[i] == '\"')
-		{
-			i++;
-		}
-		else
-		{
-			new[j] = data[i];
-			j++;
-			i++;
-		}
-	}
-	new[j] = '\0';
-	return (new);
-}
-
-int	num_of_quotes(char *data)
-{
-	int	i;
-	int	quote;
-
-	i = 0;
-	quote = 0;
-	while (data[i])
-	{
-		if (data[i] == '\'' || data[i] == '\"')
-			quote++;
-		i++;
-	}
-	return (quote);
-}*/
-
 int	ft_stop_exp(char c)
 {
 	if (c == ' '|| (c >= 34 && c <= 37))
@@ -77,4 +35,26 @@ int	ft_stop_exp(char c)
 	if (c == 123 || c == 125 || c == 126)
 		return (0);
 	return (1);
+}
+
+int	ft_strcmp(const char *str1, const char *str2)
+{
+	size_t	i;
+
+	i = 0;
+	if (ft_strlen(str1) != ft_strlen(str2))
+		return (-1);
+	while (str1[i] != '\0' || str2[i] != '\0')
+	{
+		if (str1[i] > str2[i])
+		{
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		}
+		if (str1[i] < str2[i])
+		{
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		}
+		i++;
+	}
+	return (0);
 }

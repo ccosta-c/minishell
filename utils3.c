@@ -107,7 +107,7 @@ char	*get_variable(char *str, t_charlist *list, int size)
 	i = 0;
 	j = 0;
 	l_tmp = list;
-	while (i < (size - 1))
+	while (i <= (size - 1))
 	{
 		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
 		{
@@ -129,4 +129,59 @@ char	*get_variable(char *str, t_charlist *list, int size)
 		l_tmp = l_tmp->next;
 	}
 	return (0);
+}
+
+void	change_env_exp(t_charlist *env, t_charlist *exp, char *old, char *new)
+{
+	int			i;
+	int			size;
+	t_charlist	*l_tmp;
+
+	i = 0;
+	l_tmp = env;
+	size = count_variables(env);
+	while (i < (size - 1))
+	{
+		if (ft_strncmp("OLDPWD", l_tmp->content, ft_strlen("OLDPWD")) == 0)
+		{
+			free(l_tmp->content);
+			l_tmp->content = ft_strjoin("OLDPWD=", old);
+		}
+		if (ft_strncmp("PWD", l_tmp->content, ft_strlen("PWD")) == 0)
+		{
+			free(l_tmp->content);
+			l_tmp->content = ft_strjoin("PWD=", new);
+		}
+		i++;
+		l_tmp = l_tmp->next;
+	}
+	change_env_exp2(exp, old, new);
+	return ;
+}
+
+void	change_env_exp2(t_charlist *exp, char *old, char *new)
+{
+	int			i;
+	int			size;
+	t_charlist	*l_tmp;
+
+	l_tmp = exp;
+	i = 0;
+	size = count_variables(exp);
+	while (i < (size - 1))
+	{
+		if (ft_strncmp("OLDPWD", l_tmp->content, ft_strlen("OLDPWD")) == 0)
+		{
+			free(l_tmp->content);
+			l_tmp->content = ft_strjoin("OLDPWD=", old);
+		}
+		if (ft_strncmp("PWD", l_tmp->content, ft_strlen("PWD")) == 0)
+		{
+			free(l_tmp->content);
+			l_tmp->content = ft_strjoin("PWD=", new);
+		}
+		i++;
+		l_tmp = l_tmp->next;
+	}
+	return ;
 }

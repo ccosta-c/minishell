@@ -45,7 +45,7 @@ void	cd_home_dir(t_data *data)
 	free(data->pwd);
 	chdir(data->home);
 	data->pwd = getcwd(0, 0);
-	//change_env_exp(data->env, data->exp, data->old_pwd, data->pwd);
+	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
 	g_exit = 0;
 }
 
@@ -66,7 +66,7 @@ void	cd_minus_dir(t_data *data)
 	data->old_pwd = ft_strdup(data->pwd);
 	free(data->pwd);
 	data->pwd = getcwd(0, 0);
-	//change_env_exp(data->env, data->exp, data->old_pwd, data->pwd);
+	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
 	g_exit = 0;
 }
 
@@ -79,7 +79,7 @@ void	cd_double_dot_dir(t_data *data)
 	free(data->pwd);
 	chdir("..");
 	data->pwd = getcwd(0, 0);
-	//change_env_exp(data->env, data->exp, data->old_pwd, data->pwd);
+	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
 	g_exit = 0;
 }
 
@@ -104,6 +104,6 @@ void	cd_else_dir(t_data *data, char *dir)
 	free(data->pwd);
 	data->pwd = getcwd(0, 0);
 	free(temp);
-	//change_env_exp(data->env, data->exp, data->old_pwd, data->pwd);
+	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
 	g_exit = 0;
 }

@@ -87,6 +87,7 @@ int			name_variable(char *str, t_charlist *data);
 ////////////////////////utils2.c//////////////////////
 int			check_name(char *str);
 int			ft_stop_exp(char c);
+int			ft_strcmp(const char *str1, const char *str2);
 
 ////////////////////////utils3.c//////////////////////
 void		remove_quote_list(t_data *data);
@@ -94,7 +95,8 @@ void		remove_quote_topdata(t_data *data);
 char		*remove_quote(char *data);
 int			num_of_quotes(char *data);
 char		*get_variable(char *str, t_charlist *list, int size);
-
+void		change_env_exp(t_charlist *env, t_charlist *exp, char *old, char *new);
+void		change_env_exp2(t_charlist *exp, char *old, char *new);
 
 ////////////////////////lstops2.c//////////////////////
 void		add_to_charlist(t_charlist **top, char *content);
