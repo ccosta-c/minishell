@@ -57,7 +57,8 @@ SRC				= 	prompt.c \
 					utils2.c \
 					unset.c \
 					cd.c \
-					utils3.c
+					utils3.c \
+					exit.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))

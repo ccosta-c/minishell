@@ -50,8 +50,7 @@ int	check_builtins2(t_data *data)
 	}
 	else if (ft_strcmp("exit", data->top->data) == 0)
 	{
-		//execution_exit(data);
-		//execut_exit(data); please check if !data->top->next
+		execution_exit(data);
 		return (1);
 	}
 	else if (ft_strcmp("cd", data->top->data) == 0)

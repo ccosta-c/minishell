@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 16:29:18 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:55:11 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void		execution_pwd(t_data *data);
 void		execution_env(t_data *data);
 void		execution_export(t_data *data);
 void		execution_unset(t_data *data);
+void		execution_exit(t_data *data);
 
 //////////////////////echo.c/////////////////////////
 void		execution_echo(t_data *data);

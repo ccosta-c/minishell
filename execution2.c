@@ -85,25 +85,25 @@ void	execution_unset(t_data *data)
 	}
 }
 
-//void	execution_exit(t_data *data)
-//{
-//	if (!data->top->next)
-//	{
-//		g_exit = 0;
-//		printf("exit\n");
-//		frees(data);
-//		exit(0);
-//	}
-//	else if (data->top->next->next)
-//	{
-//		printf("minishell: exit: too many arguments\n");
-//		g_exit = 1;
-//		return ;
-//	}
-//	else
-//	{
-//		remove_quote(data->top->next->data);
-//		//exit_builtin(data);
-//		g_exit = 0;
-//	}
-//}
+void	execution_exit(t_data *data)
+{
+	if (!data->top->next)
+	{
+		g_exit = 69;
+		printf("exit\n");
+		frees(data);
+		exit(g_exit);
+	}
+	else if (data->top->next->next)
+	{
+		printf("minishell: exit: too many arguments\n");
+		g_exit = 1;
+		return ;
+	}
+	else
+	{
+		remove_quote(data->top->next->data);
+		exit_builtin(data);
+		g_exit = 0;
+	}
+}
