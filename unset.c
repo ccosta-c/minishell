@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:07 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 15:07:38 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:31:19 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ void	unset_builtin(t_data *data)
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
-		actual_loop(tmp, data);
+		actual_loop(tmp, data, data->export);
+		actual_loop(tmp, data, data->env);
 		tmp = tmp->next;
 	}
 }
 
-void	actual_loop(t_tokens *tmp, t_data *data)
+void	actual_loop(t_tokens *tmp, t_data *data, t_charlist *list)
 {
 	t_charlist	*actual;
 	t_charlist	*previous;
 	int			i;
 
 	i = 0;
-	actual = data->export;
+	actual = list;
 	previous = actual;
 	while (actual != NULL)
 	{

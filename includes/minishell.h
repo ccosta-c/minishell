@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 15:02:07 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:31:37 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,6 @@ void		cd_else_dir(t_data *data, char *dir);
 
 //////////////////////unset.c////////////////////////
 void		unset_builtin(t_data *data);
-void		actual_loop(t_tokens *tmp, t_data *data);
+void		actual_loop(t_tokens *tmp, t_data *data, t_charlist *list);
 
 #endif
