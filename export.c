@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/12 14:48:44 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:05:19 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	print_export(t_charlist *list, int size)
 	t_charlist	*tmp;
 	int			check_equal;
 
-	check_equal = 0;
 	i = 0;
 	tmp = list;
 	while (i < (size - 1))
@@ -86,6 +85,7 @@ void	print_export(t_charlist *list, int size)
 		write(1, "declare -x ", 11);
 		while (tmp->content[j])
 		{
+			check_equal = 0;
 			write(1, &tmp->content[j], 1);
 			if (tmp->content[j] == '=')
 			{
@@ -119,13 +119,15 @@ void	add_export(t_data *data)
 		}
 		if (name_variable(tmp->data, data->export) == 1)
 		{
-			name_variable(tmp->data, data->env);
+			if (strchr(tmp->data, '=') != 0)
+				name_variable(tmp->data, data->env);
 			return ;
 		}
 		else
 		{
 			add_to_charlist(&data->export, tmp->data);
-			add_to_charlist(&data->env, tmp->data);
+			if (strchr(tmp->data, '=') != 0)
+				add_to_charlist(&data->env, tmp->data);
 			tmp = tmp->next;
 		}
 	}
