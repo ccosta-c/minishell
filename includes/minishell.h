@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 15:31:37 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:29:18 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void		print_export(t_charlist *list, int size);
 void		add_export(t_data *data);
 int			count_variables(t_charlist *list);
 
-
 //////////////////////builtins.c///////////////////
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);
@@ -178,5 +177,8 @@ void		cd_else_dir(t_data *data, char *dir);
 //////////////////////unset.c////////////////////////
 void		unset_builtin(t_data *data);
 void		actual_loop(t_tokens *tmp, t_data *data, t_charlist *list);
+
+//////////////////////exit.c///////////////////////////
+void		exit_builtin(t_data *data);
 
 #endif

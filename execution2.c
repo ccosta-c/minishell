@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/14 14:14:02 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:28:14 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,26 @@ void	execution_unset(t_data *data)
 		g_exit = 0;
 	}
 }
+
+//void	execution_exit(t_data *data)
+//{
+//	if (!data->top->next)
+//	{
+//		g_exit = 0;
+//		printf("exit\n");
+//		frees(data);
+//		exit(0);
+//	}
+//	else if (data->top->next->next)
+//	{
+//		printf("minishell: exit: too many arguments\n");
+//		g_exit = 1;
+//		return ;
+//	}
+//	else
+//	{
+//		remove_quote(data->top->next->data);
+//		//exit_builtin(data);
+//		g_exit = 0;
+//	}
+//}

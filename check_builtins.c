@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:44:34 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/04 15:43:03 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:13:58 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_builtins2(t_data *data)
 	}
 	else if (ft_strncmp("exit", data->top->data, data->top->len) == 0)
 	{
-		printf("exit execution\n");
+		//execution_exit(data);
 		//execut_exit(data); please check if !data->top->next
 		return (1);
 	}

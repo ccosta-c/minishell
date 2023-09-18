@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:17:22 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/13 12:17:27 by macastan         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:49:53 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	search_print(char *str, t_charlist *list, int size)
 	i = 0;
 	j = 0;
 	l_tmp = list;
-	while (i < (size - 1))
+	while (i <= (size - 1))
 	{
 		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
 		{
