@@ -58,6 +58,7 @@ SRC				= 	prompt.c \
 					unset.c \
 					cd.c \
 					utils3.c \
+					utils4.c \
 					exit.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell

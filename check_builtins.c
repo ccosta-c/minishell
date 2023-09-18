@@ -58,21 +58,12 @@ int	check_builtins2(t_data *data)
 		if (data->top->next)
 		{
 			if (ft_strcmp("\"\"", data->top->next->data) == 0 || ft_strcmp("\'\'", data->top->next->data) == 0)
-			{
-				g_exit = 0;
-				return (1);
-			}
+				return (g_exit = 0,1);
 			else
-			{
-				cd(data);
-				return (1);
-			}
+				return (cd(data), 1);
 		}
 		else
-		{
-			cd_home_dir(data);
-			return (1);
-		}
+			return (cd_home_dir(data), 1);
 	}
 	return (0);
 }

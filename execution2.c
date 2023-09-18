@@ -89,7 +89,7 @@ void	execution_exit(t_data *data)
 {
 	if (!data->top->next)
 	{
-		g_exit = 69;
+		g_exit = 0;
 		printf("exit\n");
 		frees(data);
 		exit(g_exit);

@@ -104,7 +104,7 @@ int	handle_exp(char *str, int i, t_data *data)
 		j++;
 	}
 	tmp[k] = '\0';
-	search_print(tmp, data->export, count_variables(data->export));
+	search_print(tmp, data->env, count_variables(data->env));
 	return (free(tmp), i);
 }
 
