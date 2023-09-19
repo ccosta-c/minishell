@@ -76,7 +76,7 @@ int	check_first(char *input)
 
 int	check_second(t_data *data)
 {
-	int 		i;
+	int			i;
 	t_tokens	*tmp;
 
 	tmp = data->top;
@@ -89,7 +89,8 @@ int	check_second(t_data *data)
 			{
 				if (tmp->data[i] == '(' || tmp->data[i] == ')')
 				{
-					printf("minishell:bash: syntax error near unexpected token '%c'\n", tmp->data[i]);
+					printf("minishell:bash:");
+					printf(" syntax error near unexpected token\n");
 					return (g_exit = 2, -1);
 				}
 				i++;

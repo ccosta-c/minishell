@@ -57,10 +57,11 @@ int	check_builtins2(t_data *data)
 	{
 		if (data->top->next)
 		{
-			if (ft_strcmp("\"\"", data->top->next->data) == 0 || ft_strcmp("\'\'", data->top->next->data) == 0)
-				return (g_exit = 0,1);
-			else
-				return (cd(data), 1);
+			if (ft_strcmp("\"\"", data->top->next->data) == 0
+				|| ft_strcmp("\'\'", data->top->next->data) == 0)
+				return (g_exit = 0, 1);
+			remove_quote_list(data);
+			return (cd(data, data->top->next->data), 1);
 		}
 		else
 			return (cd_home_dir(data), 1);

@@ -38,10 +38,12 @@ int	check_redirect(char *input, int i)
 {
 	while (input[i])
 	{
-		if (input[i] == '<' && (input[i + 1] == '>' || (input[i + 1] == ' ' && input[i + 2] == '>')))
-				return (0);
-		if (input[i] == '>' && (input[i + 1] == '<' || (input[i + 1] == ' ' && input[i + 2] == '<')))
-				return (0);
+		if (input[i] == '<' && (input[i + 1] == '>'
+				|| (input[i + 1] == ' ' && input[i + 2] == '>')))
+			return (0);
+		if (input[i] == '>' && (input[i + 1] == '<'
+				|| (input[i + 1] == ' ' && input[i + 2] == '<')))
+			return (0);
 		if (input[i] == '<' && input[i + 1] == '<' && input[i + 2] == '<')
 			return (0);
 		if (input[i] == '<' && input[i + 1] == ' ' && input[i + 2] == '<')

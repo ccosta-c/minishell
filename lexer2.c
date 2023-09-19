@@ -38,7 +38,7 @@ enum e_type	get_type(char *str, int start)
 int	pipes_num(t_data *data)
 {
 	int			p;
-	int 		i;
+	int			i;
 	t_tokens	*tmp;
 
 	p = 0;

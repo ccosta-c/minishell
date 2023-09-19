@@ -100,7 +100,8 @@ void	execution_exit(t_data *data)
 		g_exit = 1;
 		return ;
 	}
-	else if (ft_strcmp("\"\"", data->top->next->data) == 0 || ft_strcmp("\'\'", data->top->next->data) == 0)
+	else if (ft_strcmp("\"\"", data->top->next->data) == 0
+		|| ft_strcmp("\'\'", data->top->next->data) == 0)
 	{
 		printf("exit\nbash: exit: : numeric argument required\n");
 		g_exit = 2;
@@ -108,8 +109,5 @@ void	execution_exit(t_data *data)
 		exit(g_exit);
 	}
 	else
-	{
-		remove_quote_list(data);
 		exit_builtin(data);
-	}
 }

@@ -80,7 +80,7 @@ void		ft_cleartokens(t_tokens **lst);
 ////////////////////////utils.c//////////////////////
 char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
-void		free_array(char **array, int y);
+void		free_array(char **array);
 int			len_of(char *str);
 int			name_variable(char *str, t_charlist *data);
 
@@ -176,7 +176,7 @@ int			handle_exp(char *str, int i, t_data *data);
 void		search_print(char *str, t_charlist *list, int size);
 
 //////////////////////cd.c///////////////////////////
-void		cd(t_data *data);
+void		cd(t_data *data, char *str);
 void		cd_home_dir(t_data *data);
 void		cd_minus_dir(t_data *data);
 void		cd_double_dot_dir(t_data *data);

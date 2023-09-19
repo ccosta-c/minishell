@@ -19,7 +19,8 @@ void	execution_echo(t_data *data)
 		printf("\n");
 		return ;
 	}
-	if (ft_strncmp("-n", remove_quote(data->top->next->data), ft_strlen(remove_quote(data->top->next->data))) == 0)
+	if (ft_strncmp("-n", remove_quote(data->top->next->data),
+			ft_strlen(remove_quote(data->top->next->data))) == 0)
 	{
 		if (!data->top->next->next)
 		{

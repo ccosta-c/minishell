@@ -36,7 +36,6 @@ void	print_lstchar(t_charlist *data)
 	}
 }
 
-
 void	print_array(char **array)
 {
 	int	i;

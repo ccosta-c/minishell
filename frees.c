@@ -21,7 +21,7 @@ void	frees(t_data *data)
 	free(data->home);
 	if (data->paths)
 		free_array(data->paths);
-	if (data->arg)
-		free_array(data->arg);
+	/*if (data->arg)
+		free_array(data->arg);*/
 	rl_clear_history();
 }

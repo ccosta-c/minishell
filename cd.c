@@ -12,22 +12,21 @@
 
 #include "./includes/minishell.h"
 
-void	cd(t_data *data)
+void	cd(t_data *data, char *str)
 {
-	remove_quote_list(data);
 	if (data->top->next->next)
 	{
 		printf("minishell: cd: too many arguments\n");
 		g_exit = 1;
 		return ;
 	}
-	if (ft_strncmp("-", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	if (ft_strncmp("-", str, ft_strlen(str)) == 0)
 		cd_minus_dir(data);
-	else if (ft_strncmp("~", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	else if (ft_strncmp("~", str, ft_strlen(str)) == 0)
 		cd_home_dir(data);
-	else if (ft_strncmp("..", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	else if (ft_strncmp("..", str, ft_strlen(str)) == 0)
 		cd_double_dot_dir(data);
-	else if (ft_strncmp(".", data->top->next->data, ft_strlen(data->top->next->data)) == 0)
+	else if (ft_strncmp(".", str, ft_strlen(str)) == 0)
 	{
 		g_exit = 0;
 		return ;
@@ -52,10 +51,13 @@ void	cd_home_dir(t_data *data)
 
 void	cd_minus_dir(t_data *data)
 {
+	int	i;
+
+	i = count_variables(data->env);
 	free(data->pwd);
 	free(data->old_pwd);
 	data->pwd = getcwd(0, 0);
-	data->old_pwd = get_variable("OLDPWD", data->env, count_variables(data->env));
+	data->old_pwd = get_variable("OLDPWD", data->env, i);
 	if (!data->old_pwd)
 	{
 		printf("minishell: cd: OLDPWD not set\n");

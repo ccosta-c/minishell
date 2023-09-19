@@ -14,6 +14,7 @@
 
 void	exit_builtin(t_data *data)
 {
+	remove_quote_list(data);
 	if (check_exit_data(data->top->next->data) == -1)
 	{
 		printf("exit\n");
@@ -58,23 +59,25 @@ int	check_exit_data(char *str)
 
 char	*handle_whitespaces(char *input)
 {
-	char **tmp;
-	char *ret;
-	int i;
-	int j;
-	int k;
+	char	**tmp;
+	char	*ret;
+	int		i;
+	int		j;
+	int		k;
 
 	i = -1;
 	j = 0;
 	ret = (char *) malloc(((ft_strlen(input)) + 1) * sizeof(char));
 	tmp = ft_split(input, ' ');
-	while (tmp[++i] != NULL) {
+	while (tmp[++i] != NULL)
+	{
 		k = 0;
 		while (tmp[i][k] != '\0')
 			ret[j++] = tmp[i][k++];
-		if (tmp[i + 1] == NULL) {
+		if (tmp[i + 1] == NULL)
+		{
 			ret[j] = '\0';
-			break;
+			break ;
 		}
 		ret[j++] = ' ';
 	}

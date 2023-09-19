@@ -24,7 +24,7 @@ int	check_name(char *str)
 
 int	ft_stop_exp(char c)
 {
-	if (c == ' '|| (c >= 34 && c <= 37))
+	if (c == ' ' || (c >= 34 && c <= 37))
 		return (0);
 	if (c == 58 || (c >= 40 && c <= 47))
 		return (0);
@@ -68,7 +68,7 @@ void	change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw)
 	i = 0;
 	l_tmp = en;
 	size = count_variables(en);
-	while (i < (size - 1))
+	while (i <= (size - 1))
 	{
 		if (ft_strncmp("OLDPWD", l_tmp->content, ft_strlen("OLDPWD")) == 0)
 		{
@@ -96,7 +96,7 @@ void	change_env_exp2(t_charlist *exp, char *old, char *new)
 	l_tmp = exp;
 	i = 0;
 	size = count_variables(exp);
-	while (i < (size - 1))
+	while (i <= (size - 1))
 	{
 		if (ft_strncmp("OLDPWD", l_tmp->content, ft_strlen("OLDPWD")) == 0)
 		{
