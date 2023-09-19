@@ -96,14 +96,20 @@ void	execution_exit(t_data *data)
 	}
 	else if (data->top->next->next)
 	{
-		printf("minishell: exit: too many arguments\n");
+		printf("exit\nminishell: exit: too many arguments\n");
 		g_exit = 1;
 		return ;
 	}
+	else if (ft_strcmp("\"\"", data->top->next->data) == 0 || ft_strcmp("\'\'", data->top->next->data) == 0)
+	{
+		printf("exit\nbash: exit: : numeric argument required\n");
+		g_exit = 2;
+		frees(data);
+		exit(g_exit);
+	}
 	else
 	{
-		remove_quote(data->top->next->data);
+		remove_quote_list(data);
 		exit_builtin(data);
-		g_exit = 0;
 	}
 }

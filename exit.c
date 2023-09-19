@@ -22,7 +22,19 @@ void	exit_builtin(t_data *data)
 		frees(data);
 		exit(g_exit);
 	}
-	printf("exit continue\n");
+	else
+		exit_builtin2(data);
+}
+
+void	exit_builtin2(t_data *data)
+{
+	long long	e;
+
+	e = ft_atol(data->top->next->data);
+	printf("exit\n");
+	g_exit = (e % 256);
+	frees(data);
+	exit(g_exit);
 }
 
 int	check_exit_data(char *str)
@@ -30,7 +42,7 @@ int	check_exit_data(char *str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '-' || str[0] == '+')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
