@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/11 14:43:55 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:15:50 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	get_envpaths(t_data *data)
 	data->paths = ft_split(tmp, ':');
 }
 
-void	free_array(char **array, int y)
+void	free_array(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (i < y)
+	while (array[i] != NULL)
 	{
 		free(array[i]);
 		i++;

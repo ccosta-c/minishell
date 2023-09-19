@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 16:59:44 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:01:38 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	handle_signals();
 	data.env = NULL;
 	data.export = NULL;
+	data.top = NULL;
 	copy_envp(&data, envp);
 	data.pwd = get_variable("PWD", data.env, count_variables(data.env));
 	data.old_pwd = get_variable("OLDPWD", data.env, count_variables(data.env));

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/05 15:54:36 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:59:35 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 		start++;
 		i++;
 	}
-	tmp->type = get_type(tmp->data, 0);
 	tmp->data[i] = '\0';
+	tmp->type = get_type(tmp->data, 0);
 	tmp->len = ft_strlen(tmp->data);
 	return (tmp);
 }
@@ -70,7 +70,7 @@ void	add_to_list(t_tokens **lst, t_tokens *new)
 		else
 		{
 			ptr = *lst;
-			while (ptr->next != 0)
+			while (ptr->next != NULL)
 				ptr = ptr->next;
 			ptr->next = new;
 		}
