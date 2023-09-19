@@ -40,16 +40,42 @@ void	exit_builtin2(t_data *data)
 int	check_exit_data(char *str)
 {
 	int	i;
+	char	*ws;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	ws = handle_whitespaces(str);
+	if (ws[i] == '-' || ws[i] == '+')
 		i++;
-	while (str[i])
+	while (ws[i])
 	{
-
-		if (str[i] < 48 || str[i] > 57)
+		if (ws[i] < 48 || ws[i] > 57)
 			return (-1);
 		i++;
 	}
 	return (0);
+}
+
+char	*handle_whitespaces(char *input)
+{
+	char **tmp;
+	char *ret;
+	int i;
+	int j;
+	int k;
+
+	i = -1;
+	j = 0;
+	ret = (char *) malloc(((ft_strlen(input)) + 1) * sizeof(char));
+	tmp = ft_split(input, ' ');
+	while (tmp[++i] != NULL) {
+		k = 0;
+		while (tmp[i][k] != '\0')
+			ret[j++] = tmp[i][k++];
+		if (tmp[i + 1] == NULL) {
+			ret[j] = '\0';
+			break;
+		}
+		ret[j++] = ' ';
+	}
+	return (free(tmp), ret);
 }
