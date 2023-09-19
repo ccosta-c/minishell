@@ -188,5 +188,6 @@ void		actual_loop(t_tokens *tmp, t_data *data, t_charlist *list);
 
 //////////////////////exit.c///////////////////////////
 void		exit_builtin(t_data *data);
+int		check_exit_data(char *str);
 
 #endif
