@@ -46,6 +46,7 @@ void	cd_home_dir(t_data *data)
 	chdir(data->home);
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	get_prompt(data);
 	g_exit = 0;
 }
 
@@ -67,6 +68,7 @@ void	cd_minus_dir(t_data *data)
 	free(data->pwd);
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	get_prompt(data);
 	g_exit = 0;
 }
 
@@ -80,6 +82,7 @@ void	cd_double_dot_dir(t_data *data)
 	chdir("..");
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	get_prompt(data);
 	g_exit = 0;
 }
 
@@ -105,5 +108,6 @@ void	cd_else_dir(t_data *data, char *dir)
 	data->pwd = getcwd(0, 0);
 	free(temp);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	get_prompt(data);
 	g_exit = 0;
 }

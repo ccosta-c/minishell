@@ -38,9 +38,9 @@ static int	ft_whitespace(const char *str, int *ptr_i)
 
 long long	ft_atol(const char *nptr)
 {
-	int		i;
-	long	sign;
 	long long	result;
+	long		sign;
+	int			i;
 
 	result = 0;
 	sign = ft_whitespace(nptr, &i);

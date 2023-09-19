@@ -17,7 +17,8 @@ void	exit_builtin(t_data *data)
 	if (check_exit_data(data->top->next->data) == -1)
 	{
 		printf("exit\n");
-		printf("bash: exit: %s: numeric argument required\n", data->top->next->data);
+		printf("bash: exit: %s:", data->top->next->data);
+		printf(" numeric argument required\n");
 		g_exit = 2;
 		frees(data);
 		exit(g_exit);
@@ -39,8 +40,8 @@ void	exit_builtin2(t_data *data)
 
 int	check_exit_data(char *str)
 {
-	int	i;
 	char	*ws;
+	int		i;
 
 	i = 0;
 	ws = handle_whitespaces(str);

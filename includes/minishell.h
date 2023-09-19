@@ -88,7 +88,7 @@ int			name_variable(char *str, t_charlist *data);
 int			check_name(char *str);
 int			ft_stop_exp(char c);
 int			ft_strcmp(const char *str1, const char *str2);
-void		change_env_exp(t_charlist *env, t_charlist *exp, char *old, char *new);
+void		change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw);
 void		change_env_exp2(t_charlist *exp, char *old, char *new);
 
 ////////////////////////utils3.c//////////////////////
@@ -189,7 +189,7 @@ void		actual_loop(t_tokens *tmp, t_data *data, t_charlist *list);
 //////////////////////exit.c///////////////////////////
 void		exit_builtin(t_data *data);
 void		exit_builtin2(t_data *data);
-int		check_exit_data(char *str);
+int			check_exit_data(char *str);
 char		*handle_whitespaces(char *input);
 
 #endif

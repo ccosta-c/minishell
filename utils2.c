@@ -59,15 +59,15 @@ int	ft_strcmp(const char *str1, const char *str2)
 	return (0);
 }
 
-void	change_env_exp(t_charlist *env, t_charlist *exp, char *old, char *new)
+void	change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw)
 {
 	int			i;
 	int			size;
 	t_charlist	*l_tmp;
 
 	i = 0;
-	l_tmp = env;
-	size = count_variables(env);
+	l_tmp = en;
+	size = count_variables(en);
 	while (i < (size - 1))
 	{
 		if (ft_strncmp("OLDPWD", l_tmp->content, ft_strlen("OLDPWD")) == 0)
@@ -78,12 +78,12 @@ void	change_env_exp(t_charlist *env, t_charlist *exp, char *old, char *new)
 		if (ft_strncmp("PWD", l_tmp->content, ft_strlen("PWD")) == 0)
 		{
 			free(l_tmp->content);
-			l_tmp->content = ft_strjoin("PWD=", new);
+			l_tmp->content = ft_strjoin("PWD=", nw);
 		}
 		i++;
 		l_tmp = l_tmp->next;
 	}
-	change_env_exp2(exp, old, new);
+	change_env_exp2(ex, old, nw);
 	return ;
 }
 
