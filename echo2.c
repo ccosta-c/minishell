@@ -15,11 +15,15 @@
 void	echo_minus_n(t_data *data)
 {
 	t_tokens	*tmp;
+	char	*s;
 
 	tmp = data->top->next->next;
-	while (ft_strncmp("-n", remove_quote(tmp->data),
-			ft_strlen(remove_quote(tmp->data))) == 0)
+	s = remove_quote(tmp->data);
+	while (s[0] == '-' && s[1] == 'n' && check_minus_n(s) == 0)
+	{
 		tmp = tmp->next;
+		s = remove_quote(tmp->data);
+	}
 	while (tmp != NULL)
 	{
 		if (tmp->type == S_QUOTE)
@@ -33,6 +37,7 @@ void	echo_minus_n(t_data *data)
 		tmp = tmp->next;
 	}
 	free(tmp);
+	free(s);
 }
 
 int	handle_specials1(char *str, int i)
