@@ -14,9 +14,16 @@
 
 int	check_exclamation(char *input, int i)
 {
+	int	flag;
+
+	flag = 0;
 	while (input[i])
 	{
-		if (input[i] == '!' && input[i + 1] == '!')
+		if (input[i] == '\'' && flag == 1)
+			flag = 0;
+		else if (input[i] == '\'' && flag == 0)
+			flag = 1;
+		if ((input[i] == '!' && input[i + 1] == '!') && flag != 1)
 			return (0);
 		i++;
 	}
@@ -34,31 +41,33 @@ int	check_pipes(char *input)
 	return (1);
 }
 
-int	check_redirect(char *input, int i)
+char	check_redirect(char *input, int i, char flag)
 {
-	while (input[i])
+	char	*in;
+
+	in = handle_whitespaces(input);
+	while (in[++i])
 	{
-		if (input[i] == '<' && (input[i + 1] == '>'
-				|| (input[i + 1] == ' ' && input[i + 2] == '>')))
-			return (0);
-		if (input[i] == '>' && (input[i + 1] == '<'
-				|| (input[i + 1] == ' ' && input[i + 2] == '<')))
-			return (0);
-		if (input[i] == '<' && input[i + 1] == '<' && input[i + 2] == '<')
-			return (0);
-		if (input[i] == '<' && input[i + 1] == ' ' && input[i + 2] == '<')
-			return (0);
-		if (input[i] == '>' && input[i + 1] == '>' && input[i + 2] == '>')
-			return (0);
-		if (input[i] == '<' && input[i + 1] == ' ' && input[i + 2] == '<')
-			return (0);
-		i++;
+		if ((in[i] == '\'' || in[i] == '\"' ) && flag != 0)
+			flag = 0;
+		else if ((in[i] == '\'' || in[i] == '\"' ) && flag == 0)
+			flag = in[i];
+		if (in[i] == '<' && (in[i + 1] == '>'
+				|| (in[i + 1] == ' ' && in[i + 2] == '>')) && flag == 0)
+			return ('>');
+		if (in[i] == '>' && (in[i + 1] == '<'
+				|| (in[i + 1] == ' ' && in[i + 2] == '<')) && flag == 0)
+			return ('<');
+		if (in[i] == '<' && in[i + 1] == '<' && in[i + 2] == '<' && flag == 0)
+			return ('<');
+		if (in[i] == '<' && in[i + 1] == ' ' && in[i + 2] == '<' && flag == 0)
+			return ('<');
+		if (in[i] == '>' && in[i + 1] == '>' && in[i + 2] == '>' && flag == 0)
+			return ('>');
+		if (in[i] == '<' && in[i + 1] == ' ' && in[i + 2] == '<' && flag == 0)
+			return ('>');
 	}
-	if (input[ft_strlen(input) - 1] == '<')
-		return (0);
-	if (input[ft_strlen(input) - 1] == '>')
-		return (0);
-	return (1);
+	return (free(in), 0);
 }
 
 int	check_quotes(char *input, int i)

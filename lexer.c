@@ -49,24 +49,27 @@ void	lexer_continuation(t_data *data, char *str, int i, int j)
 	}
 }
 
-int	check_first(char *input)
+int	check_first(char *in)
 {
-	if (check_quotes(input, 0) == 0)
+	char	c;
+
+	c = check_redirect(in, -1, 0);
+	if (check_quotes(in, 0) == 0)
 	{
 		printf("minishell: unclosed quotes\n");
 		return (g_exit = 2, -1);
 	}
-	if (check_pipes(input) == 0)
+	if (check_pipes(in) == 0)
 	{
 		printf("minishell: syntax error near unexpected token '|'\n");
 		return (g_exit = 2, -1);
 	}
-	if (check_redirect(input, 0) == 0)
+	if (c != 0 || in[ft_strlen(in) - 1] == '<' || in[ft_strlen(in) - 1] == '>')
 	{
-		printf("minishell: syntax error near unexpected token `newline'\n");
+		printf("minishell: syntax error near unexpected token `%c'\n", c);
 		return (g_exit = 2, -1);
 	}
-	if (check_exclamation(input, 0) == 0)
+	if (check_exclamation(in, 0) == 0)
 	{
 		printf("minishell: don't handle double exclamations points\n");
 		return (g_exit = 2, -1);

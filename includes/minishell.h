@@ -111,7 +111,7 @@ t_charlist	*ft_golast(t_charlist *lst);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
-int			check_first(char *input);
+int			check_first(char *in);
 int			check_second(t_data *data);
 int			list_quote(char *input, int i);
 void		lexer_continuation(t_data *data, char *str, int i, int j);
@@ -136,7 +136,7 @@ void		frees(t_data *data);
 //////////////////////first_checks.c/////////////////
 int			check_exclamation(char *input, int i);
 int			check_pipes(char *input);
-int			check_redirect(char *input, int i);
+char		check_redirect(char *input, int i, char flag);
 int			check_quotes(char	*input, int i);
 int			search_red(t_data *data);
 
