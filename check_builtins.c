@@ -15,7 +15,10 @@
 int	check_builtins(t_data *data)
 {
 	if (search_red(data) == 1)
-		printf("Go to Redirections/n");
+	{
+		if (redirects(data) == -1)
+			return (1);
+	}
 	if (ft_strcmp("echo", data->top->data) == 0)
 	{
 		execution_echo(data);

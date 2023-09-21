@@ -80,3 +80,17 @@ char	*search_ex(char *str, t_charlist *list, int size, int i)
 	}
 	return (fim);
 }
+
+int	check_minus_n(char *s)
+{
+	int	i;
+
+	i = 1;
+	while (s[i])
+	{
+		if (s[i] != 'n')
+			return (-1);
+		i++;
+	}
+	return (0);
+}

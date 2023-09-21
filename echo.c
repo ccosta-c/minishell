@@ -14,26 +14,30 @@
 
 void	execution_echo(t_data *data)
 {
+	char	*s;
+
+	s = remove_quote(data->top->next->data);
 	if (!data->top->next)
 	{
 		printf("\n");
 		return ;
 	}
-	if (ft_strncmp("-n", remove_quote(data->top->next->data),
-			ft_strlen(remove_quote(data->top->next->data))) == 0)
+	if (s[0] == '-' && s[1] == 'n')
 	{
-		if (!data->top->next->next)
+		if (check_minus_n(s) == 0)
 		{
-			printf("\n");
-			return ;
+			if (!data->top->next->next)
+				return ;
+			else
+			{
+				echo_minus_n(data);
+				return ;
+			}
 		}
-		echo_minus_n(data);
 	}
-	else
-	{
-		echo_normal(data);
-		printf("\n");
-	}
+	echo_normal(data);
+	printf("\n");
+	free(s);
 }
 
 void	simpleq_echo(char *str)

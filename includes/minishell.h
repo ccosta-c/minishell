@@ -102,6 +102,7 @@ char		*get_variable(char *str, t_charlist *list, int size);
 char		*get_exp(char *str, int i, t_data *data);
 char		*get_tmp(char *str, int j, int k, int i);
 char		*search_ex(char *str, t_charlist *list, int size, int i);
+int			check_minus_n(char *s);
 
 ////////////////////////lstops2.c//////////////////////
 void		add_to_charlist(t_charlist **top, char *content);
@@ -117,6 +118,7 @@ void		lexer_continuation(t_data *data, char *str, int i, int j);
 
 ////////////////////////lexer2.c/////////////////////
 enum e_type	get_type(char *str, int start);
+int			search_quote(char *str, char q);
 int			pipes_num(t_data *data);
 
 //////////////////////debugging.c////////////////////
@@ -191,5 +193,8 @@ void		exit_builtin(t_data *data);
 void		exit_builtin2(t_data *data);
 int			check_exit_data(char *str);
 char		*handle_whitespaces(char *input);
+
+//////////////////////redirects.c///////////////////////
+int			redirects(t_data *data);
 
 #endif

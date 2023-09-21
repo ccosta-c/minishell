@@ -17,9 +17,15 @@ enum e_type	get_type(char *str, int start)
 	while (str[start])
 	{
 		if (str[0] == '\"' && str[ft_strlen(str) - 1] == '\"')
-			return (D_QUOTE);
+		{
+			if (search_quote(str, '\"') == 0)
+				return (D_QUOTE);
+		}
 		if (str[0] == '\'' && str[ft_strlen(str) - 1] == '\'')
-			return (S_QUOTE);
+		{
+			if (search_quote(str, '\'') == 0)
+				return (S_QUOTE);
+		}
 		if (str[start] == '|')
 			return (PIPE);
 		else if (str[start] == '<' && str[start + 1] != '<' )
@@ -33,6 +39,20 @@ enum e_type	get_type(char *str, int start)
 		start++;
 	}
 	return (GENERIC);
+}
+
+int	search_quote(char *str, char q)
+{
+	int		i;
+
+	i = 1;
+	while (str[i + 1] != '\0')
+	{
+		if (str[i] == q)
+			return (-1);
+		i++;
+	}
+	return (0);
 }
 
 int	pipes_num(t_data *data)
