@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:14:36 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 16:57:37 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:34:38 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ char	*handle_whitespaces(char *input)
 		}
 		ret[j++] = ' ';
 	}
-	return (free(tmp), ret);
+	return (free_array(tmp), ret);
 }
