@@ -48,24 +48,24 @@ char	check_redirect(char *input, int i, char flag)
 	in = handle_whitespaces(input);
 	while (in[++i])
 	{
-		if ((in[i] == '\'' || in[i] == '\"' ) && flag != 0)
+		if ((in[i] == '\'' || in[i] == '\"' ) && flag == in[i])
 			flag = 0;
 		else if ((in[i] == '\'' || in[i] == '\"' ) && flag == 0)
 			flag = in[i];
 		if (in[i] == '<' && (in[i + 1] == '>'
 				|| (in[i + 1] == ' ' && in[i + 2] == '>')) && flag == 0)
-			return ('>');
+			return (free(in), '>');
 		if (in[i] == '>' && (in[i + 1] == '<'
 				|| (in[i + 1] == ' ' && in[i + 2] == '<')) && flag == 0)
-			return ('<');
+			return (free(in), '<');
 		if (in[i] == '<' && in[i + 1] == '<' && in[i + 2] == '<' && flag == 0)
-			return ('<');
+			return (free(in), '<');
 		if (in[i] == '<' && in[i + 1] == ' ' && in[i + 2] == '<' && flag == 0)
-			return ('<');
+			return (free(in), '<');
 		if (in[i] == '>' && in[i + 1] == '>' && in[i + 2] == '>' && flag == 0)
-			return ('>');
-		if (in[i] == '<' && in[i + 1] == ' ' && in[i + 2] == '<' && flag == 0)
-			return ('>');
+			return (free(in), '>');
+		if (in[i] == '>' && in[i + 1] == ' ' && in[i + 2] == '>' && flag == 0)
+			return (free(in), '>');
 	}
 	return (free(in), 0);
 }

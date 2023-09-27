@@ -142,7 +142,7 @@ int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
-void		execution_single(t_data *data, int j);
+void		execution_single(t_data *data, int j, char **arg);
 char		*get_tmp_path(t_data *data, int i);
 
 //////////////////////export.c/////////////////////
