@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/19 16:15:50 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:08:18 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_array(char **array)
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (array[i] != NULL)
 	{
 		free(array[i]);
 		i++;

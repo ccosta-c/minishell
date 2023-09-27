@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/20 15:56:23 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:07:44 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
-void		execution_single(t_data *data, int j);
+void		execution_single(t_data *data, int j, char **arg);
 char		*get_tmp_path(t_data *data, int i);
 
 //////////////////////export.c/////////////////////

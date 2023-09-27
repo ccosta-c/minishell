@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/31 12:13:20 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:11:11 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	execution(t_data *data)
 {
 	char	**arg;
-
-	arg = list_to_array(data);
+	
 	if (pipes_num(data) != 0)
 		printf("exec pipe\n");
 		//execution_pipe(data);
@@ -25,12 +24,13 @@ void	execution(t_data *data)
 		remove_quote_topdata(data);
 		if (check_builtins(data) == 0)
 		{
+			arg = list_to_array(data);
 			get_envpaths(data);
 			execution_single(data, 0, arg);
+			free_array(arg);
+		}
 		}
 	}
-	free(arg);
-}
 
 void	execution_single(t_data *data, int j, char **arg)
 {
