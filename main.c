@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:11:03 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/20 15:40:26 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:49:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	prompt_loop(t_data *data)
 			free(txt);
 			exit(g_exit);
 		}
+		free(txt);
 		ft_cleartokens(&data->top);
 	}
 }
