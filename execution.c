@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/27 16:11:11 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:33:45 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	execution(t_data *data)
 			get_envpaths(data);
 			execution_single(data, 0, arg);
 			free_array(arg);
+			free_array(data->paths);
 		}
 		}
 	}

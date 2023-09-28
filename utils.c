@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/27 16:08:18 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:05:16 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	**list_to_array(t_data *data)
 		i++;
 		tmp = tmp->next;
 	}
-	free(tmp);
 	array = malloc(sizeof(char *) * (i + 1));
 	tmp = data->top;
 	i = 0;
@@ -37,7 +36,7 @@ char	**list_to_array(t_data *data)
 		tmp = tmp->next;
 	}
 	array[i] = NULL;
-	return (free(tmp), array);
+	return (array);
 }
 
 void	get_envpaths(t_data *data)

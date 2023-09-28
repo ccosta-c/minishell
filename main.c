@@ -46,7 +46,7 @@ void	prompt_loop(t_data *data)
 		if ((lexer(data, txt)) == -1)
 		{
 			printf("exit\n");
-			frees(data);
+			printf("exit\n");
 			free(txt);
 			exit(g_exit);
 		}
