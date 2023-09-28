@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:18:40 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/13 12:18:42 by macastan         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:32:40 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	cd_home_dir(t_data *data)
 	chdir(data->home);
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	free(data->prompt);
 	get_prompt(data);
 	g_exit = 0;
 }
@@ -70,6 +71,7 @@ void	cd_minus_dir(t_data *data)
 	free(data->pwd);
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	free(data->prompt);
 	get_prompt(data);
 	g_exit = 0;
 }
@@ -84,6 +86,7 @@ void	cd_double_dot_dir(t_data *data)
 	chdir("..");
 	data->pwd = getcwd(0, 0);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	free(data->prompt);
 	get_prompt(data);
 	g_exit = 0;
 }
@@ -110,6 +113,7 @@ void	cd_else_dir(t_data *data, char *dir)
 	data->pwd = getcwd(0, 0);
 	free(temp);
 	change_env_exp(data->env, data->export, data->old_pwd, data->pwd);
+	free(data->prompt);
 	get_prompt(data);
 	g_exit = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/28 14:48:08 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:35:18 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void	execution_unset(t_data *data)
 {
 	char	*tmp;
 
-	tmp = remove_quote(data->top->next->data);
 	if (!data->top->next)
 	{
 		g_exit = 0;
 	}
 	else
 	{
+		tmp = remove_quote(data->top->next->data);
 		if (tmp[0] == '-')
 		{
 			printf("unset: No options supported\n");
