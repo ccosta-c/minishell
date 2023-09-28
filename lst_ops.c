@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/19 15:59:35 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:15:22 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ void	ft_cleartokens(t_tokens **lst)
 	if (!lst)
 		return ;
 	temp = *lst;
-	while (temp != NULL)
+	while (temp->next)
 	{
 		prox = temp->next;
 		free(temp->data);
 		free(temp);
 		temp = prox;
 	}
+	free (*lst);
 	*lst = NULL;
 }

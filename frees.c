@@ -19,8 +19,6 @@ void	frees(t_data *data)
 	free(data->pwd);
 	free(data->old_pwd);
 	free(data->home);
-	if (data->paths != NULL)
-		free_array(data->paths);
 //	if (data->arg != NULL)
 //		free_array(data->arg);
 	rl_clear_history();
