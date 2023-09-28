@@ -50,6 +50,7 @@ void	prompt_loop(t_data *data)
 			free(txt);
 			exit(g_exit);
 		}
-		ft_cleartokens(&data->top);
+		free(txt);
+		ft_cleartokens(data->top);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/28 14:05:16 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:18:42 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ char	**list_to_array(t_data *data)
 	i = 0;
 	while (tmp != NULL)
 	{
-		array[i] = malloc(sizeof(char) * (tmp->len + 1));
-		array[i] = tmp->data;
+		array[i] = ft_strdup(tmp->data);
 		i++;
 		tmp = tmp->next;
 	}
