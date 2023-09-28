@@ -46,13 +46,15 @@ int	handle_specials1(char *str, int i)
 	int		k;
 	char	*tmp;
 
+	if (str[i + 1] == '\'')
+		return (i + 2);
 	j = i;
 	k = 0;
 	i++;
 	while (str[i] != '\'')
 		i++;
 	tmp = malloc(sizeof(char) * ((i - j) + 1));
-	while (j < (i + 1))
+	while (j < i)
 	{
 		tmp[k] = str[j];
 		k++;
@@ -69,13 +71,15 @@ int	handle_specials2(char *str, int i, t_data *data)
 	int		k;
 	char	*tmp;
 
+	if (str[i + 1] == '\"')
+		return (i + 2);
 	j = i;
 	k = 0;
 	i++;
 	while (str[i] != '\"')
 		i++;
 	tmp = malloc(sizeof(char) * ((i - j) + 1));
-	while (j < (i + 1))
+	while (j < i)
 	{
 		tmp[k] = str[j];
 		k++;
