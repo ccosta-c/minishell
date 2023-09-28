@@ -14,18 +14,18 @@
 
 enum e_type	get_type(char *str, int start)
 {
+	if (str[0] == '\"' && str[ft_strlen(str) - 1] == '\"')
+	{
+		if (search_quote(str, '\"') == 0)
+			return (D_QUOTE);
+	}
+	if (str[0] == '\'' && str[ft_strlen(str) - 1] == '\'')
+	{
+		if (search_quote(str, '\'') == 0)
+			return (S_QUOTE);
+	}
 	while (str[start])
 	{
-		if (str[0] == '\"' && str[ft_strlen(str) - 1] == '\"')
-		{
-			if (search_quote(str, '\"') == 0)
-				return (D_QUOTE);
-		}
-		if (str[0] == '\'' && str[ft_strlen(str) - 1] == '\'')
-		{
-			if (search_quote(str, '\'') == 0)
-				return (S_QUOTE);
-		}
 		if (str[start] == '|')
 			return (PIPE);
 		else if (str[start] == '<' && str[start + 1] != '<' )

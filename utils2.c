@@ -24,7 +24,7 @@ int	check_name(char *str)
 
 int	ft_stop_exp(char c)
 {
-	if (c == ' ' || (c >= 34 && c <= 37))
+	if (c == ' ' || (c >= 34 && c <= 37) || c == 39)
 		return (0);
 	if (c == 58 || (c >= 40 && c <= 47))
 		return (0);
