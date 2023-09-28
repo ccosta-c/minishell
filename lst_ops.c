@@ -79,7 +79,7 @@ void	add_to_list(t_tokens **lst, t_tokens *new)
 
 /// deletes all the nodes from the tokens structure.
 /// \param lst the tokens structure.
-void	ft_cleartokens(t_tokens *lst)
+void	ft_cleartokens(t_tokens **lst)
 {
 	t_tokens	*temp;
 	t_tokens	*prox;
