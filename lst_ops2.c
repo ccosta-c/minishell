@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:20:04 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/29 17:25:26 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:35:38 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	delete_redirects(t_tokens **lst, char *symb)
 	t_tokens	*after;
 
 	tmp = *lst;
+	before = *lst;
 	while (tmp)
 	{
 		after = tmp->next;
@@ -69,8 +70,8 @@ void	delete_redirects(t_tokens **lst, char *symb)
 		{
 			free(tmp->data);
 			free(tmp);
-			before = after;
-			return ;
+			before->next = after;
+			break ;
 		}
 		before = tmp;
 		tmp = tmp->next;
