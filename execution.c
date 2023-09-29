@@ -32,7 +32,10 @@ void	execution(t_data *data)
 		}
 	}
 	if (data->red_flag != 0)
-		printf("change stdin or out\n");
+	{
+		dup2(data->stdin_fd, STDERR_FILENO);
+		dup2(data->stdout_fd, STDOUT_FILENO);
+	}
 	}
 
 void	execution_single(t_data *data, int j, char **arg)

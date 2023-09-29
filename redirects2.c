@@ -22,19 +22,21 @@ int	redi_out_dois_nodes(t_data *data, char *str)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			printf("deletar o node\n");
 			fd_file = open(tmp->next->data, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (!fd_file)
 			{
 				printf("Minishell: no file specified in redirect '>'.\n");
-				return (free(tmp), -1);
+				return (-1);
 			}
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
-			printf("deletar proximo node\n");
-			return (free(tmp), 0);
+			print_list(data);
+			delete_redirects(&data->top, tmp->data);
+			delete_redirects(&data->top, tmp->next->data);
+			data->red_flag++;
+			return (0);
 		}
 		tmp = tmp->next;
 	}
-	return (free(tmp), 0);
+	return (0);
 }

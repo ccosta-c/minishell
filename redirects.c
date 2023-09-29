@@ -32,7 +32,7 @@ int	redirects(t_data *data)
 			printf("rrout");
 		tmp = tmp->next;
 	}
-	return (free(tmp), 0);
+	return (0);
 }
 
 int	redi_out(t_data *data, char *str)
