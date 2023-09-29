@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:20:04 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/07 15:27:35 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:00:04 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,25 @@ t_charlist	*ft_golast(t_charlist *lst)
 		ptr = ptr->next;
 	}
 	return (ptr);
+}
+
+void	delete_redirects(t_data *data, char *symb)
+{
+	t_tokens	*tmp;
+	t_tokens	*before;
+	t_tokens	*after;
+
+	tmp = data->top;
+	while (tmp)
+	{
+		after = tmp->next;
+		if (strcmp(tmp->data, symb) == 0)
+		{
+			free(tmp->data);
+			free(tmp);
+			before = after;
+		}
+		before = tmp;
+		tmp = tmp->next;
+	}
 }
