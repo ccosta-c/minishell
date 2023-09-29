@@ -60,6 +60,9 @@ typedef struct s_data
 	char		*pwd;
 	char		*old_pwd;
 	char		*home;
+	int			stdin_fd;
+	int			stdout_fd;
+	int			red_flag;
 	t_tokens	*top;
 }			t_data;
 
@@ -196,5 +199,9 @@ char		*handle_whitespaces(char *input);
 
 //////////////////////redirects.c///////////////////////
 int			redirects(t_data *data);
+int			redi_out(t_data *data, char *str);
+
+//////////////////////redirects2.c//////////////////////
+int			redi_out_dois_nodes(t_data *data, char *str);
 
 #endif

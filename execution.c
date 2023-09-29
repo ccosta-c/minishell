@@ -31,6 +31,8 @@ void	execution(t_data *data)
 			free_array(data->paths);
 		}
 	}
+	if (data->red_flag != 0)
+		printf("change stdin or out\n");
 	}
 
 void	execution_single(t_data *data, int j, char **arg)

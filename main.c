@@ -32,6 +32,9 @@ int	main(int argc, char **argv, char **envp)
 	data.pwd = get_variable("PWD", data.env, count_variables(data.env));
 	data.old_pwd = get_variable("OLDPWD", data.env, count_variables(data.env));
 	data.home = get_variable("HOME", data.env, count_variables(data.env));
+	data.stdin_fd = STDIN_FILENO;
+	data.stdout_fd = STDOUT_FILENO;
+	data.red_flag = 0;
 	prompt_loop(&data);
 }
 
