@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/29 17:01:39 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:24:51 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int			check_minus_n(char *s);
 void		add_to_charlist(t_charlist **top, char *content);
 t_charlist	*ft_addnew(char *content);
 t_charlist	*ft_golast(t_charlist *lst);
-void		delete_redirects(t_data *data, char *symb);
+void		delete_redirects(t_tokens **lst, char *symb);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
