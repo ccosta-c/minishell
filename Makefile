@@ -71,18 +71,32 @@ TARGET_BONUS	= $(addprefix $(SRCS_BONUS)/, $(OBJS_BONUS))
 all: $(NAME)
 
 $(NAME): $(TARGET)
+
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)libft/*$(RESET)"
 	make $(MKFLAGS) -sC $(LIBFT)
 
 	$(CC) $(CFLAGS) -lreadline main.c $(TARGET) $(LIBFTFLAGS) -o $(NAME)
 
-	echo "$(GREEN)Done.$(RESET)"
+	echo "$(GREEN)  _____                   _ ";
+	echo " |  __ \                 | |";
+	echo " | |  | | ___  _ __   ___| |";
+	echo " | |  | |/ _ \| '_ \ / _ \ |";
+	echo " | |__| | (_) | | | |  __/_|";
+	echo " |_____/ \___/|_| |_|\___(_)";
 
 %.o : %.c
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+
+	echo "$(RED)  __  __ _       _     _          _ _ ";
+	echo " |  \/  (_)     (_)   | |        | | |";
+	echo " | \  / |_ _ __  _ ___| |__   ___| | |";
+	echo " | |\/| | | '_ \| / __| '_ \ / _ \ | |";
+	echo " | |  | | | | | | \__ \ | | |  __/ | |";
+	echo " |_|  |_|_|_| |_|_|___/_| |_|\___|_|_|$(RESET)";
+
 	make clean $(MKFLAGS) -sC $(LIBFT)
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)libft/*.o$(RESET)"
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)*/*.o$(RESET)"
@@ -95,5 +109,6 @@ fclean: clean
 	$(RM) $(NAME_BONUS)
 
 re: fclean all
+
 
 .SILENT:
