@@ -30,7 +30,6 @@ int	redi_out_dois_nodes(t_data *data, char *str)
 			}
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
-			print_list(data);
 			delete_redirects(&data->top, tmp->data);
 			delete_redirects(&data->top, tmp->next->data);
 			data->red_flag++;
