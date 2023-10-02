@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/28 16:48:48 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:02:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	export_builtin(t_charlist *list)
 		tmp = tmp->next;
 		i++;
 	}
+	printf("after the sort\n");
+	print_lstchar(list);
 }
 
 void	print_export(t_charlist *list, int size)
@@ -79,7 +81,7 @@ void	print_export(t_charlist *list, int size)
 
 	i = 0;
 	tmp = list;
-	while (i < (size - 1))
+	while (i < (size))
 	{
 		j = 0;
 		write(1, "declare -x ", 11);
