@@ -200,12 +200,16 @@ char		*handle_whitespaces(char *input);
 
 //////////////////////redirects.c///////////////////////
 int			redirects(t_data *data);
-int			redi_out(t_data *data, char *str);
+int			redi_out(t_data *data, char *str, char *next_s);
 int			redi_out_search(char *str, int i, int red);
 char		*change_str(char *str);
+char		*cut_str(char *str, t_data *data);
+void		change_data(char *str, t_data *data, char *old);
+int			cut_str2(char *str, int i, int flag_s, int flag_d);
 
 //////////////////////redirects2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str);
+int			redi_out_two_nodes_cut(t_data *data, char *str, char *temp);
 int			redi_out_one_node(t_data *data, char *str, char *temp);
 
 #endif
