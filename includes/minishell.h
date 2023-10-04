@@ -200,16 +200,28 @@ char		*handle_whitespaces(char *input);
 
 //////////////////////redirects.c///////////////////////
 int			redirects(t_data *data);
-int			redi_out(t_data *data, char *str, char *next_s);
-int			redi_out_search(char *str, int i, int red);
-char		*change_str(char *str);
-char		*cut_str(char *str, t_data *data);
-void		change_data(char *str, t_data *data, char *old);
-int			cut_str2(char *str, int i, int flag_s, int flag_d);
 
 //////////////////////redirects2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str);
 int			redi_out_two_nodes_cut(t_data *data, char *str, char *temp);
+int			redi_out_one_node_del(t_data *data, char *str, char *temp);
 int			redi_out_one_node(t_data *data, char *str, char *temp);
+
+//////////////////////redirects_out.c///////////////////////
+int			redi_out(t_data *data, char *str, char *next_s);
+int			redi_out2(t_data *data, char *str);
+int			redi_out3(t_data *data, char *str);
+
+//////////////////////redirects_utils.c//////////////////
+int			redi_out_search(char *str, int i, int red);
+char		*change_str(char *str);
+char		*cut_str(char *str, t_data *data, int i, int k);
+void		change_data(char *str, t_data *data, char *old);
+int			cut_str2(char *str, int i, int flag_s, int flag_d);
+
+//////////////////////redirects_utils.c//////////////////
+char		*cut_str_else(char *str, t_data *data, int j, int i);
+void		cut_str_else2(char *str, t_data *data, int j, int k);
+char		*cut_str_1(char *str, t_data *data, int i, int k);
 
 #endif
