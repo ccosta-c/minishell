@@ -66,7 +66,7 @@ void	delete_redirects(t_tokens **lst, char *symb)
 	while (tmp)
 	{
 		after = tmp->next;
-		if (strcmp(tmp->data, symb) == 0)
+		if (ft_strcmp(tmp->data, symb) == 0)
 		{
 			free(tmp->data);
 			free(tmp);

@@ -16,7 +16,7 @@ int	check_builtins(t_data *data)
 {
 	if (search_red(data) == 1)
 	{
-		if (redirects(data) == -1)
+		if (redirects(data, data->top) == -1)
 			return (1);
 	}
 	if (ft_strcmp("echo", data->top->data) == 0)

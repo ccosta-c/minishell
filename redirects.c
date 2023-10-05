@@ -12,27 +12,14 @@
 
 #include "./includes/minishell.h"
 
-int	redirects(t_data *data)
+int	redirects(t_data *data, t_tokens *tmp)
 {
-	t_tokens	*tmp;
-
-	tmp = data->top;
 	while (tmp)
 	{
 		if (tmp->type == R_OUT)
 		{
-			if (tmp->next)
-			{
-				if (redi_out(data, tmp->data, tmp->next->data) == -1)
-					return (-1);
-				return (redirects(data));
-			}
-			else
-			{
-				if (redi_out(data, tmp->data, "maluca") == -1)
-					return (-1);
-				return (0);
-			}
+			if (redirects_out(data, &tmp->next, tmp->data, tmp->next->data) == -1)
+				return (-1);
 		}
 		else if (tmp->type == R_IN)
 			printf("rin");
@@ -43,4 +30,22 @@ int	redirects(t_data *data)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	redirects_out(t_data *data, t_tokens **lst, char *str, char *next)
+{
+	if (lst)
+	{
+		if (redi_out(data, str, next) == -1)
+			return (-1);
+		return (redirects(data, data->top));
+	}
+	else
+	{
+		if (redi_out(data, str, "maluca") == -1)
+			return (-1);
+		if (redi_out_search(str, 0, 0) != 0)
+			return (redirects(data, data->top));
+		return (0);
+	}
 }

@@ -199,7 +199,8 @@ int			check_exit_data(char *str);
 char		*handle_whitespaces(char *input);
 
 //////////////////////redirects.c///////////////////////
-int			redirects(t_data *data);
+int			redirects(t_data *data, t_tokens *tmp);
+int			redirects_out(t_data *data, t_tokens **lst, char *str, char *next);
 
 //////////////////////redirects2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str);
