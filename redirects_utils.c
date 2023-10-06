@@ -21,15 +21,15 @@ int	redi_out_search(char *str, int i, int red)
 	flag_d = 0;
 	while(str[i])
 	{
-		if (str[i] == '\"' && flag_d == 0)
+		if (str[i] == '\"' && flag_d == 0 && flag_s == 0)
 			flag_d = 1;
-		if (str[i] == '\"' && flag_d != 0)
+		else if (str[i] == '\"' && flag_d != 0 && flag_s == 0)
 			flag_d = 0;
-		if (str[i] == '\'' && flag_s == 0)
+		else if (str[i] == '\'' && flag_s == 0 && flag_d == 0)
 			flag_s = 1;
-		if (str[i] == '\'' && flag_s != 0)
+		else if (str[i] == '\'' && flag_s != 0 && flag_d == 0)
 			flag_s = 0;
-		if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
+		else if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
 			red++;
 		i++;
 	}
@@ -106,16 +106,17 @@ void	change_data(char *str, t_data *data, char *old)
 
 int	cut_str2(char *str, int i, int flag_s, int flag_d)
 {
-	while (str[i]) {
+	while (str[i])
+	{
 		if (str[i] == '\"' && flag_d == 0)
 			flag_d = 1;
-		if (str[i] == '\"' && flag_d != 0)
+		else if (str[i] == '\"' && flag_d != 0)
 			flag_d = 0;
-		if (str[i] == '\'' && flag_s == 0)
+		else if (str[i] == '\'' && flag_s == 0)
 			flag_s = 1;
-		if (str[i] == '\'' && flag_s != 0)
+		else if (str[i] == '\'' && flag_s != 0)
 			flag_s = 0;
-		if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
+		else if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
 			return (i);
 		i++;
 	}

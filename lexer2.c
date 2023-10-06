@@ -58,22 +58,39 @@ int	search_quote(char *str, char q)
 int	pipes_num(t_data *data)
 {
 	int			p;
-	int			i;
 	t_tokens	*tmp;
 
 	p = 0;
 	tmp = data->top;
 	while (tmp != NULL)
 	{
-		i = 0;
-		while (tmp->data[i])
-		{
-			if (tmp->data[i] == '|')
-				p++;
-			i++;
-		}
+		p = p + pipes_num2(tmp->data, 0, 0);
 		tmp = tmp->next;
 	}
 	free(tmp);
+	return (p);
+}
+
+int	pipes_num2(char *str, int i, int p)
+{
+	int	flag_d;
+	int	flag_s;
+
+	flag_d = 0;
+	flag_s = 0;
+	while(str[i])
+	{
+		if (str[i] == '\"' && flag_d == 0 && flag_s == 0)
+			flag_d = 1;
+		else if (str[i] == '\"' && flag_d != 0 && flag_s == 0)
+			flag_d = 0;
+		else if (str[i] == '\'' && flag_s == 0 && flag_d == 0)
+			flag_s = 1;
+		else if (str[i] == '\'' && flag_s != 0 && flag_d == 0)
+			flag_s = 0;
+		else if (str[i] == '|' && flag_d == 0 && flag_s == 0)
+			p++;
+		i++;
+	}
 	return (p);
 }

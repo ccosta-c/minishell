@@ -65,19 +65,21 @@ int	redi_out2(t_data *data, char *str)
 int	redi_out3(t_data *data, char *str)
 {
 	char	*tmp;
+	int	j;
 
+	j = cut_str2(str, 0, 0, 0);
 	if (str[0] != '>')
 	{
 		if (redi_out_search(str, 0, 0) == 1)
 		{
-			tmp = cut_str_else(str, data, cut_str2(str, 0, 0, 0), -1);
+			tmp = cut_str_else(str, data, j, 0);
 			if (redi_out_one_node(data, str, tmp) == -1)
 				return (free(tmp), -1);
 			free(tmp);
 		}
 		else if (redi_out_search(str, 0, 0) > 1)
 		{
-			tmp = cut_str_else(str, data, cut_str2(str, 0, 0, 0), -1);
+			tmp = cut_str_else(str, data, j, 0);
 			if (redi_out_one_node(data, str, tmp) == -1)
 				return (free(tmp), -1);
 			free(tmp);

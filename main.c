@@ -34,8 +34,8 @@ int	main(int argc, char **argv, char **envp)
 	data.home = get_variable("HOME", data.env, count_variables(data.env));
 	data.stdin_fd = STDIN_FILENO;
 	data.stdout_fd = STDOUT_FILENO;
-	printf("out: %i in: %i\n", data.stdout_fd, data.stdin_fd);
 	data.red_flag = 0;
+	printf("%s\n", get_exp("ola$USERtchau$USER \n", 0, &data));
 	prompt_loop(&data);
 }
 

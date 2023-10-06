@@ -18,7 +18,7 @@ int	redirects(t_data *data, t_tokens *tmp)
 	{
 		if (tmp->type == R_OUT)
 		{
-			if (redirects_out(data, &tmp->next, tmp->data, tmp->next->data) == -1)
+			if (redirects_out(data, tmp->next, tmp->data, tmp) == -1)
 				return (-1);
 		}
 		else if (tmp->type == R_IN)
@@ -32,11 +32,16 @@ int	redirects(t_data *data, t_tokens *tmp)
 	return (0);
 }
 
-int	redirects_out(t_data *data, t_tokens **lst, char *str, char *next)
+int	redirects_out(t_data *data, t_tokens *n, char *str, t_tokens *c)
 {
-	if (lst)
+	t_tokens	*next;
+	t_tokens	*current;
+
+	next = n;
+	current = c;
+	if (n)
 	{
-		if (redi_out(data, str, next) == -1)
+		if (redi_out(data, str, next->data) == -1)
 			return (-1);
 		return (redirects(data, data->top));
 	}
@@ -44,7 +49,7 @@ int	redirects_out(t_data *data, t_tokens **lst, char *str, char *next)
 	{
 		if (redi_out(data, str, "maluca") == -1)
 			return (-1);
-		if (redi_out_search(str, 0, 0) != 0)
+		if (redi_out_search(current->data, 0, 0) != 0)
 			return (redirects(data, data->top));
 		return (0);
 	}

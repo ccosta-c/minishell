@@ -25,6 +25,7 @@ int	redi_out_two_nodes(t_data *data, char *str)
 			fd_file = open(tmp->next->data, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (!fd_file)
 			{
+				dup2(0, STDOUT_FILENO);
 				printf("Minishell: no file specified in redirect '>'.\n");
 				return (-1);
 			}
@@ -53,6 +54,7 @@ int	redi_out_two_nodes_cut(t_data *data, char *str, char *temp)
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (!fd_file)
 			{
+				dup2(0, STDOUT_FILENO);
 				printf("Minishell: no file specified in redirect '>'.\n");
 				return (-1);
 			}
@@ -80,6 +82,7 @@ int	redi_out_one_node_del(t_data *data, char *str, char *temp)
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (!fd_file)
 			{
+				dup2(0, STDOUT_FILENO);
 				printf("Minishell: no file specified in redirect '>'.\n");
 				return (-1);
 			}
@@ -107,6 +110,7 @@ int	redi_out_one_node(t_data *data, char *str, char *temp)
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (!fd_file)
 			{
+				dup2(0, STDOUT_FILENO);
 				printf("Minishell: no file specified in redirect '>'.\n");
 				return (-1);
 			}
