@@ -20,31 +20,64 @@ char	*get_exp(char *str, int i, t_data *data)
 	char	*ret;
 	int		total;
 
-	while(str[i] != '$' && str[i])
-		i++;
+	i = cut_str_exp(str, i, 0);
 	if (str[i] == '\0')
-		return (0);
+		return (str);
 	tmp = get_tmp(str, i, 0, i);
 	ret = search_ex(tmp, data->env, count_variables(data->env), 0);
 	if (ret)
 	{
 		total = ft_strlen(tmp) + 1;
 		free(tmp);
-		tmp = join_exp_str(ret, str, total, 0);
+		tmp = join_exp_str(ret, str, total, i);
 	}
 	else
 	{
 		total = ft_strlen(tmp) + 1;
 		free(tmp);
-		tmp = cut_exp_str(str, total);
+		tmp = cut_exp_str(str, total, i);
 	}
-	if (ft_strchr(tmp, '$'))
+	//if (count_str_exp(tmp, 0, 0) == 0)
+	return (free(ret), tmp);
+	/*else
 	{
 		free(ret);
 		ret = get_exp(tmp, 0, data);
 		return (free(tmp), ret);
+	}*/
+}
+
+int	cut_str_exp(char *str, int i, int flag_s)
+{
+	while (str[i])
+	{
+		if (str[i] == '\'' && flag_s == 0)
+			flag_s = 1;
+		else if (str[i] == '\'' && flag_s != 0)
+			flag_s = 0;
+		else if (str[i] == '$' && flag_s == 0)
+			return (i);
+		i++;
 	}
-	return (free(ret), tmp);
+	return (i);
+}
+
+int	count_str_exp(char *str, int i, int flag_s)
+{
+	int	ex;
+
+	ex = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'' && flag_s == 0)
+			flag_s = 1;
+		else if (str[i] == '\'' && flag_s != 0)
+			flag_s = 0;
+		else if (str[i] == '$' && flag_s == 0)
+			ex++;
+		i++;
+	}
+	return (ex);
 }
 
 char	*join_exp_str(char *exp, char *str, int total, int j)
@@ -55,12 +88,13 @@ char	*join_exp_str(char *exp, char *str, int total, int j)
 
 	ret = malloc(sizeof (char) * ((ft_strlen(str)) + (ft_strlen(exp)) - total));
 	i = 0;
-	while (str[i] != '$' && str[i])
+	while (i < j)
 	{
 		ret[i] = str[i];
 		i++;
 	}
 	k = i + total;
+	j = 0;
 	while (exp[j])
 	{
 		ret[i] = exp[j];
@@ -76,7 +110,7 @@ char	*join_exp_str(char *exp, char *str, int total, int j)
 	return (ret[i] = '\0', ret);
 }
 
-char	*cut_exp_str(char *str, int total)
+char	*cut_exp_str(char *str, int total, int j)
 {
 	char	*ret;
 	int		i;
@@ -84,7 +118,7 @@ char	*cut_exp_str(char *str, int total)
 
 	ret = malloc(sizeof (char) * ((ft_strlen(str)) - total + 1));
 	i = 0;
-	while (str[i] != '$' && str[i])
+	while (i < j)
 	{
 		ret[i] = str[i];
 		i++;

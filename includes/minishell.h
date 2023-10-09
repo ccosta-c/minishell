@@ -21,6 +21,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 extern int	g_exit;
 
@@ -103,10 +104,12 @@ char		*get_variable(char *str, t_charlist *list, int size);
 
 ////////////////////////utils4.c//////////////////////
 char		*get_exp(char *str, int i, t_data *data);
+int			cut_str_exp(char *str, int i, int flag_s);
+int			count_str_exp(char *str, int i, int flag_s);
 char		*get_tmp(char *str, int j, int k, int i);
 char		*search_ex(char *str, t_charlist *list, int size, int i);
 char		*join_exp_str(char *exp, char *str, int total, int j);
-char		*cut_exp_str(char *str, int total);
+char		*cut_exp_str(char *str, int total, int j);
 int			check_minus_n(char *s);
 
 ////////////////////////lstops2.c//////////////////////
@@ -123,7 +126,7 @@ int			list_quote(char *input, int i);
 void		lexer_continuation(t_data *data, char *str, int i, int j);
 
 ////////////////////////lexer2.c/////////////////////
-enum e_type	get_type(char *str, int start);
+enum e_type	get_type(char *str, int i);
 int			search_quote(char *str, char q);
 int			pipes_num(t_data *data);
 int			pipes_num2(char *str, int i, int p);
@@ -206,7 +209,7 @@ int			redirects(t_data *data, t_tokens *tmp);
 int			redirects_out(t_data *data, t_tokens *lst, char *str, t_tokens *c);
 
 //////////////////////redirects2.c//////////////////////
-int			redi_out_two_nodes(t_data *data, char *str);
+int			redi_out_two_nodes(t_data *data, char *str, char *file);
 int			redi_out_two_nodes_cut(t_data *data, char *str, char *temp);
 int			redi_out_one_node_del(t_data *data, char *str, char *temp);
 int			redi_out_one_node(t_data *data, char *str, char *temp);
@@ -218,7 +221,7 @@ int			redi_out3(t_data *data, char *str);
 
 //////////////////////redirects_utils.c//////////////////
 int			redi_out_search(char *str, int i, int red);
-char		*change_str(char *str);
+char		*change_str(char *str, t_data *data);
 char		*cut_str(char *str, t_data *data, int i, int k);
 void		change_data(char *str, t_data *data, char *old);
 int			cut_str2(char *str, int i, int flag_s, int flag_d);

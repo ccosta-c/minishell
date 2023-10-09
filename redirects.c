@@ -20,6 +20,7 @@ int	redirects(t_data *data, t_tokens *tmp)
 		{
 			if (redirects_out(data, tmp->next, tmp->data, tmp) == -1)
 				return (-1);
+			break ;
 		}
 		else if (tmp->type == R_IN)
 			printf("rin");
@@ -27,7 +28,13 @@ int	redirects(t_data *data, t_tokens *tmp)
 			printf("rrin");
 		else if (tmp->type == RR_OUT)
 			printf("rrout");
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
+	}
+	if (search_red(data) == 1)
+	{
+		if (redirects(data, data->top) == -1)
+			return (-1);
 	}
 	return (0);
 }
@@ -39,18 +46,21 @@ int	redirects_out(t_data *data, t_tokens *n, char *str, t_tokens *c)
 
 	next = n;
 	current = c;
+	(void)str;
 	if (n)
 	{
-		if (redi_out(data, str, next->data) == -1)
+		if (redi_out(data, current->data, next->data) == -1)
 			return (-1);
-		return (redirects(data, data->top));
+		/*if (search_red(data) == 1)
+			return (redirects(data, data->top));*/
 	}
 	else
 	{
-		if (redi_out(data, str, "maluca") == -1)
+		if (redi_out(data, current->data, "maluca") == -1)
 			return (-1);
-		if (redi_out_search(current->data, 0, 0) != 0)
-			return (redirects(data, data->top));
+		/*if (redi_out_search(current->data, 0, 0) != 0)
+			return (redirects(data, data->top));*/
 		return (0);
 	}
+	return (0);
 }

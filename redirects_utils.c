@@ -38,7 +38,7 @@ int	redi_out_search(char *str, int i, int red)
 	return (red);
 }
 
-char	*change_str(char *str)
+char	*change_str(char *str, t_data *data)
 {
 	int		i;
 	int 	j;
@@ -55,9 +55,10 @@ char	*change_str(char *str)
 		j++;
 	}
 	ret[i] = '\0';
-	re = remove_quote(ret);
-	free(ret);
-	return (re);
+	re = get_exp(ret, 0 , data);
+	//free(ret);
+	ret = remove_quote(re);
+	return (ret);
 }
 
 char	*cut_str(char *str, t_data *data, int i, int k)
@@ -66,6 +67,7 @@ char	*cut_str(char *str, t_data *data, int i, int k)
 	char	*ret;
 	char	*re;
 	char	*r;
+	char	*b;
 
 	j = cut_str2(str, k, 0, 0);
 	ret = malloc(sizeof(char) * (ft_strlen(str) - j + 2));
@@ -82,8 +84,9 @@ char	*cut_str(char *str, t_data *data, int i, int k)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	r = remove_quote(re);
-	return (free(ret), free(re), r);
+	r = get_exp(re, 0, data);
+	b = remove_quote(r);
+	return (free(ret), free(re), b);
 }
 
 void	change_data(char *str, t_data *data, char *old)

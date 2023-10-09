@@ -30,8 +30,10 @@ char	*cut_str_else(char *str, t_data *data, int j, int i)
 	}
 	re[i] = '\0';
 	cut_str_else2(str, data, j, k);
-	ret = remove_quote(re);
-	return (free(re), ret);
+	ret = get_exp(re, 0, data);
+	//free(re);
+	re = remove_quote(ret);
+	return (re);
 }
 
 void	cut_str_else2(char *str, t_data *data, int j, int k)
@@ -86,6 +88,8 @@ char	*cut_str_1(char *str, t_data *data, int i, int k)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	r = remove_quote(re);
-	return (free(ret), free(re), r);
+	r = get_exp(re, 0, data);
+	//free(re);
+	re = remove_quote(r);
+	return (free(ret), re);
 }
