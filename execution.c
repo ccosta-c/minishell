@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/28 14:23:59 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:20:21 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	execution(t_data *data)
 	char	**arg;
 
 	if (pipes_num(data) != 0)
-		printf("exec pipe\n");
-		//execution_pipe(data);
+	{
+		printf("pipes=%d\n", data->pipes_nums);
+		printf("fodasse o minishell\n");
+		//pipes_execution(data);
+	}
 	else
 	{
 		remove_quote_topdata(data);

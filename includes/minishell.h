@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/29 17:24:51 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:08:32 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
@@ -64,6 +65,7 @@ typedef struct s_data
 	int			stdin_fd;
 	int			stdout_fd;
 	int			red_flag;
+	int			pipes_nums;
 	t_tokens	*top;
 }			t_data;
 
@@ -242,5 +244,8 @@ char		*cut_str_end(char *str, t_data *data, int i, char *next_s);
 
 //////////////////////redirects_utils3.c//////////////////
 char		*cut_str_end2(char *str, t_data *data, int i, char *next_s);
+
+//////////////////////pipes.c//////////////////////
+void	pipes_execution(t_data *data);
 
 #endif
