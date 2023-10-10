@@ -104,6 +104,7 @@ int	redi_out_one_node(t_data *data, char *str, char *temp)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
+			printf("aquiiii %s\n", temp);
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 			if (fd_file < 0)
 			{

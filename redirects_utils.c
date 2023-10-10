@@ -55,10 +55,8 @@ char	*change_str(char *str, t_data *data)
 		j++;
 	}
 	ret[i] = '\0';
-	re = get_exp(ret, 0 , data);
-	//free(ret);
-	ret = remove_quote(re);
-	return (ret);
+	re = str_exp_quote(data, ret, count_str_exp(ret, 0, 0));
+	return (free(ret), re);
 }
 
 char	*cut_str(char *str, t_data *data, int i, int k)
@@ -67,7 +65,6 @@ char	*cut_str(char *str, t_data *data, int i, int k)
 	char	*ret;
 	char	*re;
 	char	*r;
-	char	*b;
 
 	j = cut_str2(str, k, 0, 0);
 	ret = malloc(sizeof(char) * (ft_strlen(str) - j + 2));
@@ -84,9 +81,8 @@ char	*cut_str(char *str, t_data *data, int i, int k)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	r = get_exp(re, 0, data);
-	b = remove_quote(r);
-	return (free(ret), free(re), b);
+	r = str_exp_quote(data, re, count_str_exp(re, 0, 0));
+	return (free(ret), free(re), r);
 }
 
 void	change_data(char *str, t_data *data, char *old)

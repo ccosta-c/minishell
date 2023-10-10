@@ -58,6 +58,7 @@ void	execution_single(t_data *data, int j, char **arg)
 				exit (0);
 			}
 			wait(NULL);
+			free(tmp_path);
 			return ;
 		}
 		free(tmp_path);

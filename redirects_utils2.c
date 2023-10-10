@@ -12,6 +12,35 @@
 
 #include "./includes/minishell.h"
 
+char	*str_exp_quote(t_data *data, char *str, int ex)
+{
+	char	*ret;
+	char	*re;
+
+	ret = get_exp(str, 0, data);
+	if (ex == 0)
+	{
+		re = remove_quote(ret);
+		return (free(ret), re);
+	}
+	while (ex > 0)
+	{
+		if (ex == 1)
+			re = get_exp(ret, 0, data);
+		else
+		{
+			re = get_exp(ret, 0, data);
+			free(ret);
+			ret = ft_strdup(re);
+			free(re);
+		}
+		ex--;
+	}
+	free(ret);
+	ret = remove_quote(re);
+	return (free(re), ret);
+}
+
 char	*cut_str_else(char *str, t_data *data, int j, int i)
 {
 	int		k;
@@ -29,11 +58,10 @@ char	*cut_str_else(char *str, t_data *data, int j, int i)
 		r++;
 	}
 	re[i] = '\0';
+	printf("%s\n", re);
 	cut_str_else2(str, data, j, k);
-	ret = get_exp(re, 0, data);
-	//free(re);
-	re = remove_quote(ret);
-	return (re);
+	ret = str_exp_quote(data, re, count_str_exp(re, 0, 0));
+	return (free(re), ret);
 }
 
 void	cut_str_else2(char *str, t_data *data, int j, int k)
@@ -59,6 +87,7 @@ void	cut_str_else2(char *str, t_data *data, int j, int k)
 		r++;
 	}
 	ret[i] = '\0';
+	printf("%s\n", ret);
 	change_data(ret, data, str);
 	free(ret);
 }
@@ -88,8 +117,6 @@ char	*cut_str_1(char *str, t_data *data, int i, int k)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	r = get_exp(re, 0, data);
-	//free(re);
-	re = remove_quote(r);
-	return (free(ret), re);
+	r = str_exp_quote(data, re, count_str_exp(re, 0, 0));
+	return (free(ret), free(re), r);
 }

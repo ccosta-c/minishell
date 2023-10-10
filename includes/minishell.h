@@ -226,7 +226,8 @@ char		*cut_str(char *str, t_data *data, int i, int k);
 void		change_data(char *str, t_data *data, char *old);
 int			cut_str2(char *str, int i, int flag_s, int flag_d);
 
-//////////////////////redirects_utils.c//////////////////
+//////////////////////redirects_utils2.c//////////////////
+char		*str_exp_quote(t_data *data, char *str, int ex);
 char		*cut_str_else(char *str, t_data *data, int j, int i);
 void		cut_str_else2(char *str, t_data *data, int j, int k);
 char		*cut_str_1(char *str, t_data *data, int i, int k);

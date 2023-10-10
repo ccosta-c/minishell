@@ -22,7 +22,7 @@ char	*get_exp(char *str, int i, t_data *data)
 
 	i = cut_str_exp(str, i, 0);
 	if (str[i] == '\0')
-		return (str);
+		return (ft_strdup(str));
 	tmp = get_tmp(str, i, 0, i);
 	ret = search_ex(tmp, data->env, count_variables(data->env), 0);
 	if (ret)
@@ -37,14 +37,7 @@ char	*get_exp(char *str, int i, t_data *data)
 		free(tmp);
 		tmp = cut_exp_str(str, total, i);
 	}
-	//if (count_str_exp(tmp, 0, 0) == 0)
 	return (free(ret), tmp);
-	/*else
-	{
-		free(ret);
-		ret = get_exp(tmp, 0, data);
-		return (free(tmp), ret);
-	}*/
 }
 
 int	cut_str_exp(char *str, int i, int flag_s)
