@@ -64,7 +64,8 @@ SRC				= 	prompt.c \
 					redirects_out2.c \
 					redirects_utils.c \
 					redirects_utils2.c \
-					redirects_out.c
+					redirects_out.c \
+					redirects_utils3.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))

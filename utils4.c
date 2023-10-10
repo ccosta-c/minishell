@@ -79,7 +79,7 @@ char	*join_exp_str(char *exp, char *str, int total, int j)
 	int		i;
 	int		k;
 
-	ret = malloc(sizeof (char) * ((ft_strlen(str)) + (ft_strlen(exp)) - total));
+	ret = malloc(sizeof (char) * (ft_strlen(str) + ft_strlen(exp) - total + 1));
 	i = 0;
 	while (i < j)
 	{

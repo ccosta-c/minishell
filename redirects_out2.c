@@ -94,12 +94,10 @@ int	redi_out_one_node_del(t_data *data, char *str, char *temp)
 	return (0);
 }
 
-int	redi_out_one_node(t_data *data, char *str, char *temp)
+int	redi_out_no_node(t_data *data, char *temp)
 {
 	int			fd_file;
 
-	(void)str;
-	printf("aquiiii %s\n", temp);
 	fd_file = open(temp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd_file < 0)
 	{

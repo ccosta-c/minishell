@@ -51,16 +51,11 @@ int	redirects_out(t_data *data, t_tokens *n, char *str, t_tokens *c)
 	{
 		if (redi_out(data, current->data, next->data) == -1)
 			return (-1);
-		/*if (search_red(data) == 1)
-			return (redirects(data, data->top));*/
 	}
 	else
 	{
 		if (redi_out(data, current->data, "maluca") == -1)
 			return (-1);
-		/*if (redi_out_search(current->data, 0, 0) != 0)
-			return (redirects(data, data->top));*/
-		return (0);
 	}
 	return (0);
 }

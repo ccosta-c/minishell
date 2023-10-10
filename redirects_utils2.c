@@ -17,12 +17,12 @@ char	*str_exp_quote(t_data *data, char *str, int ex)
 	char	*ret;
 	char	*re;
 
-	ret = get_exp(str, 0, data);
 	if (ex == 0)
 	{
-		re = remove_quote(ret);
-		return (free(ret), re);
+		re = remove_quote(str);
+		return (re);
 	}
+	ret = get_exp(str, 0, data);
 	while (ex > 0)
 	{
 		if (ex == 1)
@@ -58,7 +58,6 @@ char	*cut_str_else(char *str, t_data *data, int j, int i)
 		r++;
 	}
 	re[i] = '\0';
-	printf("%s\n", re);
 	cut_str_else2(str, data, j, k);
 	ret = str_exp_quote(data, re, count_str_exp(re, 0, 0));
 	return (free(re), ret);
@@ -87,7 +86,6 @@ void	cut_str_else2(char *str, t_data *data, int j, int k)
 		r++;
 	}
 	ret[i] = '\0';
-	printf("%s\n", ret);
 	change_data(ret, data, str);
 	free(ret);
 }
@@ -119,4 +117,24 @@ char	*cut_str_1(char *str, t_data *data, int i, int k)
 	change_data(ret, data, str);
 	r = str_exp_quote(data, re, count_str_exp(re, 0, 0));
 	return (free(ret), free(re), r);
+}
+
+char	*cut_str_end(char *str, t_data *data, int i, char *next_s)
+{
+	int 	j;
+	char	*ret;
+	char	*re;
+
+	j = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(str)));
+	while(str[j + 1] != '\0')
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	change_data(ret, data, str);
+	re = str_exp_quote(data, next_s, count_str_exp(ret, 0, 0));
+	return (free(ret), re);
 }
