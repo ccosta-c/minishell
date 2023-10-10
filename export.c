@@ -114,7 +114,7 @@ void	add_export(t_data *data)
 	{
 		if ((strchr(tmp->data, '\'') != 0) || (strchr(tmp->data, '\"') != 0))
 		{
-			no_quotes = remove_quote(tmp->data);
+			no_quotes = remove_quote(tmp->data, 0, 0, 0);
 			free(tmp->data);
 			tmp->data = ft_strdup(no_quotes);
 			free (no_quotes);

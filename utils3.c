@@ -18,7 +18,7 @@ void	remove_quote_topdata(t_data *data)
 
 	tmp = ft_strdup(data->top->data);
 	free(data->top->data);
-	data->top->data = remove_quote(tmp);
+	data->top->data = remove_quote(tmp, 0, 0, 0);
 	free(tmp);
 }
 
@@ -32,21 +32,16 @@ void	remove_quote_list(t_data *data)
 	{
 		tmp = ft_strdup(tmp_list->data);
 		free(tmp_list->data);
-		tmp_list->data = remove_quote(tmp);
+		tmp_list->data = remove_quote(tmp, 0, 0, 0);
 		free(tmp);
 		tmp_list = tmp_list->next;
 	}
 }
 
-char	*remove_quote(char *data)
+char	*remove_quote(char *data, int i, int j, char q)
 {
-	int		i;
-	int		j;
-	char	q;
 	char	*new;
 
-	i = 0;
-	j = 0;
 	new = malloc(sizeof(char) * (ft_strlen(data) - num_of_quotes(data)) + 1);
 	while (data[i])
 	{
@@ -69,8 +64,7 @@ char	*remove_quote(char *data)
 			i++;
 		}
 	}
-	new[j] = '\0';
-	return (new);
+	return (new[j] = '\0', new);
 }
 
 int	num_of_quotes(char *data)
@@ -100,29 +94,16 @@ int	num_of_quotes(char *data)
 char	*get_variable(char *str, t_charlist *list, int size)
 {
 	int			i;
-	int			j;
 	char		*ret;
 	t_charlist	*l_tmp;
 
 	i = 0;
-	j = 0;
 	l_tmp = list;
 	while (i <= (size - 1))
 	{
 		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
 		{
-			while (l_tmp->content[j] != '=')
-				j++;
-			ret = malloc(sizeof(char) * (ft_strlen(l_tmp->content) - j));
-			j++;
-			i = 0;
-			while (l_tmp->content[j])
-			{
-				ret[i] = l_tmp->content[j];
-				j++;
-				i++;
-			}
-			ret[i] = '\0';
+			ret = cut_env_exp(l_tmp->content, 0, 0);
 			return (ret);
 		}
 		i++;

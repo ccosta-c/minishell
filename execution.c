@@ -15,7 +15,7 @@
 void	execution(t_data *data)
 {
 	char	**arg;
-	
+
 	if (pipes_num(data) != 0)
 		printf("exec pipe\n");
 		//execution_pipe(data);
@@ -26,7 +26,7 @@ void	execution(t_data *data)
 		{
 			arg = list_to_array(data);
 			get_envpaths(data);
-			execution_single(data, 0, arg);
+			execution_single(data, 0, arg, 0);
 			free_array(arg);
 			free_array(data->paths);
 		}
@@ -38,13 +38,11 @@ void	execution(t_data *data)
 	}
 }
 
-void	execution_single(t_data *data, int j, char **arg)
+void	execution_single(t_data *data, int j, char **arg, int i)
 {
-	int		i;
 	char	*tmp_path;
 	pid_t	pid;
 
-	i = 0;
 	while (data->paths[i] != NULL)
 	{
 		tmp_path = get_tmp_path(data, i);

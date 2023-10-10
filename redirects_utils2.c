@@ -19,7 +19,7 @@ char	*str_exp_quote(t_data *data, char *str, int ex)
 
 	if (ex == 0)
 	{
-		re = remove_quote(str);
+		re = remove_quote(str, 0, 0, 0);
 		return (re);
 	}
 	ret = get_exp(str, 0, data);
@@ -37,7 +37,7 @@ char	*str_exp_quote(t_data *data, char *str, int ex)
 		ex--;
 	}
 	free(ret);
-	ret = remove_quote(re);
+	ret = remove_quote(re, 0, 0, 0);
 	return (free(re), ret);
 }
 
@@ -72,14 +72,14 @@ void	cut_str_else2(char *str, t_data *data, int j, int k)
 	ret = malloc(sizeof(char) * (ft_strlen(str) - (k - j) + 1));
 	i = 0;
 	r = 0;
-	while(i < j)
+	while (i < j)
 	{
 		ret[i] = str[r];
 		i++;
 		r++;
 	}
 	r = k;
-	while(str[r])
+	while (str[r])
 	{
 		ret[i] = str[r];
 		i++;
@@ -92,7 +92,7 @@ void	cut_str_else2(char *str, t_data *data, int j, int k)
 
 char	*cut_str_1(char *str, t_data *data, int i, int k)
 {
-	int 	j;
+	int		j;
 	char	*ret;
 	char	*re;
 	char	*r;
@@ -107,7 +107,7 @@ char	*cut_str_1(char *str, t_data *data, int i, int k)
 	}
 	re[i] = '\0';
 	i = 0;
-	while(str[j])
+	while (str[j])
 	{
 		ret[i] = str[j];
 		i++;
@@ -121,13 +121,13 @@ char	*cut_str_1(char *str, t_data *data, int i, int k)
 
 char	*cut_str_end(char *str, t_data *data, int i, char *next_s)
 {
-	int 	j;
+	int		j;
 	char	*ret;
 	char	*re;
 
 	j = 0;
 	ret = malloc(sizeof(char) * (ft_strlen(str)));
-	while(str[j + 1] != '\0')
+	while (str[j + 1] != '\0')
 	{
 		ret[i] = str[j];
 		i++;

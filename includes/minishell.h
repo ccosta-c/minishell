@@ -98,19 +98,22 @@ void		change_env_exp2(t_charlist *exp, char *old, char *new);
 ////////////////////////utils3.c//////////////////////
 void		remove_quote_list(t_data *data);
 void		remove_quote_topdata(t_data *data);
-char		*remove_quote(char *data);
+char		*remove_quote(char *data, int i, int j, char q);
 int			num_of_quotes(char *data);
 char		*get_variable(char *str, t_charlist *list, int size);
 
 ////////////////////////utils4.c//////////////////////
 char		*get_exp(char *str, int i, t_data *data);
-int			cut_str_exp(char *str, int i, int flag_s);
-int			count_str_exp(char *str, int i, int flag_s);
 char		*get_tmp(char *str, int j, int k, int i);
 char		*search_ex(char *str, t_charlist *list, int size, int i);
 char		*join_exp_str(char *exp, char *str, int total, int j);
 char		*cut_exp_str(char *str, int total, int j);
+
+////////////////////////utils5.c//////////////////////
+int			cut_str_exp(char *str, int i, int flag_s);
+int			count_str_exp(char *str, int i, int flag_s);
 int			check_minus_n(char *s);
+char		*cut_env_exp(char *env, int j, int k);
 
 ////////////////////////lstops2.c//////////////////////
 void		add_to_charlist(t_charlist **top, char *content);
@@ -126,7 +129,8 @@ int			list_quote(char *input, int i);
 void		lexer_continuation(t_data *data, char *str, int i, int j);
 
 ////////////////////////lexer2.c/////////////////////
-enum e_type	get_type(char *str, int i);
+enum e_type	get_type(char *str);
+enum e_type	get_type2(char *str, int i);
 int			search_quote(char *str, char q);
 int			pipes_num(t_data *data);
 int			pipes_num2(char *str, int i, int p);
@@ -152,7 +156,7 @@ int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
-void		execution_single(t_data *data, int j, char **arg);
+void		execution_single(t_data *data, int j, char **arg, int i);
 char		*get_tmp_path(t_data *data, int i);
 
 //////////////////////export.c/////////////////////
@@ -165,6 +169,7 @@ int			count_variables(t_charlist *list);
 //////////////////////builtins.c///////////////////
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);
+int			check_builtins3(t_data *data);
 
 //////////////////////execution2.c/////////////////
 void		execution_pwd(t_data *data);

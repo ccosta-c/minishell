@@ -102,7 +102,8 @@ int	search_red(t_data *data)
 	tmp = data->top;
 	while (tmp != NULL)
 	{
-		if (tmp->type == RR_IN || tmp->type == RR_OUT || tmp->type == R_IN || tmp->type == R_OUT)
+		if (tmp->type == RR_IN || tmp->type == RR_OUT
+			|| tmp->type == R_IN || tmp->type == R_OUT)
 			return (1);
 		tmp = tmp->next;
 	}

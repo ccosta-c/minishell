@@ -15,14 +15,14 @@
 void	echo_minus_n(t_data *data)
 {
 	t_tokens	*tmp;
-	char	*s;
+	char		*s;
 
 	tmp = data->top->next->next;
-	s = remove_quote(tmp->data);
+	s = remove_quote(tmp->data, 0, 0, 0);
 	while (s[0] == '-' && s[1] == 'n' && check_minus_n(s) == 0)
 	{
 		tmp = tmp->next;
-		s = remove_quote(tmp->data);
+		s = remove_quote(tmp->data, 0, 0, 0);
 	}
 	while (tmp != NULL)
 	{

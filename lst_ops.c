@@ -51,7 +51,7 @@ t_tokens	*initialize_tokens(int end, int start, char *arg)
 		i++;
 	}
 	tmp->data[i] = '\0';
-	tmp->type = get_type(tmp->data, 0);
+	tmp->type = get_type(tmp->data);
 	tmp->len = ft_strlen(tmp->data);
 	return (tmp);
 }

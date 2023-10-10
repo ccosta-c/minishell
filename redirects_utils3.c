@@ -14,13 +14,13 @@
 
 char	*cut_str_end2(char *str, t_data *data, int i, char *next_s)
 {
-	int 	j;
+	int		j;
 	char	*ret;
 	char	*re;
 
 	j = 0;
 	ret = malloc(sizeof(char) * (ft_strlen(str)));
-	while(str[j + 1] != '\0')
+	while (str[j + 1] != '\0')
 	{
 		ret[i] = str[j];
 		i++;

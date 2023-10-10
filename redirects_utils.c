@@ -19,7 +19,7 @@ int	redi_out_search(char *str, int i, int red)
 
 	flag_s = 0;
 	flag_d = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '\"' && flag_d == 0 && flag_s == 0)
 			flag_d = 1;
@@ -41,14 +41,14 @@ int	redi_out_search(char *str, int i, int red)
 char	*change_str(char *str, t_data *data)
 {
 	int		i;
-	int 	j;
+	int		j;
 	char	*ret;
 	char	*re;
 
 	i = 0;
 	j = 1;
 	ret = malloc(sizeof(char) * (ft_strlen(str)));
-	while(str[j])
+	while (str[j])
 	{
 		ret[i] = str[j];
 		i++;
@@ -61,7 +61,7 @@ char	*change_str(char *str, t_data *data)
 
 char	*cut_str(char *str, t_data *data, int i, int k)
 {
-	int 	j;
+	int		j;
 	char	*ret;
 	char	*re;
 	char	*r;
@@ -73,7 +73,7 @@ char	*cut_str(char *str, t_data *data, int i, int k)
 		re[i] = str[i];
 	re[i] = '\0';
 	i = 0;
-	while(str[j])
+	while (str[j])
 	{
 		ret[i] = str[j];
 		i++;
@@ -96,7 +96,7 @@ void	change_data(char *str, t_data *data, char *old)
 		{
 			free(tmp->data);
 			tmp->data = ft_strdup(str);
-			tmp->type = get_type(tmp->data, 0);
+			tmp->type = get_type(tmp->data);
 			return ;
 		}
 		tmp = tmp->next;

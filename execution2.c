@@ -18,10 +18,10 @@ void	execution_pwd(t_data *data)
 
 	if (data->top->next)
 	{
-		if (remove_quote(data->top->next->data)[0] == '-')
+		if (remove_quote(data->top->next->data, 0, 0, 0)[0] == '-')
 		{
 			printf("pwd: No options supported\n");
-			g_exit = 127; //ou 2 decidir
+			g_exit = 2;
 			return ;
 		}
 	}
@@ -36,7 +36,7 @@ void	execution_env(t_data *data)
 	if (data->top->next)
 	{
 		printf("env: No options or arguments supported\n");
-		g_exit = 127; //ou 2 decidir
+		g_exit = 2;
 	}
 	else
 	{
@@ -51,11 +51,11 @@ void	execution_export(t_data *data)
 
 	if (data->top->next)
 	{
-		tmp = remove_quote(data->top->next->data);
+		tmp = remove_quote(data->top->next->data, 0, 0, 0);
 		if (tmp[0] == '-')
 		{
 			printf("export: No options supported\n");
-			g_exit = 127; //ou 2 decidir
+			g_exit = 2;
 			return ;
 		}
 		add_export(data);
@@ -80,11 +80,11 @@ void	execution_unset(t_data *data)
 	}
 	else
 	{
-		tmp = remove_quote(data->top->next->data);
+		tmp = remove_quote(data->top->next->data, 0, 0, 0);
 		if (tmp[0] == '-')
 		{
 			printf("unset: No options supported\n");
-			g_exit = 127; //ou 2 decidir
+			g_exit = 2;
 			free(tmp);
 			return ;
 		}

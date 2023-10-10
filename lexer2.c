@@ -12,7 +12,7 @@
 
 #include "./includes/minishell.h"
 
-enum e_type	get_type(char *str, int i)
+enum e_type	get_type(char *str)
 {
 	if (str[0] == '\"' && str[ft_strlen(str) - 1] == '\"')
 	{
@@ -24,17 +24,28 @@ enum e_type	get_type(char *str, int i)
 		if (search_quote(str, '\'') == 0)
 			return (S_QUOTE);
 	}
+	if (get_type2(str, 0) != GENERIC)
+		return (get_type2(str, 0));
+	return (GENERIC);
+}
+
+enum e_type	get_type2(char *str, int i)
+{
 	while (str[i])
 	{
 		if (str[i] == '|')
 			return (PIPE);
-		else if (str[i] == '<' && str[i + 1] != '<' && i == cut_str2(str, 0, 0, 0))
+		else if (str[i] == '<' && str[i + 1] != '<'
+			&& i == cut_str2(str, 0, 0, 0))
 			return (R_IN);
-		else if (str[i] == '>' && str[i + 1] != '>' && i == cut_str2(str, 0, 0, 0))
+		else if (str[i] == '>' && str[i + 1] != '>'
+			&& i == cut_str2(str, 0, 0, 0))
 			return (R_OUT);
-		else if (str[i] == '<' && str[i + 1] == '<' && i == cut_str2(str, 0, 0, 0))
+		else if (str[i] == '<' && str[i + 1] == '<'
+			&& i == cut_str2(str, 0, 0, 0))
 			return (RR_IN);
-		else if (str[i] == '>' && str[i + 1] == '>' && i == cut_str2(str, 0, 0, 0))
+		else if (str[i] == '>' && str[i + 1] == '>'
+			&& i == cut_str2(str, 0, 0, 0))
 			return (RR_OUT);
 		i++;
 	}
@@ -78,7 +89,7 @@ int	pipes_num2(char *str, int i, int p)
 
 	flag_d = 0;
 	flag_s = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '\"' && flag_d == 0 && flag_s == 0)
 			flag_d = 1;

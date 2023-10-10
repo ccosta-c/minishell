@@ -35,8 +35,6 @@ int	main(int argc, char **argv, char **envp)
 	data.stdin_fd = STDIN_FILENO;
 	data.stdout_fd = STDOUT_FILENO;
 	data.red_flag = 0;
-	//printf("%s\n", get_exp("$PWD", 0, &data));
-	//printf("\'$USER\'\n");
 	prompt_loop(&data);
 }
 

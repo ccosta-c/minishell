@@ -16,7 +16,7 @@ void	execution_echo(t_data *data)
 {
 	char	*s;
 
-	s = remove_quote(data->top->next->data);
+	s = remove_quote(data->top->next->data, 0, 0, 0);
 	if (!data->top->next)
 	{
 		printf("\n");
