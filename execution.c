@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/10/09 15:20:21 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:36:14 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 void	execution(t_data *data)
 {
 	char	**arg;
+	char	**cmd_pipes;
 
-	if (pipes_num(data) != 0)
+	pipes_num(data);
+	if (data->pipes_nums != 0)
 	{
 		printf("pipes=%d\n", data->pipes_nums);
+		cmd_pipes = pipes_commands(data);
 		printf("fodasse o minishell\n");
-		//pipes_execution(data);
+		print_array(cmd_pipes);
 	}
 	else
 	{
@@ -55,7 +58,7 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 			pid = fork();
 			if (pid == 0)
 			{
-				execve(tmp_path, arg, NULL);
+				execve(tmp_path, arg, data->og_envp);
 				exit (0);
 			}
 			wait(NULL);
