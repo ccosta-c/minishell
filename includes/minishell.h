@@ -62,6 +62,7 @@ typedef struct s_data
 	char		*pwd;
 	char		*old_pwd;
 	char		*home;
+	char		*heredoc;
 	int			stdin_fd;
 	int			stdout_fd;
 	int			red_flag;
@@ -217,6 +218,7 @@ char		*handle_whitespaces(char *input);
 int			redirects(t_data *data, t_tokens *tmp);
 int			redirects_out(t_data *data, t_tokens *lst, char *str, t_tokens *c);
 int			redirects_in(t_data *data, t_tokens *n, char *str, t_tokens *c);
+int			redirects_heredoc(t_data *data, t_tokens *n, char *str, t_tokens *c);
 
 //////////////////////redirects_out2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str, char *file);
@@ -260,6 +262,20 @@ int			redi_in_two_nodes(t_data *data, char *str, char *file);
 int			redi_in_two_nodes_cut(t_data *data, char *str, char *temp);
 int			redi_in_one_node_del(t_data *data, char *str, char *temp);
 int			redi_in_no_node(t_data *data, char *temp);
+
+//////////////////////redirects_heredoc.c///////////////////////
+int			redi_heredoc(t_data *data, char *str, char *next_s);
+/*int			redi_in4(t_data *data, char *str);
+int			redi_in5(t_data *data, char *str);
+int			redi_in2(t_data *data, char *str, char *next_s);
+int			redi_in3(t_data *data, char *str);*/
+
+//////////////////////redirects_in2.c//////////////////////
+int			redi_here_two_nodes(t_data *data, char *str, char *file);
+void		do_here(char *hered);
+/*int			redi_in_two_nodes_cut(t_data *data, char *str, char *temp);
+int			redi_in_one_node_del(t_data *data, char *str, char *temp);
+int			redi_in_no_node(t_data *data, char *temp);*/
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
