@@ -12,12 +12,50 @@
 
 #include "./includes/minishell.h"
 
+void	fork_redirects(t_data *data)
+{
+	int		redi;
+	pid_t	pid;
+
+	pid = fork();
+	redi = search_red_total(data, 0);
+	if (pid == 0)
+	{
+		while (redi > 0)
+		{
+			if (redirects(data, data->top) == -1)
+			{
+				g_exit = 1;
+				exit (1);
+			}
+			redi--;
+		}
+		execution(data);
+		g_exit = 0;
+		exit (0);
+	}
+	wait(NULL);
+}
+
+int	search_red_total(t_data *data, int redi)
+{
+	t_tokens	*tmp;
+
+	tmp = data->top;
+	while (tmp != NULL)
+	{
+		redi = redi + redi_out_search(tmp->data, 0, 0);
+		tmp = tmp->next;
+	}
+	return (redi);
+}
+
 int	check_builtins(t_data *data)
 {
 	if (search_red(data) == 1)
 	{
-		if (redirects(data, data->top) == -1)
-			return (-1);
+		fork_redirects(data);
+		return (1);
 	}
 	if (ft_strcmp("echo", data->top->data) == 0)
 	{

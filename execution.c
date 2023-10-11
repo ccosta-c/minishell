@@ -34,11 +34,11 @@ void	execution(t_data *data)
 			free_array(data->paths);
 		}
 	}
-	if (data->red_flag != 0)
+	/*if (data->red_flag != 0)
 	{
 		dup2(0, STDIN_FILENO);
-		dup2(0, STDOUT_FILENO);
-	}
+		//dup2(0, STDOUT_FILENO);
+	}*/
 }
 
 void	execution_single(t_data *data, int j, char **arg, int i)

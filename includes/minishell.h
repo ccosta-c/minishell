@@ -157,6 +157,8 @@ int			check_quotes(char	*input, int i);
 int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
+void		fork_redirects(t_data *data);
+int			search_red_total(t_data *data, int redi);
 void		execution(t_data *data);
 void		execution_single(t_data *data, int j, char **arg, int i);
 char		*get_tmp_path(t_data *data, int i);
@@ -214,8 +216,9 @@ char		*handle_whitespaces(char *input);
 //////////////////////redirects.c///////////////////////
 int			redirects(t_data *data, t_tokens *tmp);
 int			redirects_out(t_data *data, t_tokens *lst, char *str, t_tokens *c);
+int			redirects_in(t_data *data, t_tokens *n, char *str, t_tokens *c);
 
-//////////////////////redirects2.c//////////////////////
+//////////////////////redirects_out2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str, char *file);
 int			redi_out_two_nodes_cut(t_data *data, char *str, char *temp);
 int			redi_out_one_node_del(t_data *data, char *str, char *temp);
@@ -245,7 +248,20 @@ char		*cut_str_end(char *str, t_data *data, int i, char *next_s);
 //////////////////////redirects_utils3.c//////////////////
 char		*cut_str_end2(char *str, t_data *data, int i, char *next_s);
 
+//////////////////////redirects_in.c///////////////////////
+int			redi_in(t_data *data, char *str, char *next_s);
+int			redi_in4(t_data *data, char *str);
+int			redi_in5(t_data *data, char *str);
+int			redi_in2(t_data *data, char *str, char *next_s);
+int			redi_in3(t_data *data, char *str);
+
+//////////////////////redirects_in2.c//////////////////////
+int			redi_in_two_nodes(t_data *data, char *str, char *file);
+int			redi_in_two_nodes_cut(t_data *data, char *str, char *temp);
+int			redi_in_one_node_del(t_data *data, char *str, char *temp);
+int			redi_in_no_node(t_data *data, char *temp);
+
 //////////////////////pipes.c//////////////////////
-void	pipes_execution(t_data *data);
+void		pipes_execution(t_data *data);
 
 #endif
