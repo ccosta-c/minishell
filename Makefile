@@ -66,7 +66,8 @@ SRC				= 	prompt.c \
 					redirects_utils2.c \
 					redirects_out.c \
 					redirects_utils3.c \
-					utils5.c
+					utils5.c \
+					pipes.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))

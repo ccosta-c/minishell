@@ -68,8 +68,6 @@ void	export_builtin(t_charlist *list)
 		tmp = tmp->next;
 		i++;
 	}
-	printf("after the sort\n");
-	print_lstchar(list);
 }
 
 void	print_export(t_charlist *list, int size)

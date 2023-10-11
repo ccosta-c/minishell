@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:43:13 by macastan          #+#    #+#             */
-/*   Updated: 2023/08/29 15:49:14 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:26:31 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,18 @@ int	search_quote(char *str, char q)
 	return (0);
 }
 
-int	pipes_num(t_data *data)
+void	pipes_num(t_data *data)
 {
-	int			p;
 	t_tokens	*tmp;
 
-	p = 0;
+	data->pipes_nums = 0;
 	tmp = data->top;
 	while (tmp != NULL)
 	{
-		p = p + pipes_num2(tmp->data, 0, 0);
+		data->pipes_nums = data->pipes_nums + pipes_num2(tmp->data, 0, 0);
 		tmp = tmp->next;
 	}
 	free(tmp);
-	return (p);
 }
 
 int	pipes_num2(char *str, int i, int p)

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/28 14:18:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:34:43 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,22 @@ char	**list_to_array(t_data *data)
 void	get_envpaths(t_data *data)
 {
 	char	*tmp;
+	char	*tmp2;
 
-	tmp = getenv("PATH");
+	tmp = get_variable("PATH", data->env, count_variables(data->env));
+	if (tmp)
+	{
+		tmp2 = ft_strjoin(tmp, ":");
+		free(tmp);
+		tmp = ft_strjoin(tmp2, data->pwd);
+		free(tmp2);
+	}
+	else
+	{
+		tmp = ft_strdup(data->pwd);
+	}
 	data->paths = ft_split(tmp, ':');
+	free(tmp);
 }
 
 void	free_array(char **array)
