@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/04 15:08:32 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:56:44 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ typedef struct s_data
 {
 	t_charlist	*env;
 	t_charlist	*export;
+	char		*original_command;
 	char		*prompt;
 	char		**paths;
+	char		**og_envp;
 	char		*pwd;
 	char		*old_pwd;
 	char		*home;
@@ -135,7 +137,7 @@ void		lexer_continuation(t_data *data, char *str, int i, int j);
 enum e_type	get_type(char *str);
 enum e_type	get_type2(char *str, int i);
 int			search_quote(char *str, char q);
-int			pipes_num(t_data *data);
+void		pipes_num(t_data *data);
 int			pipes_num2(char *str, int i, int p);
 
 //////////////////////debugging.c////////////////////
@@ -279,5 +281,6 @@ int			redi_in_no_node(t_data *data, char *temp);*/
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
+char		**pipes_commands(t_data *data);
 
 #endif
