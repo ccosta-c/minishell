@@ -107,6 +107,5 @@ int	search_red(t_data *data)
 			return (1);
 		tmp = tmp->next;
 	}
-	free(tmp);
 	return (0);
 }
