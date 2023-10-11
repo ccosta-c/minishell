@@ -18,7 +18,7 @@
 //
 //}
 
-void	pipes_commands(t_data *data)
+/*void	pipes_commands(t_data *data)
 {
 	t_tokens	*tmp;
 	char		**commands;
@@ -33,4 +33,4 @@ void	pipes_commands(t_data *data)
 		if(tmp[i])
 		tmp = tmp->next;
 	}
-}
+}*/

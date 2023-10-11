@@ -15,15 +15,15 @@
 void	execution(t_data *data)
 {
 	char	**arg;
-	char	**cmd_pipes;
+	//char	**cmd_pipes;
 
 	pipes_num(data);
 	if (data->pipes_nums != 0)
 	{
 		printf("pipes=%d\n", data->pipes_nums);
-		cmd_pipes = pipes_commands(data);
+		//cmd_pipes = pipes_commands(data);
 		printf("fodasse o minishell\n");
-		print_array(cmd_pipes);
+		//print_array(cmd_pipes);
 	}
 	else
 	{
