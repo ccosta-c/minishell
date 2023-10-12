@@ -17,29 +17,13 @@ int	redirects(t_data *data, t_tokens *tmp)
 	while (tmp)
 	{
 		if (tmp->type == R_OUT)
-		{
-			if (redirects_out(data, tmp->next, tmp->data, tmp) == -1)
-				return (-1);
-			break ;
-		}
+			return (redirects_out(data, tmp->next, tmp->data, tmp));
 		else if (tmp->type == R_IN)
-		{
-			if (redirects_in(data, tmp->next, tmp->data, tmp) == -1)
-				return (-1);
-			break ;
-		}
+			return (redirects_in(data, tmp->next, tmp->data, tmp));
 		else if (tmp->type == RR_IN)
-		{
-			if (redirects_here(data, tmp->next, tmp->data, tmp) == -1)
-				return (-1);
-			break ;
-		}
+			return (redirects_here(data, tmp->next, tmp->data, tmp));
 		else if (tmp->type == RR_OUT)
-		{
-			if (redirects_append(data, tmp->next, tmp->data, tmp) == -1)
-				return (-1);
-			break ;
-		}
+			return (redirects_append(data, tmp->next, tmp->data, tmp));
 		else
 			tmp = tmp->next;
 	}
