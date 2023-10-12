@@ -26,11 +26,13 @@ void	fork_redirects(t_data *data)
 			if (redirects(data, data->top) == -1)
 			{
 				g_exit = 1;
-				exit (1);
+				exit(1);
 			}
 			redi--;
 		}
 		execution(data);
+		if (data->red_flag != 0)
+			unlink(".heredoc");
 		g_exit = 0;
 		exit (0);
 	}

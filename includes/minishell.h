@@ -274,7 +274,7 @@ int			redi_in3(t_data *data, char *str);*/
 
 //////////////////////redirects_in2.c//////////////////////
 int			redi_here_two_nodes(t_data *data, char *str, char *file);
-void		do_here(char *hered);
+int			do_here(char *hered);
 /*int			redi_in_two_nodes_cut(t_data *data, char *str, char *temp);
 int			redi_in_one_node_del(t_data *data, char *str, char *temp);
 int			redi_in_no_node(t_data *data, char *temp);*/
