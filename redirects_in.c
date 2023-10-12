@@ -46,7 +46,7 @@ int	redi_in4(t_data *data, char *str)
 	{
 		if (redi_out_search(str, 1, 0) == 0)
 		{
-			tmp = change_str(str, data);
+			tmp = change_str(str, data, 1);
 			if (redi_in_one_node_del(data, str, tmp) == -1)
 				return (free(tmp), -1);
 			return (free(tmp), 0);

@@ -31,3 +31,69 @@ char	*cut_str_end2(char *str, t_data *data, int i, char *next_s)
 	re = cut_str(next_s, data, -1, 0);
 	return (free(ret), re);
 }
+
+char	*cut_str_double(char *str, t_data *data, int i, int k)
+{
+	int		j;
+	char	*ret;
+	char	*re;
+	char	*r;
+
+	j = cut_str2(str, k, 0, 0);
+	ret = malloc(sizeof(char) * (ft_strlen(str) - j + 2));
+	re = malloc(sizeof(char) * (j + 1));
+	while (++i < j)
+		re[i] = str[i];
+	re[i] = '\0';
+	i = 0;
+	while (str[j])
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	change_data(ret, data, str);
+	r = remove_quote(re, 0, 0, 0);
+	return (free(ret), free(re), r);
+}
+
+char	*cut_str_end_double(char *str, t_data *data, int i, char *next_s)
+{
+	int		j;
+	char	*ret;
+	char	*re;
+
+	j = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(str) - 1));
+	while (str[j + 2] != '\0')
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	change_data(ret, data, str);
+	re = remove_quote(next_s, 0, 0, 0);
+	return (free(ret), re);
+}
+
+char	*cut_str_end2_double(char *str, t_data *data, int i, char *next_s)
+{
+	int		j;
+	char	*ret;
+	char	*re;
+
+	j = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(str) - 1));
+	while (str[j + 2] != '\0')
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	change_data(ret, data, str);
+	re = cut_str_double(next_s, data, -1, 0);
+	return (free(ret), re);
+}

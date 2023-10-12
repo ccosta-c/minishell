@@ -65,7 +65,7 @@ int	do_here(char *hered)
 	return (fd_file);
 }
 
-/*int	redi_in_two_nodes_cut(t_data *data, char *str, char *temp)
+int	redi_here_two_nodes_cut(t_data *data, char *str, char *here)
 {
 	t_tokens	*tmp;
 	int			fd_file;
@@ -75,12 +75,9 @@ int	do_here(char *hered)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			fd_file = open(temp, O_RDONLY);
-			if (fd_file < 0)
-			{
-				printf("Minishell: %s: %s.\n", temp, strerror(errno));
+			fd_file = do_here(here);
+			if (fd_file == -1)
 				return (-1);
-			}
 			dup2(fd_file, STDIN_FILENO);
 			close(fd_file);
 			delete_redirects(&data->top, tmp->data);
@@ -92,7 +89,7 @@ int	do_here(char *hered)
 	return (0);
 }
 
-int	redi_in_one_node_del(t_data *data, char *str, char *temp)
+int	redi_here_one_node_del(t_data *data, char *str, char *here)
 {
 	t_tokens	*tmp;
 	int			fd_file;
@@ -102,12 +99,9 @@ int	redi_in_one_node_del(t_data *data, char *str, char *temp)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			fd_file = open(temp, O_RDONLY);
-			if (fd_file < 0)
-			{
-				printf("Minishell: %s: %s.\n", temp, strerror(errno));
+			fd_file = do_here(here);
+			if (fd_file == -1)
 				return (-1);
-			}
 			dup2(fd_file, STDIN_FILENO);
 			close(fd_file);
 			delete_redirects(&data->top, tmp->data);
@@ -119,18 +113,15 @@ int	redi_in_one_node_del(t_data *data, char *str, char *temp)
 	return (0);
 }
 
-int	redi_in_no_node(t_data *data, char *temp)
+int	redi_here_no_node(t_data *data, char *here)
 {
 	int			fd_file;
 
-	fd_file = open(temp, O_RDONLY);
-	if (fd_file < 0)
-	{
-		printf("Minishell: %s: %s.\n", temp, strerror(errno));
+	fd_file = do_here(here);
+	if (fd_file == -1)
 		return (-1);
-	}
 	dup2(fd_file, STDIN_FILENO);
 	close(fd_file);
 	data->red_flag++;
 	return (0);
-}*/
+}

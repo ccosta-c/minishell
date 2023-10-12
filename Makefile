@@ -66,6 +66,7 @@ SRC				= 	prompt.c \
 					redirects_utils2.c \
 					redirects_out.c \
 					redirects_utils3.c \
+					redirects_utils4.c \
 					utils5.c \
 					redirects_in2.c \
 					redirects_in.c \

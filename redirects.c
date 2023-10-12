@@ -34,8 +34,8 @@ int	redirects(t_data *data, t_tokens *tmp)
 				return (-1);
 			break ;
 		}
-		else if (tmp->type == RR_OUT)
-			printf("rrout");
+		/*else if (tmp->type == RR_OUT)
+			printf("rrout");*/
 		else
 			tmp = tmp->next;
 	}

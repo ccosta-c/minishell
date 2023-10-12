@@ -30,23 +30,23 @@ int	redi_out_search(char *str, int i, int red)
 		else if (str[i] == '\'' && flag_s != 0 && flag_d == 0)
 			flag_s = 0;
 		else if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
-			red++;
+		{
+				red++;
+			if (str[i + 1] == str[i])
+				i++;
+		}
 		i++;
 	}
-	if (red == 0)
-		return (0);
 	return (red);
 }
 
-char	*change_str(char *str, t_data *data)
+char	*change_str(char *str, t_data *data, int j)
 {
 	int		i;
-	int		j;
 	char	*ret;
 	char	*re;
 
 	i = 0;
-	j = 1;
 	ret = malloc(sizeof(char) * (ft_strlen(str)));
 	while (str[j])
 	{

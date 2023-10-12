@@ -237,7 +237,7 @@ int			redi_out3(t_data *data, char *str);
 
 //////////////////////redirects_utils.c//////////////////
 int			redi_out_search(char *str, int i, int red);
-char		*change_str(char *str, t_data *data);
+char		*change_str(char *str, t_data *data, int j);
 char		*cut_str(char *str, t_data *data, int i, int k);
 void		change_data(char *str, t_data *data, char *old);
 int			cut_str2(char *str, int i, int flag_s, int flag_d);
@@ -251,6 +251,14 @@ char		*cut_str_end(char *str, t_data *data, int i, char *next_s);
 
 //////////////////////redirects_utils3.c//////////////////
 char		*cut_str_end2(char *str, t_data *data, int i, char *next_s);
+char		*cut_str_double(char *str, t_data *data, int i, int k);
+char		*cut_str_end_double(char *str, t_data *data, int i, char *next_s);
+char		*cut_str_end2_double(char *str, t_data *data, int i, char *next_s);
+
+//////////////////////redirects_utils4.c//////////////////
+char		*cut_str_else_double(char *str, t_data *data, int j, int i);
+void		cut_str_else2_double(char *str, t_data *data, int j, int k);
+char		*cut_str_1_double(char *str, t_data *data, int i, int k);;
 
 //////////////////////redirects_in.c///////////////////////
 int			redi_in(t_data *data, char *str, char *next_s);
@@ -267,17 +275,17 @@ int			redi_in_no_node(t_data *data, char *temp);
 
 //////////////////////redirects_heredoc.c///////////////////////
 int			redi_heredoc(t_data *data, char *str, char *next_s);
-/*int			redi_in4(t_data *data, char *str);
-int			redi_in5(t_data *data, char *str);
-int			redi_in2(t_data *data, char *str, char *next_s);
-int			redi_in3(t_data *data, char *str);*/
+int			redi_here4(t_data *data, char *str);
+int			redi_here5(t_data *data, char *str);
+int			redi_here2(t_data *data, char *str, char *next_s);
+int			redi_here3(t_data *data, char *str);
 
-//////////////////////redirects_in2.c//////////////////////
+//////////////////////redirects_heredoc2.c//////////////////////
 int			redi_here_two_nodes(t_data *data, char *str, char *file);
 int			do_here(char *hered);
-/*int			redi_in_two_nodes_cut(t_data *data, char *str, char *temp);
-int			redi_in_one_node_del(t_data *data, char *str, char *temp);
-int			redi_in_no_node(t_data *data, char *temp);*/
+int			redi_here_two_nodes_cut(t_data *data, char *str, char *here);
+int			redi_here_one_node_del(t_data *data, char *str, char *here);
+int			redi_here_no_node(t_data *data, char *here);
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
