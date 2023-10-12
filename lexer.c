@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/08/29 17:25:53 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:28:24 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	lexer(t_data *data, char *input)
 
 	if (!input)
 		return (-1);
+	data->original_command = ft_strdup(input);
 	str = ft_strtrim(input, " ");
 	if (check_first(str) == -1)
 		return (free(str), 0);
