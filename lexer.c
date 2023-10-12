@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:29:55 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/11 19:28:24 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:34:27 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	lexer(t_data *data, char *input)
 		return (0);
 	//print_list(data);
 	execution(data);
+	free (data->original_command);
 	return (0);
 }
 
