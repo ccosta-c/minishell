@@ -72,6 +72,9 @@ SRC				= 	prompt.c \
 					redirects_in.c \
 					redirects_heredoc2.c \
 					redirects_heredoc.c \
+					redirects_append.c \
+					redirects_append2.c \
+					redirects_utils5.c \
 					pipes.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell

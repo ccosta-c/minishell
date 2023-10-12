@@ -220,7 +220,8 @@ char		*handle_whitespaces(char *input);
 int			redirects(t_data *data, t_tokens *tmp);
 int			redirects_out(t_data *data, t_tokens *lst, char *str, t_tokens *c);
 int			redirects_in(t_data *data, t_tokens *n, char *str, t_tokens *c);
-int			redirects_heredoc(t_data *data, t_tokens *n, char *str, t_tokens *c);
+int			redirects_here(t_data *data, t_tokens *n, char *str, t_tokens *c);
+int			redirects_append(t_data *data, t_tokens *n, char *str, t_tokens *c);
 
 //////////////////////redirects_out2.c//////////////////////
 int			redi_out_two_nodes(t_data *data, char *str, char *file);
@@ -251,14 +252,23 @@ char		*cut_str_end(char *str, t_data *data, int i, char *next_s);
 
 //////////////////////redirects_utils3.c//////////////////
 char		*cut_str_end2(char *str, t_data *data, int i, char *next_s);
-char		*cut_str_double(char *str, t_data *data, int i, int k);
-char		*cut_str_end_double(char *str, t_data *data, int i, char *next_s);
-char		*cut_str_end2_double(char *str, t_data *data, int i, char *next_s);
+char		*cut_str_here(char *str, t_data *data, int i, int k);
+char		*cut_str_end_here(char *str, t_data *data, int i, char *next_s);
+char		*cut_str_end2_here(char *str, t_data *data, int i, char *next_s);
+char		*change_str_here(char *str, int j);
 
 //////////////////////redirects_utils4.c//////////////////
-char		*cut_str_else_double(char *str, t_data *data, int j, int i);
-void		cut_str_else2_double(char *str, t_data *data, int j, int k);
-char		*cut_str_1_double(char *str, t_data *data, int i, int k);;
+char		*cut_str_else_here(char *str, t_data *data, int j, int i);
+void		cut_str_else2_here(char *str, t_data *data, int j, int k);
+char		*cut_str_1_here(char *str, t_data *data, int i, int k);
+char		*cut_str_append(char *str, t_data *data, int i, int k);
+char		*cut_str_end_append(char *str, t_data *data, int i, char *next_s);
+
+//////////////////////redirects_utils5.c//////////////////
+char		*cut_str_end2_append(char *str, t_data *data, int i, char *next_s);
+char		*cut_str_else_append(char *str, t_data *data, int j, int i);
+void		cut_str_else2_append(char *str, t_data *data, int j, int k);
+char		*cut_str_1_append(char *str, t_data *data, int i, int k);
 
 //////////////////////redirects_in.c///////////////////////
 int			redi_in(t_data *data, char *str, char *next_s);
@@ -286,6 +296,19 @@ int			do_here(char *hered);
 int			redi_here_two_nodes_cut(t_data *data, char *str, char *here);
 int			redi_here_one_node_del(t_data *data, char *str, char *here);
 int			redi_here_no_node(t_data *data, char *here);
+
+//////////////////////redirects_append.c///////////////////////
+int			redi_append(t_data *data, char *str, char *next_s);
+int			redi_append4(t_data *data, char *str);
+int			redi_append5(t_data *data, char *str);
+int			redi_append2(t_data *data, char *str, char *next_s);
+int			redi_append3(t_data *data, char *str);
+
+//////////////////////redirects_append2.c//////////////////////
+int			redi_append_two_nodes(t_data *data, char *str, char *file);
+int			redi_append_two_nodes_cut(t_data *data, char *str, char *temp);
+int			redi_append_one_node_del(t_data *data, char *str, char *temp);
+int			redi_append_no_node(t_data *data, char *temp);
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);

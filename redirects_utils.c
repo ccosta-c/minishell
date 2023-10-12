@@ -31,7 +31,7 @@ int	redi_out_search(char *str, int i, int red)
 			flag_s = 0;
 		else if ((str[i] == '>' || str[i] == '<') && flag_d == 0 && flag_s == 0)
 		{
-				red++;
+			red++;
 			if (str[i + 1] == str[i])
 				i++;
 		}

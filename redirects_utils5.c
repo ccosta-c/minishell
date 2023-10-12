@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirects_utils4.c                                 :+:      :+:    :+:   */
+/*   redirects_utils5.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,27 @@
 
 #include "./includes/minishell.h"
 
-char	*cut_str_else_here(char *str, t_data *data, int j, int i)
+char	*cut_str_end2_append(char *str, t_data *data, int i, char *next_s)
+{
+	int		j;
+	char	*ret;
+	char	*re;
+
+	j = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(str) - 1));
+	while (str[j + 2] != '\0')
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	change_data(ret, data, str);
+	re = cut_str_append(next_s, data, -1, 0);
+	return (free(ret), re);
+}
+
+char	*cut_str_else_append(char *str, t_data *data, int j, int i)
 {
 	int		k;
 	int		r;
@@ -29,12 +49,12 @@ char	*cut_str_else_here(char *str, t_data *data, int j, int i)
 		r++;
 	}
 	re[i] = '\0';
-	cut_str_else2_here(str, data, j, k);
-	ret = remove_quote(re, 0, 0, 0);
+	cut_str_else2_append(str, data, j, k);
+	ret = str_exp_quote(data, re, count_str_exp(re, 0, 0));
 	return (free(re), ret);
 }
 
-void	cut_str_else2_here(char *str, t_data *data, int j, int k)
+void	cut_str_else2_append(char *str, t_data *data, int j, int k)
 {
 	char	*ret;
 	int		i;
@@ -61,7 +81,7 @@ void	cut_str_else2_here(char *str, t_data *data, int j, int k)
 	free(ret);
 }
 
-char	*cut_str_1_here(char *str, t_data *data, int i, int k)
+char	*cut_str_1_append(char *str, t_data *data, int i, int k)
 {
 	int		j;
 	char	*ret;
@@ -86,52 +106,6 @@ char	*cut_str_1_here(char *str, t_data *data, int i, int k)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	r = remove_quote(re, 0, 0, 0);
-	return (free(ret), free(re), r);
-}
-
-char	*cut_str_append(char *str, t_data *data, int i, int k)
-{
-	int		j;
-	char	*ret;
-	char	*re;
-	char	*r;
-
-	j = cut_str2(str, k, 0, 0);
-	ret = malloc(sizeof(char) * (ft_strlen(str) - j + 2));
-	re = malloc(sizeof(char) * (j + 1));
-	while (++i < j)
-		re[i] = str[i];
-	re[i] = '\0';
-	i = 0;
-	while (str[j])
-	{
-		ret[i] = str[j];
-		i++;
-		j++;
-	}
-	ret[i] = '\0';
-	change_data(ret, data, str);
 	r = str_exp_quote(data, re, count_str_exp(re, 0, 0));
 	return (free(ret), free(re), r);
-}
-
-char	*cut_str_end_append(char *str, t_data *data, int i, char *next_s)
-{
-	int		j;
-	char	*ret;
-	char	*re;
-
-	j = 0;
-	ret = malloc(sizeof(char) * (ft_strlen(str) - 1));
-	while (str[j + 2] != '\0')
-	{
-		ret[i] = str[j];
-		i++;
-		j++;
-	}
-	ret[i] = '\0';
-	change_data(ret, data, str);
-	re = str_exp_quote(data, next_s, count_str_exp(next_s, 0, 0));
-	return (free(ret), re);
 }

@@ -32,7 +32,7 @@ char	*cut_str_end2(char *str, t_data *data, int i, char *next_s)
 	return (free(ret), re);
 }
 
-char	*cut_str_double(char *str, t_data *data, int i, int k)
+char	*cut_str_here(char *str, t_data *data, int i, int k)
 {
 	int		j;
 	char	*ret;
@@ -58,7 +58,7 @@ char	*cut_str_double(char *str, t_data *data, int i, int k)
 	return (free(ret), free(re), r);
 }
 
-char	*cut_str_end_double(char *str, t_data *data, int i, char *next_s)
+char	*cut_str_end_here(char *str, t_data *data, int i, char *next_s)
 {
 	int		j;
 	char	*ret;
@@ -78,7 +78,7 @@ char	*cut_str_end_double(char *str, t_data *data, int i, char *next_s)
 	return (free(ret), re);
 }
 
-char	*cut_str_end2_double(char *str, t_data *data, int i, char *next_s)
+char	*cut_str_end2_here(char *str, t_data *data, int i, char *next_s)
 {
 	int		j;
 	char	*ret;
@@ -94,6 +94,25 @@ char	*cut_str_end2_double(char *str, t_data *data, int i, char *next_s)
 	}
 	ret[i] = '\0';
 	change_data(ret, data, str);
-	re = cut_str_double(next_s, data, -1, 0);
+	re = cut_str_here(next_s, data, -1, 0);
+	return (free(ret), re);
+}
+
+char	*change_str_here(char *str, int j)
+{
+	int		i;
+	char	*ret;
+	char	*re;
+
+	i = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(str)));
+	while (str[j])
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	re = remove_quote(ret, 0, 0, 0);
 	return (free(ret), re);
 }
