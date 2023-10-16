@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/11 17:56:44 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:25:18 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_data
 {
 	t_charlist	*env;
 	t_charlist	*export;
+	pid_t		*pid;
 	char		*original_command;
 	char		*prompt;
 	char		**paths;
@@ -65,6 +66,7 @@ typedef struct s_data
 	char		*old_pwd;
 	char		*home;
 	char		*heredoc;
+	int			*pipes_fds;
 	int			stdin_fd;
 	int			stdout_fd;
 	int			red_flag;
@@ -313,5 +315,14 @@ int			redi_append_no_node(t_data *data, char *temp);
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
 char		**pipes_commands(t_data *data);
+int			execute_pipes_command(t_data *data, char *command, int i);
+void		pipes_wiring(t_data *data, int i);
+
+//////////////////////pipes_test.c//////////////////////
+
+int			lexer_pipes(t_data *data, char *input);
+void		reset_fd(t_data *data);
+void		execution_pipes(t_data *data);
+void		pipe_closing(t_data *data);
 
 #endif
