@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/02 14:02:59 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:40:37 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ void	add_export(t_data *data)
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
-		if ((strchr(tmp->data, '\'') != 0) || (strchr(tmp->data, '\"') != 0))
+		if ((ft_strchr(tmp->data, '\'') != 0)
+			|| (ft_strchr(tmp->data, '\"') != 0))
 		{
 			no_quotes = remove_quote(tmp->data, 0, 0, 0);
 			free(tmp->data);
@@ -119,14 +120,14 @@ void	add_export(t_data *data)
 		}
 		if (name_variable(tmp->data, data->export) == 1)
 		{
-			if (strchr(tmp->data, '=') != 0)
+			if (ft_strchr(tmp->data, '=') != 0)
 				name_variable(tmp->data, data->env);
 			return ;
 		}
 		else
 		{
 			add_to_charlist(&data->export, tmp->data);
-			if (strchr(tmp->data, '=') != 0)
+			if (ft_strchr(tmp->data, '=') != 0)
 				add_to_charlist(&data->env, tmp->data);
 			tmp = tmp->next;
 		}

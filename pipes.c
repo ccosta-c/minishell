@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:34:10 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/16 12:25:52 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:01:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	pipes_execution(t_data *data)
 	data->pid = malloc(sizeof(int) * (data->pipes_nums + 1));
 	commands = pipes_commands(data);
 	data->pipes_fds = malloc(sizeof(int) * (data->pipes_nums * 2));
-	while (i <= data->pipes_nums)
+	while (i < data->pipes_nums)
 	{
-		if (pipe(data->pipes_fds) < 0)
+		if (pipe(data->pipes_fds + (i * 2)) < 0)
 		{
 			ft_putstr_fd("Error while creating pipes", 2);
 			return ;
@@ -38,6 +38,7 @@ void	pipes_execution(t_data *data)
 		execute_pipes_command(data, commands[i], i);
 		i++;
 	}
+	pipe_closing(data);
 }
 
 int	execute_pipes_command(t_data *data, char *command, int i)
@@ -52,21 +53,24 @@ int	execute_pipes_command(t_data *data, char *command, int i)
 		lexer_pipes(data, command);
 	}
 	waitpid(data->pid[i], NULL, 0);
+	pipe_closing(data);
 	return (0);
 }
 
-void	pipes_wiring(t_data *data, int i)
+void	redirect(int fd_in, int fd_out)
+{
+	dup2(fd_in, STDIN_FILENO);
+	dup2(fd_out, STDOUT_FILENO);
+}
+
+void	pipes_wiring(t_data	*ms, int i)
 {
 	if (i == 0)
-		dup2(data->pipes_fds[1], STDOUT_FILENO);
-	else if (i == data->pipes_nums)
-		dup2(data->pipes_fds[2 * i - 2], STDIN_FILENO);
+		redirect(ms->stdin_fd, ms->pipes_fds[1]);
+	else if (i == ms->pipes_nums)
+		redirect(ms->pipes_fds[i * 2 - 2], ms->stdout_fd);
 	else
-	{
-		dup2(data->pipes_fds[2 * i - 2], STDIN_FILENO);
-		dup2(data->pipes_fds[2 * i + 1], STDOUT_FILENO);
-	}
-	pipe_closing(data);
+		redirect(ms->pipes_fds[i * 2 - 2], ms->pipes_fds[i * 2 + 1]);
 }
 
 char	**pipes_commands(t_data *data)
