@@ -6,11 +6,61 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:31:29 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/16 15:59:00 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:41:07 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
+
+char	**pipes_commands(t_data *data)
+{
+	char	**commands;
+	int		i;
+	int		j;
+	int		k;
+	bool	quotes;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	quotes = false;
+	commands = malloc(sizeof (char *) * (data->pipes_nums + 2));
+	commands[j] = malloc(sizeof(char) * strlen(data->original_command));
+	while (data->original_command[i])
+	{
+		if (data->original_command[i] == '\'' || data->original_command[i] == '\"')
+		{
+			if (quotes == true)
+				quotes = false;
+			else
+				quotes = true;
+		}
+		if (data->original_command[i] == '|' && quotes == false)
+		{
+			commands[j][k] = '\0';
+			i++;
+			k = 0;
+			j++;
+			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
+			continue ;
+		}
+		if (data->original_command[i] == ' ' && data->original_command[i + 1] == '|' && quotes == false)
+		{
+			commands[j][k] = '\0';
+			i = i + 2;
+			k = 0;
+			j++;
+			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
+			continue ;
+		}
+		commands[j][k] = data->original_command[i];
+		i++;
+		k++;
+	}
+	commands[j][k] = '\0';
+	commands[j + 1] = NULL;
+	return (commands);
+}
 
 int	lexer_pipes(t_data *data, char *input)
 {
@@ -43,8 +93,6 @@ void	execution_pipes(t_data *data)
 		free_array(arg);
 		free_array(data->paths);
 	}
-	reset_fd(data);
-	exit(0);
 }
 
 void	reset_fd(t_data *data)
@@ -75,7 +123,6 @@ void	execve_pipes(t_data *data, char **arg, int i)
 		if (access(tmp_path, X_OK) == 0)
 		{
 			execve(tmp_path, arg, data->og_envp);
-			exit (0);
 		}
 		free(tmp_path);
 		i++;
