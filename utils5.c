@@ -76,3 +76,17 @@ int	check_minus_n(char *s)
 	}
 	return (0);
 }
+
+int	minus(char *s)
+{
+	if (s[0] == '-' && (s[1] == 'e' || s[1] == 'E'))
+	{
+		printf("echo: No options supported\n");
+		g_exit = 2;
+		return (2);
+	}
+	if (s[0] == '-' && s[1] == 'n')
+		return (0);
+	else
+		return (1);
+}

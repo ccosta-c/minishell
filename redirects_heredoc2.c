@@ -27,8 +27,8 @@ int	redi_here_two_nodes(t_data *data, char *str, char *here)
 				return (-1);
 			dup2(fd_file, STDIN_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->next->data, data);
-			delete_redirects(&data->top, tmp->data, data);
+			delete_redirects(&data->top, tmp->next->data, data, 0);
+			delete_redirects(&data->top, tmp->data, data, 0);
 			data->red_flag++;
 			return (0);
 		}
@@ -82,7 +82,7 @@ int	redi_here_two_nodes_cut(t_data *data, char *str, char *here)
 				return (-1);
 			dup2(fd_file, STDIN_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->data, data);
+			delete_redirects(&data->top, tmp->data, data, 0);
 			data->red_flag++;
 			return (0);
 		}
@@ -106,7 +106,7 @@ int	redi_here_one_node_del(t_data *data, char *str, char *here)
 				return (-1);
 			dup2(fd_file, STDIN_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->data, data);
+			delete_redirects(&data->top, tmp->data, data, 0);
 			data->red_flag++;
 			return (0);
 		}

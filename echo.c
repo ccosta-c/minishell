@@ -12,32 +12,31 @@
 
 #include "./includes/minishell.h"
 
-void	execution_echo(t_data *data)
+int	execution_echo(t_data *data)
 {
 	char	*s;
 
-	s = remove_quote(data->top->next->data, 0, 0, 0);
 	if (!data->top->next)
-	{
-		printf("\n");
-		return ;
-	}
-	if (s[0] == '-' && s[1] == 'n')
+		return (printf("\n"), g_exit = 0, 0);
+	s = remove_quote(data->top->next->data, 0, 0, 0);
+	if (minus(s) == 2)
+		return (2);
+	if (minus(s) == 1)
 	{
 		if (check_minus_n(s) == 0)
 		{
 			if (!data->top->next->next)
-				return ;
+				return (g_exit = 0, 0);
 			else
 			{
 				echo_minus_n(data);
-				return ;
+				return (g_exit = 0, 0);
 			}
 		}
 	}
 	echo_normal(data);
 	printf("\n");
-	free(s);
+	return (free(s), g_exit = 0, 0);
 }
 
 void	simpleq_echo(char *str)

@@ -58,6 +58,7 @@ typedef struct s_data
 	t_charlist	*env;
 	t_charlist	*export;
 	pid_t		*pid;
+	//pid_t		*pid_r;
 	char		*original_command;
 	char		*prompt;
 	char		**paths;
@@ -122,12 +123,13 @@ int			cut_str_exp(char *str, int i, int flag_s);
 int			count_str_exp(char *str, int i, int flag_s);
 int			check_minus_n(char *s);
 char		*cut_env_exp(char *env, int j, int k);
+int			minus(char *s);
 
 ////////////////////////lstops2.c//////////////////////
 void		add_to_charlist(t_charlist **top, char *content);
 t_charlist	*ft_addnew(char *content);
 t_charlist	*ft_golast(t_charlist *lst);
-void		delete_redirects(t_tokens **lst, char *symb, t_data *data);
+int		delete_redirects(t_tokens **lst, char *symb, t_data *data, int i);
 int			get_size_lst(t_data *data);
 
 ////////////////////////lexer.c//////////////////////
@@ -167,8 +169,6 @@ int			check_quotes(char	*input, int i);
 int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
-void		fork_redirects(t_data *data);
-int			search_red_total(t_data *data, int redi);
 void		execution(t_data *data);
 void		execution_single(t_data *data, int j, char **arg, int i);
 char		*get_tmp_path(t_data *data, int i);
@@ -181,6 +181,8 @@ void		add_export(t_data *data);
 int			count_variables(t_charlist *list);
 
 //////////////////////builtins.c///////////////////
+void		fork_redirects(t_data *data);
+int			search_red_total(t_data *data, int redi);
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);
 int			check_builtins3(t_data *data);
@@ -193,7 +195,7 @@ void		execution_unset(t_data *data);
 void		execution_exit(t_data *data);
 
 //////////////////////echo.c/////////////////////////
-void		execution_echo(t_data *data);
+int			execution_echo(t_data *data);
 void		simpleq_echo(char *str);
 void		doubleq_echo(char *str, t_data *data);
 void		echo_normal(t_data *data);
