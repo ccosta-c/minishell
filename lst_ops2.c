@@ -55,7 +55,7 @@ t_charlist	*ft_golast(t_charlist *lst)
 	return (ptr);
 }
 
-void	delete_redirects(t_tokens **lst, char *symb)
+void	delete_redirects(t_tokens **lst, char *symb, t_data *data)
 {
 	t_tokens	*tmp;
 	t_tokens	*before;
@@ -71,9 +71,25 @@ void	delete_redirects(t_tokens **lst, char *symb)
 			free(tmp->data);
 			free(tmp);
 			before->next = after;
+			data->lst_size--;
 			break ;
 		}
 		before = tmp;
 		tmp = tmp->next;
 	}
+}
+
+int	get_size_lst(t_data *data)
+{
+	t_tokens	*tmp;
+	int			size;
+
+	size = 0;
+	tmp = data->top;
+	while (tmp != NULL)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	return (size);
 }

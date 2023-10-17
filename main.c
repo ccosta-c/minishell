@@ -45,6 +45,7 @@ void	prompt_loop(t_data *data)
 
 	while (1)
 	{
+		handle_signals();
 		txt = readline(data->prompt);
 		add_history(txt);
 		if ((lexer(data, txt)) == -1)

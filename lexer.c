@@ -49,6 +49,7 @@ void	lexer_continuation(t_data *data, char *str, int i, int j)
 		if (str[i++] == '\0')
 			break ;
 	}
+	data->lst_size = get_size_lst(data);
 }
 
 int	check_first(char *in)

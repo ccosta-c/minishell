@@ -66,6 +66,7 @@ typedef struct s_data
 	char		*old_pwd;
 	char		*home;
 	char		*heredoc;
+	int			lst_size;
 	int			*pipes_fds;
 	int			stdin_fd;
 	int			stdout_fd;
@@ -126,7 +127,8 @@ char		*cut_env_exp(char *env, int j, int k);
 void		add_to_charlist(t_charlist **top, char *content);
 t_charlist	*ft_addnew(char *content);
 t_charlist	*ft_golast(t_charlist *lst);
-void		delete_redirects(t_tokens **lst, char *symb);
+void		delete_redirects(t_tokens **lst, char *symb, t_data *data);
+int			get_size_lst(t_data *data);
 
 ////////////////////////lexer.c//////////////////////
 int			lexer(t_data *data, char *input);
@@ -149,7 +151,10 @@ void		print_lstchar(t_charlist *data);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
+void		signal_default(void);
 void		handler(int sig);
+void		handler_sigint(int sig);
+void		get_exit_status(t_data *data);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);

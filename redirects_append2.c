@@ -30,8 +30,8 @@ int	redi_append_two_nodes(t_data *data, char *str, char *file)
 			}
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->next->data);
-			delete_redirects(&data->top, tmp->data);
+			delete_redirects(&data->top, tmp->next->data, data);
+			delete_redirects(&data->top, tmp->data, data);
 			return (0);
 		}
 		tmp = tmp->next;
@@ -57,7 +57,7 @@ int	redi_append_two_nodes_cut(t_data *data, char *str, char *temp)
 			}
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->data);
+			delete_redirects(&data->top, tmp->data, data);
 			return (0);
 		}
 		tmp = tmp->next;
@@ -83,7 +83,7 @@ int	redi_append_one_node_del(t_data *data, char *str, char *temp)
 			}
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
-			delete_redirects(&data->top, tmp->data);
+			delete_redirects(&data->top, tmp->data, data);
 			return (0);
 		}
 		tmp = tmp->next;

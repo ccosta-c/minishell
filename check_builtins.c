@@ -21,6 +21,7 @@ void	fork_redirects(t_data *data)
 	redi = search_red_total(data, 0);
 	if (pid == 0)
 	{
+		signal_default();
 		while (redi > 0)
 		{
 			if (redirects(data, data->top) == -1)
@@ -30,7 +31,8 @@ void	fork_redirects(t_data *data)
 			}
 			redi--;
 		}
-		execution(data);
+		if (data->lst_size > 0)
+			execution(data);
 		if (data->red_flag != 0)
 			unlink(".heredoc");
 		g_exit = 0;
