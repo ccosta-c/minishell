@@ -30,9 +30,9 @@ void	handler_sigint(int sig)
 {
 	if (sig == SIGINT)
 	{
-		ft_putchar_fd('\n', STDOUT_FILENO);
 		rl_on_new_line();
 		rl_replace_line("", 0);
+		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 }
 
@@ -42,7 +42,7 @@ void	signal_default(void)
 	signal(SIGINT, SIG_DFL);
 }
 
-void	get_exit_status(t_data *data)
+void	get_exit_status_arr(t_data *data, int *pids)
 {
 	int		i;
 	pid_t	pid;
@@ -53,7 +53,7 @@ void	get_exit_status(t_data *data)
 	while (i < (data->pipes_nums + 1))
 	{
 		signal(SIGINT, &handler_sigint);
-		pid = waitpid(data->pid[i], &status, 0);
+		pid = waitpid(pids[i], &status, 0);
 		if (pid < 0)
 			continue ;
 		if (WIFEXITED(status))
@@ -62,6 +62,22 @@ void	get_exit_status(t_data *data)
 			g_exit = 128 + WTERMSIG(status);
 		i++;
 	}
+}
+
+void	get_exit_status_one(int pids)
+{
+	pid_t	pid;
+	int		status;
+
+	status = 0;
+	signal(SIGINT, &handler_sigint);
+	pid = waitpid(pids, &status, 0);
+	if (pid < 0)
+		return ;
+	if (WIFEXITED(status))
+		g_exit = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		g_exit = 128 + WTERMSIG(status);
 }
 
 void	handler(int sig)

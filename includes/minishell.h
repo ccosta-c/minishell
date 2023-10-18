@@ -58,7 +58,6 @@ typedef struct s_data
 	t_charlist	*env;
 	t_charlist	*export;
 	pid_t		*pid;
-	//pid_t		*pid_r;
 	char		*original_command;
 	char		*prompt;
 	char		**paths;
@@ -156,7 +155,8 @@ void		handle_signals(void);
 void		signal_default(void);
 void		handler(int sig);
 void		handler_sigint(int sig);
-void		get_exit_status(t_data *data);
+void		get_exit_status_arr(t_data *data, int *pids);
+void		get_exit_status_one(int pids);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);

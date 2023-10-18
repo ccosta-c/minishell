@@ -28,11 +28,13 @@ void	execution(t_data *data)
 		{
 			arg = list_to_array(data);
 			get_envpaths(data);
-			execution_single(data, 0, arg, 0);
+			execution_single(data, 0, arg, -1);
 			free_array(arg);
 			free_array(data->paths);
 		}
 	}
+	/*if (data->pipes_nums > 0)
+		get_exit_status_arr(data, data->pid);*/
 }
 
 void	execution_single(t_data *data, int j, char **arg, int i)
@@ -40,7 +42,7 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 	char	*tmp_path;
 	pid_t	pid;
 
-	while (data->paths[i] != NULL)
+	while (data->paths[++i] != NULL)
 	{
 		tmp_path = get_tmp_path(data, i);
 		if (access(tmp_path, X_OK) == 0)
@@ -48,19 +50,19 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 			j++;
 			pid = fork();
 			if (pid == 0)
-			{
 				execve(tmp_path, arg, data->og_envp);
-				exit (0);
-			}
+			get_exit_status_one(pid);
 			wait(NULL);
 			free(tmp_path);
 			return ;
 		}
 		free(tmp_path);
-		i++;
 	}
 	if (j == 0)
+	{
 		printf("%s: command not found\n", data->top->data);
+		g_exit = 127;
+	}
 }
 
 char	*get_tmp_path(t_data *data, int i)

@@ -25,20 +25,17 @@ void	fork_redirects(t_data *data)
 		while (redi > 0)
 		{
 			if (redirects(data, data->top) == -1)
-			{
-				g_exit = 1;
 				exit(1);
-			}
 			redi--;
 		}
 		if (data->lst_size > 0)
 			execution(data);
-		if (data->red_flag != 0)
-			unlink(".heredoc");
-		g_exit = 0;
 		exit (0);
 	}
+	get_exit_status_one(pid);
 	wait(NULL);
+	if (data->red_flag != 0)
+		unlink(".heredoc");
 }
 
 int	search_red_total(t_data *data, int redi)

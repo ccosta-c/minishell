@@ -98,12 +98,11 @@ void	execution_exit(t_data *data)
 {
 	if (!data->top->next)
 	{
-		g_exit = 0;
 		printf("exit\n");
 		frees(data);
 		exit(g_exit);
 	}
-	else if (data->top->next->next)
+	else if (data->top->next->next && check_exit_data(data->top->next->data) == 0)
 	{
 		printf("exit\nminishell: exit: too many arguments\n");
 		g_exit = 1;
