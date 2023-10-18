@@ -27,7 +27,7 @@ RM = rm -f
 AR = ar -rcs
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FLAGS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror -g #-fsanitize=address
 MKFLAGS		= --no-print-directory
 LIBFTFLAGS	= -L ./libft -lft
 
@@ -76,7 +76,8 @@ SRC				= 	prompt.c \
 					redirects_append2.c \
 					redirects_utils5.c \
 					pipes.c \
-					pipes_test.c
+					pipes_utils.c \
+					pipes_utils2.c
 OBJS 			:= $(SRC:.c=.o)
 NAME			= minishell
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))

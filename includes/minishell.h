@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/16 15:05:00 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:47:40 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,16 +321,23 @@ int			redi_append_no_node(t_data *data, char *temp);
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
-char		**pipes_commands(t_data *data);
 int			execute_pipes_command(t_data *data, char *command, int i);
+void		redirect(int fd_in, int fd_out);
 void		pipes_wiring(t_data *data, int i);
+void		execve_pipes(t_data *data, char **arg, int i);
 
-//////////////////////pipes_test.c//////////////////////
+//////////////////////pipes_utils.c//////////////////////
 
 int			lexer_pipes(t_data *data, char *input);
-void		reset_fd(t_data *data);
 void		execution_pipes(t_data *data);
+void		reset_fd(t_data *data);
 void		pipe_closing(t_data *data);
-void		execve_pipes(t_data *data, char **arg, int i);
+
+//////////////////////pipes_utils2.c//////////////////////
+
+char		**pipes_commands_aux(t_data *data);
+char		**pipes_commands(t_data *data, int i, int j, int k);
+void		first_pipes_cmd_check(char original_command, bool *quotes);
+void		second_pipes_cmd_check(char **commands, int *i, int *j, int *k);
 
 #endif

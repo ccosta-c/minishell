@@ -12,56 +12,6 @@
 
 #include "./includes/minishell.h"
 
-char	**pipes_commands(t_data *data)
-{
-	char	**commands;
-	int		i;
-	int		j;
-	int		k;
-	bool	quotes;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	quotes = false;
-	commands = malloc(sizeof (char *) * (data->pipes_nums + 2));
-	commands[j] = malloc(sizeof(char) * strlen(data->original_command));
-	while (data->original_command[i])
-	{
-		if (data->original_command[i] == '\'' || data->original_command[i] == '\"')
-		{
-			if (quotes == true)
-				quotes = false;
-			else
-				quotes = true;
-		}
-		if (data->original_command[i] == '|' && quotes == false)
-		{
-			commands[j][k] = '\0';
-			i++;
-			k = 0;
-			j++;
-			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
-			continue ;
-		}
-		if (data->original_command[i] == ' ' && data->original_command[i + 1] == '|' && quotes == false)
-		{
-			commands[j][k] = '\0';
-			i = i + 2;
-			k = 0;
-			j++;
-			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
-			continue ;
-		}
-		commands[j][k] = data->original_command[i];
-		i++;
-		k++;
-	}
-	commands[j][k] = '\0';
-	commands[j + 1] = NULL;
-	return (commands);
-}
-
 int	lexer_pipes(t_data *data, char *input)
 {
 	char	*str;
@@ -111,22 +61,4 @@ void	pipe_closing(t_data *data)
 		close(data->pipes_fds[i]);
 		i++;
 	}
-}
-
-void	execve_pipes(t_data *data, char **arg, int i)
-{
-	char	*tmp_path;
-
-	while (data->paths[i] != NULL)
-	{
-		tmp_path = get_tmp_path(data, i);
-		if (access(tmp_path, X_OK) == 0)
-		{
-			execve(tmp_path, arg, data->og_envp);
-		}
-		free(tmp_path);
-		i++;
-	}
-	printf("%s: command not found\n", data->top->data);
-	exit (127);
 }
