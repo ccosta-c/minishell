@@ -25,7 +25,7 @@ int	redi_append_two_nodes(t_data *data, char *str, char *file)
 			fd_file = open(file, O_WRONLY | O_CREAT | O_APPEND, 0777);
 			if (fd_file < 0)
 			{
-				printf("Minishell: %s: %s.\n", file, strerror(errno));
+				printf("minishell: %s: %s.\n", file, strerror(errno));
 				return (-1);
 			}
 			dup2(fd_file, STDOUT_FILENO);
@@ -52,7 +52,7 @@ int	redi_append_two_nodes_cut(t_data *data, char *str, char *temp)
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_APPEND, 0777);
 			if (fd_file < 0)
 			{
-				printf("Minishell: %s: %s.\n", temp, strerror(errno));
+				printf("minishell: %s: %s.\n", temp, strerror(errno));
 				return (-1);
 			}
 			dup2(fd_file, STDOUT_FILENO);
@@ -78,7 +78,7 @@ int	redi_append_one_node_del(t_data *data, char *str, char *temp)
 			fd_file = open(temp, O_WRONLY | O_CREAT | O_APPEND, 0777);
 			if (fd_file < 0)
 			{
-				printf("Minishell: %s: %s.\n", temp, strerror(errno));
+				printf("minishell: %s: %s.\n", temp, strerror(errno));
 				return (-1);
 			}
 			dup2(fd_file, STDOUT_FILENO);
@@ -99,7 +99,7 @@ int	redi_append_no_node(t_data *data, char *temp)
 	fd_file = open(temp, O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (fd_file < 0)
 	{
-		printf("Minishell: %s: %s.\n", temp, strerror(errno));
+		printf("minishell: %s: %s.\n", temp, strerror(errno));
 		return (-1);
 	}
 	dup2(fd_file, STDOUT_FILENO);

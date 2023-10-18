@@ -21,11 +21,11 @@ int	lexer(t_data *data, char *input)
 	data->og_command = ft_strdup(input);
 	str = ft_strtrim(input, " ");
 	if (check_first(str) == -1)
-		return (free(str), 0);
+		return (free (data->og_command), free(str), 0);
 	lexer_continuation(data, str, 0, 0);
 	free(str);
 	if (check_second(data) == -1)
-		return (0);
+		return (free (data->og_command), 0);
 	//print_list(data);
 	execution(data);
 	free (data->og_command);
@@ -62,11 +62,8 @@ int	check_first(char *in)
 		printf("minishell: unclosed quotes\n");
 		return (g_exit = 2, -1);
 	}
-	if (check_pipes(in) == 0)
-	{
-		printf("minishell: syntax error near unexpected token '|'\n");
-		return (g_exit = 2, -1);
-	}
+	if (check_pipes(in) == 0 || check_not_exc(in) == -1)
+		return (-1);
 	if (c != 0 || in[ft_strlen(in) - 1] == '<' || in[ft_strlen(in) - 1] == '>')
 	{
 		printf("minishell: syntax error near unexpected token `%c'\n", c);
@@ -95,7 +92,7 @@ int	check_second(t_data *data)
 			{
 				if (tmp->data[i] == '(' || tmp->data[i] == ')')
 				{
-					printf("minishell:bash:");
+					printf("minishell:");
 					printf(" syntax error near unexpected token\n");
 					return (g_exit = 2, -1);
 				}

@@ -45,7 +45,7 @@ int	do_here(char *hered)
 	fd_file = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd_file < 0)
 	{
-		printf("Minishell: '.heredoc' %s.\n", strerror(errno));
+		printf("minishell: '.heredoc' %s.\n", strerror(errno));
 		return (-1);
 	}
 	while (1)

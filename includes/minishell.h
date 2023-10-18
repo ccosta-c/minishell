@@ -124,6 +124,13 @@ int			check_minus_n(char *s);
 char		*cut_env_exp(char *env, int j, int k);
 int			minus(char *s);
 
+////////////////////////utils5.c//////////////////////
+void		signal_default(void);
+int			check_not_exc(char *in);
+int			ecomercial_search(char *str, int i, int e);
+int			backslash_search(char *str, int i, int b);
+int			semicolon_search(char *str, int i, int s);
+
 ////////////////////////lstops2.c//////////////////////
 void		add_to_charlist(t_charlist **top, char *content);
 t_charlist	*ft_addnew(char *content);
@@ -152,7 +159,6 @@ void		print_lstchar(t_charlist *data);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
-void		signal_default(void);
 void		handler(int sig);
 void		handler_sigint(int sig);
 void		get_exit_status_arr(t_data *data, int *pids);

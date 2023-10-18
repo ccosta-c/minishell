@@ -31,15 +31,21 @@ void	handler_sigint(int sig)
 	if (sig == SIGINT)
 	{
 		rl_on_new_line();
-		rl_replace_line("", 0);
 		ft_putchar_fd('\n', STDOUT_FILENO);
+		rl_replace_line("", 0);
 	}
 }
 
-void	signal_default(void)
+void	handler(int sig)
 {
-	signal(SIGQUIT, SIG_DFL);
-	signal(SIGINT, SIG_DFL);
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+		g_exit = 130;
+	}
 }
 
 void	get_exit_status_arr(t_data *data, int *pids)
@@ -78,16 +84,4 @@ void	get_exit_status_one(int pids)
 		g_exit = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 		g_exit = 128 + WTERMSIG(status);
-}
-
-void	handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-		g_exit = 130;
-	}
 }

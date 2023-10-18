@@ -33,11 +33,25 @@ int	check_exclamation(char *input, int i)
 int	check_pipes(char *input)
 {
 	if (input && input[0] == '|' && input[1] != '|')
-		return (0);
+	{
+		printf("minishell: syntax error near unexpected token '|'\n");
+		return (g_exit = 2, 0);
+	}
 	else if (input && input[0] == '|' && input[1] == '|')
-		return (0);
+	{
+		printf("minishell: syntax error near unexpected token '|'\n");
+		return (g_exit = 2, 0);
+	}
 	if (input[ft_strlen(input) - 1] == '|')
-		return (0);
+	{
+		printf("minishell: syntax error near unexpected token '|'\n");
+		return (g_exit = 2, 0);
+	}
+	if (input[ft_strlen(input) - 1] == ';')
+	{
+		printf("minishell: syntax error near unexpected token `;'\n");
+		return (g_exit = 2, 0);
+	}
 	return (1);
 }
 
