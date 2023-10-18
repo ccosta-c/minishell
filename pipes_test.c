@@ -128,4 +128,5 @@ void	execve_pipes(t_data *data, char **arg, int i)
 		i++;
 	}
 	printf("%s: command not found\n", data->top->data);
+	exit (127);
 }

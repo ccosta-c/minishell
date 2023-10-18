@@ -38,6 +38,7 @@ void	pipes_execution(t_data *data)
 		execute_pipes_command(data, commands[i], i);
 		i++;
 	}
+	get_exit_status_arr(data, data->pid);
 	pipe_closing(data);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
