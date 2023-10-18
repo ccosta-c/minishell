@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:34:10 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 15:05:14 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:16:16 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,11 @@ void	pipes_execution(t_data *data)
 	int		i;
 
 	i = 0;
-	data->stdin_fd = STDIN_FILENO;
-	data->stdout_fd = STDOUT_FILENO;
-	data->pid = malloc(sizeof(pid_t) * (data->pipes_nums + 1));
 	commands = pipes_commands_aux(data);
-	data->pipes_fds = malloc(sizeof(int) * (data->pipes_nums * 2));
 	while (i < data->pipes_nums)
 	{
 		if (pipe(data->pipes_fds + (i * 2)) < 0)
-		{
-			ft_putstr_fd("Error while creating pipes", 2);
 			return ;
-		}
 		i++;
 	}
 	i = 0;
@@ -40,13 +33,13 @@ void	pipes_execution(t_data *data)
 	}
 	pipe_closing(data);
 	get_exit_status_arr(data, data->pid);
+	free_child(data, commands);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
 }
 
 int	execute_pipes_command(t_data *data, char *command, int i)
 {
-
 	data->pid[i] = fork();
 	if (data->pid[i] < 0)
 		return (-1);
@@ -54,6 +47,7 @@ int	execute_pipes_command(t_data *data, char *command, int i)
 	{
 		pipes_wiring(data, i);
 		lexer_pipes(data, command);
+		frees(data);
 	}
 	return (0);
 }

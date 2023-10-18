@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:24:53 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 15:28:52 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:19:42 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ char	**pipes_commands_aux(t_data *data)
 	i = 0;
 	j = 0;
 	k = 0;
+	data->stdin_fd = STDIN_FILENO;
+	data->stdout_fd = STDOUT_FILENO;
+	data->pid = malloc(sizeof(pid_t) * (data->pipes_nums + 1));
+	data->pipes_fds = malloc(sizeof(int) * (data->pipes_nums * 2));
 	return (pipes_commands(data, i, j, k));
 }
 
@@ -60,4 +64,15 @@ void	first_pipes_cmd_check(char original_command, bool *quotes)
 		else
 			*(quotes) = true;
 	}
+}
+
+void	free_child(t_data *data, char **array)
+{
+	int	i;
+
+	i = 0;
+	free_array(array);
+	free(data->pipes_fds);
+	ft_cleartokens(&data->top);
+	free(data->pid);
 }

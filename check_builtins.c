@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:44:34 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/18 16:13:58 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:58:52 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	fork_redirects(t_data *data)
 		}
 		if (data->lst_size > 0)
 			execution(data);
+		frees(data);
 		exit (0);
 	}
 	get_exit_status_one(pid);

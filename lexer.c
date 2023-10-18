@@ -26,7 +26,6 @@ int	lexer(t_data *data, char *input)
 	free(str);
 	if (check_second(data) == -1)
 		return (free (data->og_command), 0);
-	//print_list(data);
 	execution(data);
 	free (data->og_command);
 	return (0);

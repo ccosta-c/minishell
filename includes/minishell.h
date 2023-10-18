@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 14:47:40 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:09:03 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void		copy_envp(t_data *data, char **envp);
 t_tokens	*initialize_tokens(int end, int start, char *arg);
 void		add_to_list(t_tokens **lst, t_tokens *new);
 void		ft_cleartokens(t_tokens **lst);
+void		ft_clearcharlist(t_charlist **lst);
+
 
 ////////////////////////utils.c//////////////////////
 char		**list_to_array(t_data *data);
@@ -135,7 +137,7 @@ int			semicolon_search(char *str, int i, int s);
 void		add_to_charlist(t_charlist **top, char *content);
 t_charlist	*ft_addnew(char *content);
 t_charlist	*ft_golast(t_charlist *lst);
-int		delete_redirects(t_tokens **lst, char *symb, t_data *data, int i);
+int			delete_redirects(t_tokens **lst, char *symb, t_data *data, int i);
 int			get_size_lst(t_data *data);
 
 ////////////////////////lexer.c//////////////////////
@@ -344,6 +346,6 @@ void		pipe_closing(t_data *data);
 char		**pipes_commands_aux(t_data *data);
 char		**pipes_commands(t_data *data, int i, int j, int k);
 void		first_pipes_cmd_check(char original_command, bool *quotes);
-void		second_pipes_cmd_check(char **commands, int *i, int *j, int *k);
+void		free_child(t_data *data, char **array);
 
 #endif

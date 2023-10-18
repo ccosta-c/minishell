@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:18:24 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/09/28 15:27:30 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:03:19 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,24 @@ void	ft_cleartokens(t_tokens **lst)
 	{
 		prox = temp->next;
 		free(temp->data);
+		free(temp);
+		temp = prox;
+	}
+	*lst = NULL;
+}
+
+void	ft_clearcharlist(t_charlist **lst)
+{
+	t_charlist	*temp;
+	t_charlist	*prox;
+
+	if (!lst)
+		return ;
+	temp = *lst;
+	while (temp)
+	{
+		prox = temp->next;
+		free(temp->content);
 		free(temp);
 		temp = prox;
 	}

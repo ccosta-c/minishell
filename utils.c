@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 09:41:15 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/11 18:34:43 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:21:50 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	**list_to_array(t_data *data)
 	t_tokens	*tmp;
 	char		**array;
 	int			i;
+	char		*tmp_s;
 
 	i = 0;
 	tmp = data->top;
@@ -30,9 +31,11 @@ char	**list_to_array(t_data *data)
 	i = 0;
 	while (tmp != NULL)
 	{
-		array[i] = ft_strdup(tmp->data);
+		tmp_s = remove_quote(tmp->data, 0, 0, 0);
+		array[i] = ft_strdup(tmp_s);
 		i++;
 		tmp = tmp->next;
+		free(tmp_s);
 	}
 	array[i] = NULL;
 	return (array);
