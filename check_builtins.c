@@ -34,8 +34,6 @@ void	fork_redirects(t_data *data)
 	}
 	get_exit_status_one(pid);
 	wait(NULL);
-	if (data->red_flag != 0)
-		unlink(".heredoc");
 }
 
 int	search_red_total(t_data *data, int redi)
@@ -56,6 +54,8 @@ int	check_builtins(t_data *data)
 	if (search_red(data) == 1)
 	{
 		fork_redirects(data);
+		if (data->red_flag != 0)
+			unlink(".heredoc");
 		return (1);
 	}
 	if (ft_strcmp("echo", data->top->data) == 0)
