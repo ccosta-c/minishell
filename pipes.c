@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:34:10 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/17 16:42:24 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:05:14 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	pipes_execution(t_data *data)
 	data->stdin_fd = STDIN_FILENO;
 	data->stdout_fd = STDOUT_FILENO;
 	data->pid = malloc(sizeof(pid_t) * (data->pipes_nums + 1));
-	commands = pipes_commands(data);
+	commands = pipes_commands_aux(data);
 	data->pipes_fds = malloc(sizeof(int) * (data->pipes_nums * 2));
 	while (i < data->pipes_nums)
 	{
@@ -38,8 +38,8 @@ void	pipes_execution(t_data *data)
 		execute_pipes_command(data, commands[i], i);
 		i++;
 	}
-	get_exit_status_arr(data, data->pid);
 	pipe_closing(data);
+	get_exit_status_arr(data, data->pid);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
 }
@@ -73,4 +73,24 @@ void	pipes_wiring(t_data	*data, int i)
 	else
 		redirect(data->pipes_fds[i * 2 - 2], data->pipes_fds[i * 2 + 1]);
 	pipe_closing(data);
+}
+
+void	execve_pipes(t_data *data, char **arg, int i)
+{
+	char	*tmp_path;
+
+	while (data->paths[i] != NULL)
+	{
+		tmp_path = get_tmp_path(data, i);
+		if (access(tmp_path, X_OK) == 0)
+		{
+			reset_fd(data);
+			execve(tmp_path, arg, data->og_envp);
+		}
+		free(tmp_path);
+		i++;
+	}
+	write(2, data->top->data, ft_strlen(data->top->data));
+	write(2, ": command not found\n", 21);
+	exit (127);
 }
