@@ -60,7 +60,8 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 	}
 	if (j == 0)
 	{
-		printf("%s: command not found\n", data->top->data);
+		write(2, data->top->data, ft_strlen(data->top->data));
+		ft_putstr_fd(": command not found\n", 2);
 		g_exit = 127;
 	}
 }
