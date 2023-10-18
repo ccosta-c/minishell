@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:24:53 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 14:48:47 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:28:52 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,24 @@ char	**pipes_commands(t_data *data, int i, int j, int k)
 
 	quotes = false;
 	commands = malloc(sizeof (char *) * (data->pipes_nums + 2));
-	commands[j] = malloc(sizeof(char) * strlen(data->original_command));
-	while (data->original_command[i])
+	commands[j] = malloc(sizeof(char) * ft_strlen(data->og_command));
+	while (data->og_command[i])
 	{
-		first_pipes_cmd_check(data->original_command[i], &quotes);
-		if (data->original_command[i] == '|' && quotes == false)
+		first_pipes_cmd_check(data->og_command[i], &quotes);
+		if (((data->og_command[i] == '|') || (data->og_command[i] == ' '
+					&& data->og_command[i + 1] == '|')) && quotes == false)
 		{
 			commands[j][k] = '\0';
+			if (data->og_command[i] == ' ')
+				i++;
 			i++;
 			k = 0;
-			j++;
-			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
+			commands[++j] = malloc(sizeof(char) * ft_strlen(data->og_command));
 			continue ;
 		}
-		if (data->original_command[i] == ' '
-			&& data->original_command[i + 1] == '|' && quotes == false)
-		{
-			commands[j][k] = '\0';
-			i = i + 2;
-			k = 0;
-			j++;
-			commands[j] = malloc(sizeof(char) * strlen(data->original_command));
-			continue ;
-		}
-		commands[j][k] = data->original_command[i];
-		i++;
-		k++;
+		commands[j][k++] = data->og_command[i++];
 	}
-	commands[j][k] = '\0';
-	commands[j + 1] = NULL;
-	return (commands);
+	return (commands[j][k] = '\0', commands[j + 1] = NULL, commands);
 }
 
 void	first_pipes_cmd_check(char original_command, bool *quotes)

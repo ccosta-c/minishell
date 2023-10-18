@@ -18,7 +18,7 @@ int	lexer(t_data *data, char *input)
 
 	if (!input)
 		return (-1);
-	data->original_command = ft_strdup(input);
+	data->og_command = ft_strdup(input);
 	str = ft_strtrim(input, " ");
 	if (check_first(str) == -1)
 		return (free(str), 0);
@@ -28,7 +28,7 @@ int	lexer(t_data *data, char *input)
 		return (0);
 	//print_list(data);
 	execution(data);
-	free (data->original_command);
+	free (data->og_command);
 	return (0);
 }
 

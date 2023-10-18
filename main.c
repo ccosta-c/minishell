@@ -26,7 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	data.env = NULL;
 	data.export = NULL;
 	data.paths = NULL;
-	data.original_command = NULL;
+	data.og_command = NULL;
 	data.top = NULL;
 	data.og_envp = envp;
 	copy_envp(&data, envp);

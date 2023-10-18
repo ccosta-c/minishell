@@ -58,7 +58,7 @@ typedef struct s_data
 	t_charlist	*env;
 	t_charlist	*export;
 	pid_t		*pid;
-	char		*original_command;
+	char		*og_command;
 	char		*prompt;
 	char		**paths;
 	char		**og_envp;
