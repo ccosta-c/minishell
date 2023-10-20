@@ -23,7 +23,7 @@ void	frees(t_data *data)
 	ft_clearcharlist(&data->export);
 	if (data->og_command != NULL)
 		free(data->og_command);
-	while(data->red_flag < 0)
+	while (data->red_flag < 0)
 	{
 		h = ft_itoa(i);
 		unlink(ft_strjoin(".heredoc", h));

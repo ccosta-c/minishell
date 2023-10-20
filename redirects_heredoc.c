@@ -28,7 +28,7 @@ int	redi_heredoc(t_data *data, char *str, char *next_s, char *h)
 		else if (redi_out_search(next_s, 0, 0) != 0)
 		{
 			tmp = cut_str_here(next_s, data, -1, 0);
-			if (redi_here_two_nodes_cut(data, str, tmp, h) == -1)
+			if (redi_here_two_n_cut(data, str, tmp, h) == -1)
 				return (free(tmp), -1);
 			return (free(tmp), 0);
 		}
@@ -47,7 +47,7 @@ int	redi_here4(t_data *data, char *str, char *h)
 		if (redi_out_search(str, 2, 0) == 0)
 		{
 			tmp = change_str_here(str, 2);
-			if (redi_here_one_node_del(data, str, tmp, h) == -1)
+			if (redi_here_one_n_del(data, str, tmp, h) == -1)
 				return (free(tmp), -1);
 			return (free(tmp), 0);
 		}
@@ -102,7 +102,7 @@ int	redi_here2(t_data *data, char *str, char *next_s, char *h)
 			&& redi_out_search(next_s, 0, 0) == 0)
 		{
 			tmp = cut_str_end_here(str, data, 0, next_s);
-			if (redi_here_one_node_del(data, next_s, tmp, h) == -1)
+			if (redi_here_one_n_del(data, next_s, tmp, h) == -1)
 				return (free(tmp), -1);
 			return (free(tmp), 0);
 		}

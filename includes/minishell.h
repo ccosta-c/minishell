@@ -313,8 +313,8 @@ int			redi_here3(t_data *data, char *str, char *h);
 //////////////////////redirects_heredoc2.c//////////////////////
 int			redi_here_two_nodes(t_data *data, char *str, char *file, char *h);
 int			do_here(char *hered, char *h);
-int			redi_here_two_nodes_cut(t_data *data, char *str, char *here, char *h);
-int			redi_here_one_node_del(t_data *data, char *str, char *here, char *h);
+int			redi_here_two_n_cut(t_data *data, char *str, char *here, char *h);
+int			redi_here_one_n_del(t_data *data, char *str, char *here, char *h);
 int			redi_here_no_node(t_data *data, char *here, char *h);
 
 //////////////////////redirects_append.c///////////////////////

@@ -69,7 +69,7 @@ int	do_here(char *hered, char *h)
 	return (0);
 }
 
-int	redi_here_two_nodes_cut(t_data *data, char *str, char *here, char *h)
+int	redi_here_two_n_cut(t_data *data, char *str, char *here, char *h)
 {
 	t_tokens	*tmp;
 	int			fd_file;
@@ -98,7 +98,7 @@ int	redi_here_two_nodes_cut(t_data *data, char *str, char *here, char *h)
 	return (0);
 }
 
-int	redi_here_one_node_del(t_data *data, char *str, char *here, char *h)
+int	redi_here_one_n_del(t_data *data, char *str, char *here, char *h)
 {
 	t_tokens	*tmp;
 	int			fd_file;
