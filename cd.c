@@ -14,6 +14,8 @@
 
 void	cd(t_data *data, char *str)
 {
+	char	*tmp;
+
 	if (data->top->next->next)
 	{
 		printf("minishell: cd: too many arguments\n");
@@ -32,7 +34,11 @@ void	cd(t_data *data, char *str)
 		return ;
 	}
 	else
-		cd_else_dir(data, data->top->next->data);
+	{
+		tmp = str_exp_quote(data, data->top->next->data, count_str_exp(data->top->next->data, 0, 0));
+		cd_else_dir(data, tmp);
+		free(tmp);
+	}
 }
 
 void	cd_home_dir(t_data *data)
