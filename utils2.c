@@ -59,11 +59,11 @@ int	ft_strcmp(const char *str1, const char *str2)
 	return (0);
 }
 
-void	change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw)
+void	change_env_exp(t_charlst *en, t_charlst *ex, char *old, char *nw)
 {
 	int			i;
 	int			size;
-	t_charlist	*l_tmp;
+	t_charlst	*l_tmp;
 
 	i = 0;
 	l_tmp = en;
@@ -87,11 +87,11 @@ void	change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw)
 	return ;
 }
 
-void	change_env_exp2(t_charlist *exp, char *old, char *new)
+void	change_env_exp2(t_charlst *exp, char *old, char *new)
 {
 	int			i;
 	int			size;
-	t_charlist	*l_tmp;
+	t_charlst	*l_tmp;
 
 	l_tmp = exp;
 	i = 0;

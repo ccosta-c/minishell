@@ -118,11 +118,11 @@ int	handle_exp(char *str, int i, t_data *data)
 	return (free(tmp), i);
 }
 
-void	search_print(char *str, t_charlist *list, int size)
+void	search_print(char *str, t_charlst *list, int size)
 {
 	int			i;
 	int			j;
-	t_charlist	*l_tmp;
+	t_charlst	*l_tmp;
 
 	i = 0;
 	j = 0;

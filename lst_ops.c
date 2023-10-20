@@ -97,10 +97,10 @@ void	ft_cleartokens(t_tokens **lst)
 	*lst = NULL;
 }
 
-void	ft_clearcharlist(t_charlist **lst)
+void	ft_clearcharlist(t_charlst **lst)
 {
-	t_charlist	*temp;
-	t_charlist	*prox;
+	t_charlst	*temp;
+	t_charlst	*prox;
 
 	if (!lst)
 		return ;
