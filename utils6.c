@@ -12,10 +12,11 @@
 
 #include "./includes/minishell.h"
 
-void	signal_default(void)
+void	signal_default(t_data *data)
 {
 	signal(SIGQUIT, SIG_DFL);
 	signal(SIGINT, SIG_DFL);
+	handler_sigint2(0, data);
 }
 
 int	check_not_exc(char *in)

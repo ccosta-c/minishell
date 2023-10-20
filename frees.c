@@ -33,6 +33,8 @@ void	frees(t_data *data)
 		free(h);
 		i++;
 	}
+	if (data->heredoc != NULL)
+		free(data->heredoc);
 	free(data->prompt);
 	free(data->pwd);
 	free(data->old_pwd);
@@ -65,4 +67,9 @@ void	open_fd_out(t_data *data)
 		dup2(fd_file, STDOUT_FILENO);
 		close(fd_file);
 	}
+}
+
+void	handler_sigint(int sig)
+{
+	handler_sigint2(sig, 0);
 }

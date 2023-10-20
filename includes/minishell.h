@@ -128,8 +128,8 @@ int			check_minus_n(char *s);
 char		*cut_env_exp(char *env, int j, int k);
 int			minus(char *s);
 
-////////////////////////utils5.c//////////////////////
-void		signal_default(void);
+////////////////////////utils6.c//////////////////////
+void		signal_default(t_data *data);
 int			check_not_exc(char *in);
 int			ecomercial_search(char *str, int i, int e);
 int			backslash_search(char *str, int i, int b);
@@ -164,7 +164,7 @@ void		print_lstchar(t_charlst *data);
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
 void		handler(int sig);
-void		handler_sigint(int sig);
+void		handler_sigint2(int sig, void *data);
 void		get_exit_status_arr(t_data *data, int *pids);
 void		get_exit_status_one(int pids, t_data *data);
 
@@ -172,6 +172,7 @@ void		get_exit_status_one(int pids, t_data *data);
 void		frees(t_data *data);
 int			open_heredoc(char *h);
 void		open_fd_out(t_data *data);
+void		handler_sigint(int sig);
 
 //////////////////////first_checks.c/////////////////
 int			check_exclamation(char *input, int i);

@@ -39,6 +39,7 @@ int	main(int argc, char **argv, char **envp)
 	data.red_n = 0;
 	data.fd_out = NULL;
 	data.o_flag_out = 0;
+	data.heredoc = NULL;
 	prompt_loop(&data);
 }
 

@@ -39,10 +39,9 @@ int	redi_here_two_nodes(t_data *data, char *str, char *here, char *h)
 int	do_here(char *hered, char *h, t_data *data, int fd_file)
 {
 	char	*input;
-	char	*tmp;
 
-	tmp = ft_strjoin(".heredoc", h);
-	fd_file = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	data->heredoc = ft_strjoin(".heredoc", h);
+	fd_file = open(data->heredoc, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd_file < 0)
 		return (printf("minishell: '.heredoc' %s.\n", strerror(errno)), -1);
 	while (1)
@@ -62,7 +61,8 @@ int	do_here(char *hered, char *h, t_data *data, int fd_file)
 	close(fd_file);
 	open_fd_out(data);
 	free(input);
-	return (free(tmp), 0);
+	free(data->heredoc);
+	return (data->heredoc = NULL, 0);
 }
 
 int	redi_here_two_n_cut(t_data *data, char *str, char *here, char *h)

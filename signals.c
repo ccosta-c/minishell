@@ -26,13 +26,20 @@ void	handle_signals(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void	handler_sigint(int sig)
+void	handler_sigint2(int sig, void *data)
 {
-	if (sig == SIGINT)
+	static t_data	*static_data;
+
+	if (!static_data && data)
+		static_data = (t_data *)data;
+	if (static_data)
 	{
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		ft_putchar_fd('\n', STDOUT_FILENO);
+		if (sig == SIGINT)
+		{
+			printf("\n");
+			frees(static_data);
+			exit(130);
+		}
 	}
 }
 

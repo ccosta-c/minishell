@@ -22,7 +22,8 @@ void	fork_redirects(t_data *data)
 	data->red_n = redi;
 	if (pid == 0)
 	{
-		signal_default();
+		signal_default(data);
+		signal(SIGINT, &handler_sigint);
 		while (redi > 0)
 		{
 			if (redirects(data, data->top) == -1)
