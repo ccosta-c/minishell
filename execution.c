@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:10:31 by macastan          #+#    #+#             */
-/*   Updated: 2023/10/17 12:26:56 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:59:13 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	execution(t_data *data)
 
 	pipes_num(data);
 	if (data->pipes_nums != 0)
-	{
 		pipes_execution(data);
-	}
 	else
 	{
 		remove_quote_topdata(data);
