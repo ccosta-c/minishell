@@ -39,15 +39,13 @@ int	count_variables(t_charlist *list)
 	return (i);
 }
 
-void	export_builtin(t_charlist *list)
+void	export_builtin(t_charlist *list, int i)
 {
 	int			j;
 	int			size;
-	int			i;
 	t_charlist	*tmp;
 
 	size = count_variables(list);
-	i = 0;
 	tmp = list;
 	while (i < (size - 1))
 	{
