@@ -60,6 +60,7 @@ void	execution_export(t_data *data)
 			g_exit = 2;
 			return ;
 		}
+		//execution_checks(data);
 		add_export(data);
 		free(tmp);
 		g_exit = 0;

@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:34:10 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 16:16:16 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:29:20 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void	execve_pipes(t_data *data, char **arg, int i)
 	}
 	write(2, data->top->data, ft_strlen(data->top->data));
 	write(2, ": command not found\n", 21);
+	frees(data);
+	free_child(data, arg);
 	exit (127);
 }
