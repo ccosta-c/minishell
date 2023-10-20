@@ -183,7 +183,7 @@ char		*get_tmp_path(t_data *data, int i);
 //////////////////////export.c/////////////////////
 void		ft_swap(t_charlist *list);
 void		export_builtin(t_charlist *list, int i);
-void		print_export(t_charlist *list, int size);
+void print_export(t_charlist *list, int size, int i);
 void		add_export(t_data *data);
 int			count_variables(t_charlist *list);
 
