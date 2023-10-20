@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 17:13:47 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:12:29 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ int			handle_exp(char *str, int i, t_data *data);
 void		search_print(char *str, t_charlst *list, int size);
 
 //////////////////////cd.c///////////////////////////
-void		cd(t_data *data, char *str);
+int			cd(t_data *data, char *str);
 void		cd_home_dir(t_data *data);
 void		cd_minus_dir(t_data *data);
 void		cd_double_dot_dir(t_data *data);

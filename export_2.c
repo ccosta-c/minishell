@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:31:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 17:54:05 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:05:43 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	execution_checks(char *data)
 		if ((data[i] < 65 || data[i] > 90) && (data[i] < 97 || data[i] > 122)
 			&& (data[i]) != '_')
 		{
+			g_exit = 1;
 			printf("export: `%s': not a valid identifier\n", data);
 			return (1);
 		}

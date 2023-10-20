@@ -6,21 +6,20 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:18:40 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/28 15:32:40 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:13:47 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-void	cd(t_data *data, char *str)
+int	cd(t_data *data, char *str)
 {
 	char	*tmp;
 
 	if (data->top->next->next)
 	{
-		printf("minishell: cd: too many arguments\n");
 		g_exit = 1;
-		return ;
+		return (printf("minishell: cd: too many arguments\n"));
 	}
 	if (ft_strncmp("-", str, ft_strlen(str)) == 0)
 		cd_minus_dir(data);
@@ -29,16 +28,15 @@ void	cd(t_data *data, char *str)
 	else if (ft_strncmp("..", str, ft_strlen(str)) == 0)
 		cd_double_dot_dir(data);
 	else if (ft_strncmp(".", str, ft_strlen(str)) == 0)
-	{
-		g_exit = 0;
-		return ;
-	}
+		return (g_exit = 0);
 	else
 	{
-		tmp = str_exp_quote(data, data->top->next->data, count_str_exp(data->top->next->data, 0, 0));
+		tmp = str_exp_quote(data, data->top->next->data,
+				count_str_exp(data->top->next->data, 0, 0));
 		cd_else_dir(data, tmp);
 		free(tmp);
 	}
+	return (0);
 }
 
 void	cd_home_dir(t_data *data)
