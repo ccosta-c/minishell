@@ -90,7 +90,6 @@ void		add_to_list(t_tokens **lst, t_tokens *new);
 void		ft_cleartokens(t_tokens **lst);
 void		ft_clearcharlist(t_charlist **lst);
 
-
 ////////////////////////utils.c//////////////////////
 char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
@@ -164,7 +163,7 @@ void		handle_signals(void);
 void		handler(int sig);
 void		handler_sigint(int sig);
 void		get_exit_status_arr(t_data *data, int *pids);
-void		get_exit_status_one(int pids);
+void		get_exit_status_one(int pids, t_data *data);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);

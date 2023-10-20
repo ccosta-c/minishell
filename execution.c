@@ -33,8 +33,6 @@ void	execution(t_data *data)
 			free_array(data->paths);
 		}
 	}
-	/*if (data->pipes_nums > 0)
-		get_exit_status_arr(data, data->pid);*/
 }
 
 void	execution_single(t_data *data, int j, char **arg, int i)
@@ -51,7 +49,7 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 			pid = fork();
 			if (pid == 0)
 				execve(tmp_path, arg, data->og_envp);
-			get_exit_status_one(pid);
+			get_exit_status_one(pid, data);
 			wait(NULL);
 			free(tmp_path);
 			return ;

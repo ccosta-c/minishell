@@ -70,11 +70,12 @@ void	get_exit_status_arr(t_data *data, int *pids)
 	}
 }
 
-void	get_exit_status_one(int pids)
+void	get_exit_status_one(int pids, t_data *data)
 {
 	pid_t	pid;
 	int		status;
 
+	(void)data;
 	status = 0;
 	signal(SIGINT, &handler_sigint);
 	pid = waitpid(pids, &status, 0);

@@ -33,7 +33,7 @@ void	fork_redirects(t_data *data)
 		frees(data);
 		exit (0);
 	}
-	get_exit_status_one(pid);
+	get_exit_status_one(pid, data);
 	wait(NULL);
 }
 
