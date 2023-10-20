@@ -178,12 +178,13 @@ int			search_red(t_data *data);
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
 void		execution_single(t_data *data, int j, char **arg, int i);
-char		*get_tmp_path(t_data *data, int i);
+char		*get_tmp_path(t_data *data, int i, char **arg);
+void		cut_top_data_b(char *str, char **arg, size_t f);
 
 //////////////////////export.c/////////////////////
 void		ft_swap(t_charlist *list);
 void		export_builtin(t_charlist *list, int i);
-void print_export(t_charlist *list, int size, int i);
+void		print_export(t_charlist *list, int size, int i);
 void		add_export(t_data *data);
 int			count_variables(t_charlist *list);
 

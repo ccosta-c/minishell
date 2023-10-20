@@ -75,7 +75,7 @@ void	execve_pipes(t_data *data, char **arg, int i)
 
 	while (data->paths[i] != NULL)
 	{
-		tmp_path = get_tmp_path(data, i);
+		tmp_path = get_tmp_path(data, i, arg);
 		if (access(tmp_path, X_OK) == 0)
 		{
 			reset_fd(data);

@@ -42,7 +42,7 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 
 	while (data->paths[++i] != NULL)
 	{
-		tmp_path = get_tmp_path(data, i);
+		tmp_path = get_tmp_path(data, i, arg);
 		if (access(tmp_path, X_OK) == 0)
 		{
 			j++;
@@ -58,17 +58,50 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 	}
 	if (j == 0)
 	{
-		write(2, data->top->data, ft_strlen(data->top->data));
+		write(2, arg[0], ft_strlen(arg[0]));
 		ft_putstr_fd(": command not found\n", 2);
 		g_exit = 127;
 	}
 }
 
-char	*get_tmp_path(t_data *data, int i)
+void	cut_top_data_b(char *str, char **arg, size_t f)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	f = ft_strlen(str);
+	while (f > 0)
+	{
+		if (str[f] == '/')
+			break ;
+		f--;
+	}
+	tmp = malloc(sizeof (char) * (ft_strlen(str) - i));
+	f++;
+	while (str[f] != '\0')
+	{
+		tmp[i] = str[f];
+		i++;
+		f++;
+	}
+	tmp[i] = '\0';
+	free(arg[0]);
+	arg[0] = tmp;
+	return ;
+}
+
+char	*get_tmp_path(t_data *data, int i, char **arg)
 {
 	char	*tmp;
 	char	*final;
 
+	if (ft_strchr(data->top->data, '/') != 0)
+	{
+		final = ft_strdup(data->top->data);
+		cut_top_data_b(data->top->data, arg, 0);
+		return (final);
+	}
 	tmp = ft_strjoin("/", data->top->data);
 	final = ft_strjoin(data->paths[i], tmp);
 	free(tmp);
