@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 12:52:02 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:23:39 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void	add_export(t_data *data)
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
+		if (execution_checks(tmp->data) == 1)
+			return ;
 		if ((ft_strchr(tmp->data, '\'') != 0)
 			|| (ft_strchr(tmp->data, '\"') != 0))
 		{

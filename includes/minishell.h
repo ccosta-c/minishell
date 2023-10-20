@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 15:39:22 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:13:47 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,5 +352,6 @@ void		free_child(t_data *data, char **array);
 
 //////////////////////export_2.c//////////////////////
 void		check_if_exists(t_data *data, char *tmp);
+int			execution_checks(char *data);
 
 #endif

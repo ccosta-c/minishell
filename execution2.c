@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/10/20 16:50:02 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:13:25 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	execution_export(t_data *data)
 			g_exit = 2;
 			return ;
 		}
-		//execution_checks(data);
 		add_export(data);
 		free(tmp);
 		g_exit = 0;
