@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/16 14:40:37 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:46:11 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,9 @@ void	add_export(t_data *data)
 		{
 			if (ft_strchr(tmp->data, '=') != 0)
 				name_variable(tmp->data, data->env);
-			return ;
 		}
 		else
-		{
-			add_to_charlist(&data->export, tmp->data);
-			if (ft_strchr(tmp->data, '=') != 0)
-				add_to_charlist(&data->env, tmp->data);
-			tmp = tmp->next;
-		}
+			check_if_exists(data, tmp->data);
+		tmp = tmp->next;
 	}
 }

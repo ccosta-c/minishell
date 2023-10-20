@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 16:09:03 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:34:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,5 +346,8 @@ char		**pipes_commands_aux(t_data *data);
 char		**pipes_commands(t_data *data, int i, int j, int k);
 void		first_pipes_cmd_check(char original_command, bool *quotes);
 void		free_child(t_data *data, char **array);
+
+//////////////////////export_2.c//////////////////////
+void		check_if_exists(t_data *data, char *tmp);
 
 #endif
