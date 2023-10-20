@@ -55,8 +55,6 @@ int	check_builtins(t_data *data)
 	if (search_red(data) == 1)
 	{
 		fork_redirects(data);
-		if (data->red_flag != 0)
-			unlink(".heredoc");
 		return (1);
 	}
 	if (ft_strcmp("echo", data->top->data) == 0)

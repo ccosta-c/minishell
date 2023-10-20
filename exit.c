@@ -33,10 +33,34 @@ void	exit_builtin2(t_data *data)
 	long long	e;
 
 	e = ft_atol(data->top->next->data);
+	if (ft_nlen(e) != ft_strlen(data->top->next->data))
+	{
+		printf("exit\n");
+		printf("bash: exit: %s:", data->top->next->data);
+		printf(" numeric argument required\n");
+		g_exit = 2;
+		frees(data);
+		exit(g_exit);
+	}
 	printf("exit\n");
 	g_exit = (e % 256);
 	frees(data);
 	exit(g_exit);
+}
+
+size_t	ft_nlen(long long n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n < 0)
+		i++;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }
 
 int	check_exit_data(char *str)

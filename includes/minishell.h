@@ -231,6 +231,7 @@ void		exit_builtin(t_data *data);
 void		exit_builtin2(t_data *data);
 int			check_exit_data(char *str);
 char		*handle_whitespaces(char *input);
+size_t		ft_nlen(long long n);
 
 //////////////////////redirects.c///////////////////////
 int			redirects(t_data *data, t_tokens *tmp);

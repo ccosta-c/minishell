@@ -19,6 +19,11 @@ void	frees(t_data *data)
 	ft_clearcharlist(&data->export);
 	if (data->og_command != NULL)
 		free(data->og_command);
+	if (data->red_flag != 0)
+	{
+		unlink(".heredoc");
+		data->red_flag = 0;
+	}
 	free(data->prompt);
 	free(data->pwd);
 	free(data->old_pwd);
