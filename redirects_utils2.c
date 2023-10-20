@@ -22,7 +22,7 @@ char	*str_exp_quote(t_data *data, char *str, int ex)
 		re = remove_quote(str, 0, 0, 0);
 		return (re);
 	}
-	ret = get_exp(str, 0, data);
+	ret = ft_strdup(str);
 	while (ex > 0)
 	{
 		if (ex == 1)

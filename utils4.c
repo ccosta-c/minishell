@@ -22,8 +22,10 @@ char	*get_exp(char *str, int i, t_data *data)
 
 	i = cut_str_exp(str, i, 0);
 	if (str[i] == '\0')
-		return (ft_strdup(str));
+		return (ret = ft_strdup(str), ret);
 	tmp = get_tmp(str, i, 0, i);
+	if (tmp[0] == '$')
+		return (ret = ft_strdup(str), ret);
 	ret = search_ex(tmp, data->env, count_variables(data->env), 0);
 	if (ret)
 	{
@@ -98,10 +100,9 @@ char	*get_tmp(char *str, int j, int k, int i)
 
 	i++;
 	if (str[0] == '$' && str[1] == '?')
-	{
-		tmp = ft_strdup("?");
-		return (tmp);
-	}
+		return (tmp = ft_strdup("?"), tmp);
+	if (str[0] == '$' && !str[1])
+		return (tmp = ft_strdup("$"), tmp);
 	while (str[i])
 	{
 		if (ft_stop_exp(str[i]) == 0)
