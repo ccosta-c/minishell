@@ -15,22 +15,17 @@
 int	redi_here_two_nodes(t_data *data, char *str, char *here, char *h)
 {
 	t_tokens	*tmp;
-	int			fd_file;
 
 	tmp = data->top;
 	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			if (do_here(here, h) == -1)
+			if (do_here(here, h, data, 0) == -1)
 				return (-1);
 			if (data->red_n == (ft_atoi(h) + 1))
 			{
-				fd_file = open(ft_strjoin(".heredoc", h), O_RDONLY, 0444);
-				if (fd_file == -1)
-					return (-1);
-				dup2(fd_file, STDIN_FILENO);
-				close(fd_file);
+				open_heredoc(h);
 			}
 			delete_redirects(&data->top, tmp->next->data, data, 0);
 			delete_redirects(&data->top, tmp->data, data, 0);
@@ -41,10 +36,9 @@ int	redi_here_two_nodes(t_data *data, char *str, char *here, char *h)
 	return (0);
 }
 
-int	do_here(char *hered, char *h)
+int	do_here(char *hered, char *h, t_data *data, int fd_file)
 {
 	char	*input;
-	int		fd_file;
 	char	*tmp;
 
 	tmp = ft_strjoin(".heredoc", h);
@@ -53,6 +47,8 @@ int	do_here(char *hered, char *h)
 		return (printf("minishell: '.heredoc' %s.\n", strerror(errno)), -1);
 	while (1)
 	{
+		if (data->fd_out != NULL)
+			dup2(0, STDOUT_FILENO);
 		signal(SIGQUIT, SIG_IGN);
 		input = readline("> ");
 		if (!input)
@@ -64,30 +60,25 @@ int	do_here(char *hered, char *h)
 		free(input);
 	}
 	close(fd_file);
-	if (input)
-		free(input);
-	return (0);
+	open_fd_out(data);
+	free(input);
+	return (free(tmp), 0);
 }
 
 int	redi_here_two_n_cut(t_data *data, char *str, char *here, char *h)
 {
 	t_tokens	*tmp;
-	int			fd_file;
 
 	tmp = data->top;
 	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			if (do_here(here, h) == -1)
+			if (do_here(here, h, data, 0) == -1)
 				return (-1);
 			if (data->red_n == (ft_atoi(h) + 1))
 			{
-				fd_file = open(ft_strjoin(".heredoc", h), O_RDONLY, 0444);
-				if (fd_file == -1)
-					return (-1);
-				dup2(fd_file, STDIN_FILENO);
-				close(fd_file);
+				open_heredoc(h);
 			}
 			delete_redirects(&data->top, tmp->data, data, 0);
 			data->red_flag++;
@@ -101,26 +92,20 @@ int	redi_here_two_n_cut(t_data *data, char *str, char *here, char *h)
 int	redi_here_one_n_del(t_data *data, char *str, char *here, char *h)
 {
 	t_tokens	*tmp;
-	int			fd_file;
 
 	tmp = data->top;
 	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->data, str) == 0)
 		{
-			if (do_here(here, h) == -1)
+			if (do_here(here, h, data, 0) == -1)
 				return (-1);
 			if (data->red_n == (ft_atoi(h) + 1))
 			{
-				fd_file = open(ft_strjoin(".heredoc", h), O_RDONLY, 0444);
-				if (fd_file == -1)
-					return (-1);
-				dup2(fd_file, STDIN_FILENO);
-				close(fd_file);
+				open_heredoc(h);
 			}
 			delete_redirects(&data->top, tmp->data, data, 0);
-			data->red_flag++;
-			return (0);
+			return (data->red_flag++, 0);
 		}
 		tmp = tmp->next;
 	}
@@ -130,16 +115,19 @@ int	redi_here_one_n_del(t_data *data, char *str, char *here, char *h)
 int	redi_here_no_node(t_data *data, char *here, char *h)
 {
 	int			fd_file;
+	char		*hd;
 
-	if (do_here(here, h) == -1)
+	if (do_here(here, h, data, 0) == -1)
 		return (-1);
 	if (data->red_n == (ft_atoi(h) + 1))
 	{
-		fd_file = open(ft_strjoin(".heredoc", h), O_RDONLY, 0444);
+		hd = ft_strjoin(".heredoc", h);
+		fd_file = open(hd, O_RDONLY, 0444);
 		if (fd_file == -1)
-			return (-1);
+			return (free(hd), -1);
 		dup2(fd_file, STDIN_FILENO);
 		close(fd_file);
+		free(hd);
 	}
 	data->red_flag++;
 	return (0);

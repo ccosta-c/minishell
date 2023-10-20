@@ -28,6 +28,8 @@ int	redi_append_two_nodes(t_data *data, char *str, char *file)
 				printf("minishell: %s: %s.\n", file, strerror(errno));
 				return (-1);
 			}
+			data->fd_out = ft_strdup(file);
+			data->o_flag_out = 02000;
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
 			delete_redirects(&data->top, tmp->next->data, data, 0);
@@ -55,6 +57,8 @@ int	redi_append_two_nodes_cut(t_data *data, char *str, char *temp)
 				printf("minishell: %s: %s.\n", temp, strerror(errno));
 				return (-1);
 			}
+			data->fd_out = ft_strdup(temp);
+			data->o_flag_out = 02000;
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
 			delete_redirects(&data->top, tmp->data, data, 0);
@@ -81,6 +85,8 @@ int	redi_append_one_node_del(t_data *data, char *str, char *temp)
 				printf("minishell: %s: %s.\n", temp, strerror(errno));
 				return (-1);
 			}
+			data->fd_out = ft_strdup(temp);
+			data->o_flag_out = 02000;
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
 			delete_redirects(&data->top, tmp->data, data, 0);
@@ -102,6 +108,8 @@ int	redi_append_no_node(t_data *data, char *temp)
 		printf("minishell: %s: %s.\n", temp, strerror(errno));
 		return (-1);
 	}
+	data->fd_out = ft_strdup(temp);
+	data->o_flag_out = 02000;
 	dup2(fd_file, STDOUT_FILENO);
 	close(fd_file);
 	return (0);

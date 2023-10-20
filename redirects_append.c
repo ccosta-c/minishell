@@ -16,6 +16,8 @@ int	redi_append(t_data *data, char *str, char *next_s)
 {
 	char	*tmp;
 
+	if (data->fd_out != NULL)
+		free(data->fd_out);
 	if (str[0] == '>' && str[1] == '>' && !str[2])
 	{
 		if (redi_out_search(next_s, 0, 0) == 0)

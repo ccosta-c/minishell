@@ -73,6 +73,8 @@ typedef struct s_data
 	int			red_flag;
 	int			pipes_nums;
 	int			red_n;
+	char		*fd_out;
+	int			o_flag_out;
 	t_tokens	*top;
 }			t_data;
 
@@ -168,6 +170,8 @@ void		get_exit_status_one(int pids, t_data *data);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);
+int			open_heredoc(char *h);
+void		open_fd_out(t_data *data);
 
 //////////////////////first_checks.c/////////////////
 int			check_exclamation(char *input, int i);
@@ -312,7 +316,7 @@ int			redi_here3(t_data *data, char *str, char *h);
 
 //////////////////////redirects_heredoc2.c//////////////////////
 int			redi_here_two_nodes(t_data *data, char *str, char *file, char *h);
-int			do_here(char *hered, char *h);
+int			do_here(char *hered, char *h, t_data *data, int fd_file);
 int			redi_here_two_n_cut(t_data *data, char *str, char *here, char *h);
 int			redi_here_one_n_del(t_data *data, char *str, char *here, char *h);
 int			redi_here_no_node(t_data *data, char *here, char *h);

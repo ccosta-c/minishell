@@ -37,6 +37,8 @@ int	main(int argc, char **argv, char **envp)
 	data.stdout_fd = STDOUT_FILENO;
 	data.red_flag = 0;
 	data.red_n = 0;
+	data.fd_out = NULL;
+	data.o_flag_out = 0;
 	prompt_loop(&data);
 }
 

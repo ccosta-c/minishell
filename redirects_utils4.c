@@ -71,7 +71,7 @@ char	*cut_str_1_here(char *str, t_data *data, int i, int k)
 	j = cut_str2(str, 2, 0, 0);
 	ret = malloc(sizeof(char) * (ft_strlen(str) - j + 1));
 	re = malloc(sizeof(char) * (j - 1));
-	while (++i < (j - 1))
+	while (++i < (j - 2))
 	{
 		re[i] = str[k];
 		k++;

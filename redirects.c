@@ -92,6 +92,7 @@ int	redirects_here(t_data *data, t_tokens *n, t_tokens *c)
 		if (redi_heredoc(data, current->data, "maluca", h) == -1)
 			return (-1);
 	}
+	free(h);
 	i++;
 	return (0);
 }
