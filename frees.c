@@ -14,15 +14,21 @@
 
 void	frees(t_data *data)
 {
+	int		i;
+	char	*h;
+
+	i = 0;
 	ft_cleartokens(&data->top);
 	ft_clearcharlist(&data->env);
 	ft_clearcharlist(&data->export);
 	if (data->og_command != NULL)
 		free(data->og_command);
-	if (data->red_flag != 0)
+	while(data->red_flag < 0)
 	{
-		unlink(".heredoc");
-		data->red_flag = 0;
+		h = ft_itoa(i);
+		unlink(ft_strjoin(".heredoc", h));
+		data->red_flag--;
+		i++;
 	}
 	free(data->prompt);
 	free(data->pwd);

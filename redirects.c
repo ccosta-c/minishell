@@ -21,7 +21,7 @@ int	redirects(t_data *data, t_tokens *tmp)
 		else if (tmp->type == R_IN)
 			return (redirects_in(data, tmp->next, tmp->data, tmp));
 		else if (tmp->type == RR_IN)
-			return (redirects_here(data, tmp->next, tmp->data, tmp));
+			return (redirects_here(data, tmp->next, tmp));
 		else if (tmp->type == RR_OUT)
 			return (redirects_append(data, tmp->next, tmp->data, tmp));
 		else
@@ -72,24 +72,27 @@ int	redirects_in(t_data *data, t_tokens *n, char *str, t_tokens *c)
 	return (0);
 }
 
-int	redirects_here(t_data *data, t_tokens *n, char *str, t_tokens *c)
+int	redirects_here(t_data *data, t_tokens *n, t_tokens *c)
 {
 	t_tokens	*next;
 	t_tokens	*current;
+	static int	i;
+	char		*h;
 
 	next = n;
 	current = c;
-	(void)str;
+	h = ft_itoa(i);
 	if (n)
 	{
-		if (redi_heredoc(data, current->data, next->data) == -1)
+		if (redi_heredoc(data, current->data, next->data, h) == -1)
 			return (-1);
 	}
 	else
 	{
-		if (redi_heredoc(data, current->data, "maluca") == -1)
+		if (redi_heredoc(data, current->data, "maluca", h) == -1)
 			return (-1);
 	}
+	i++;
 	return (0);
 }
 

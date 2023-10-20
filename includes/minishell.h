@@ -72,6 +72,7 @@ typedef struct s_data
 	int			stdout_fd;
 	int			red_flag;
 	int			pipes_nums;
+	int			red_n;
 	t_tokens	*top;
 }			t_data;
 
@@ -239,7 +240,7 @@ size_t		ft_nlen(long long n);
 int			redirects(t_data *data, t_tokens *tmp);
 int			redirects_out(t_data *data, t_tokens *lst, char *str, t_tokens *c);
 int			redirects_in(t_data *data, t_tokens *n, char *str, t_tokens *c);
-int			redirects_here(t_data *data, t_tokens *n, char *str, t_tokens *c);
+int			redirects_here(t_data *data, t_tokens *n, t_tokens *c);
 int			redirects_append(t_data *data, t_tokens *n, char *str, t_tokens *c);
 
 //////////////////////redirects_out2.c//////////////////////
@@ -303,18 +304,18 @@ int			redi_in_one_node_del(t_data *data, char *str, char *temp);
 int			redi_in_no_node(t_data *data, char *temp);
 
 //////////////////////redirects_heredoc.c///////////////////////
-int			redi_heredoc(t_data *data, char *str, char *next_s);
-int			redi_here4(t_data *data, char *str);
-int			redi_here5(t_data *data, char *str);
-int			redi_here2(t_data *data, char *str, char *next_s);
-int			redi_here3(t_data *data, char *str);
+int			redi_heredoc(t_data *data, char *str, char *next_s, char *h);
+int			redi_here4(t_data *data, char *str, char *h);
+int			redi_here5(t_data *data, char *str, char *h);
+int			redi_here2(t_data *data, char *str, char *next_s, char *h);
+int			redi_here3(t_data *data, char *str, char *h);
 
 //////////////////////redirects_heredoc2.c//////////////////////
-int			redi_here_two_nodes(t_data *data, char *str, char *file);
-int			do_here(char *hered);
-int			redi_here_two_nodes_cut(t_data *data, char *str, char *here);
-int			redi_here_one_node_del(t_data *data, char *str, char *here);
-int			redi_here_no_node(t_data *data, char *here);
+int			redi_here_two_nodes(t_data *data, char *str, char *file, char *h);
+int			do_here(char *hered, char *h);
+int			redi_here_two_nodes_cut(t_data *data, char *str, char *here, char *h);
+int			redi_here_one_node_del(t_data *data, char *str, char *here, char *h);
+int			redi_here_no_node(t_data *data, char *here, char *h);
 
 //////////////////////redirects_append.c///////////////////////
 int			redi_append(t_data *data, char *str, char *next_s);

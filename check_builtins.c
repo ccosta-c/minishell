@@ -19,6 +19,7 @@ void	fork_redirects(t_data *data)
 
 	pid = fork();
 	redi = search_red_total(data, 0);
+	data->red_n = redi;
 	if (pid == 0)
 	{
 		signal_default();
