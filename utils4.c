@@ -97,6 +97,11 @@ char	*get_tmp(char *str, int j, int k, int i)
 	char	*tmp;
 
 	i++;
+	if (str[0] == '$' && str[1] == '?')
+	{
+		tmp = ft_strdup("?");
+		return (tmp);
+	}
 	while (str[i])
 	{
 		if (ft_stop_exp(str[i]) == 0)
@@ -122,6 +127,8 @@ char	*search_ex(char *str, t_charlist *list, int size, int i)
 
 	l_tmp = list;
 	fim = NULL;
+	if (str[0] == '?')
+		return (ft_itoa(g_exit));
 	while (i <= (size - 1))
 	{
 		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)

@@ -31,7 +31,7 @@ char	**list_to_array(t_data *data)
 	i = 0;
 	while (tmp != NULL)
 	{
-		tmp_s = remove_quote(tmp->data, 0, 0, 0);
+		tmp_s = str_exp_quote(data, tmp->data, count_str_exp(tmp->data, 0, 0));
 		array[i] = ft_strdup(tmp_s);
 		i++;
 		tmp = tmp->next;

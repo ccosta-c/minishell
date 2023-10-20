@@ -86,7 +86,7 @@ int	minus(char *s)
 		return (2);
 	}
 	if (s[0] == '-' && s[1] == 'n')
-		return (0);
-	else
 		return (1);
+	else
+		return (0);
 }
