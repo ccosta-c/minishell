@@ -12,9 +12,9 @@
 
 #include "./includes/minishell.h"
 
-void	add_to_charlist(t_charlist **top, char *content)
+void	add_to_charlist(t_charlst **top, char *content)
 {
-	t_charlist	*tmp;
+	t_charlst	*tmp;
 
 	if ((*top) == NULL)
 	{
@@ -27,11 +27,11 @@ void	add_to_charlist(t_charlist **top, char *content)
 	}
 }
 
-t_charlist	*ft_addnew(char *content)
+t_charlst	*ft_addnew(char *content)
 {
-	t_charlist	*ptr;
+	t_charlst	*ptr;
 
-	ptr = malloc(sizeof(t_charlist));
+	ptr = malloc(sizeof(t_charlst));
 	if (!ptr)
 		return (NULL);
 	ptr->content = ft_strdup(content);
@@ -39,9 +39,9 @@ t_charlist	*ft_addnew(char *content)
 	return (ptr);
 }
 
-t_charlist	*ft_golast(t_charlist *lst)
+t_charlst	*ft_golast(t_charlst *lst)
 {
-	t_charlist	*ptr;
+	t_charlst	*ptr;
 
 	ptr = lst;
 	if (ptr == NULL)

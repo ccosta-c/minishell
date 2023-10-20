@@ -115,10 +115,10 @@ char	*get_tmp(char *str, int j, int k, int i)
 	return (tmp);
 }
 
-char	*search_ex(char *str, t_charlist *list, int size, int i)
+char	*search_ex(char *str, t_charlst *list, int size, int i)
 {
 	char		*fim;
-	t_charlist	*l_tmp;
+	t_charlst	*l_tmp;
 
 	l_tmp = list;
 	fim = NULL;

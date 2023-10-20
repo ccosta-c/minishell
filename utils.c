@@ -91,9 +91,9 @@ int	len_of(char *str)
 	return ((i - j) + 2);
 }
 
-int	name_variable(char *str, t_charlist *data)
+int	name_variable(char *str, t_charlst *data)
 {
-	t_charlist	*tmp;
+	t_charlst	*tmp;
 
 	tmp = data;
 	while (tmp != NULL)

@@ -91,11 +91,11 @@ int	num_of_quotes(char *data)
 	return (quote);
 }
 
-char	*get_variable(char *str, t_charlist *list, int size)
+char	*get_variable(char *str, t_charlst *list, int size)
 {
 	int			i;
 	char		*ret;
-	t_charlist	*l_tmp;
+	t_charlst	*l_tmp;
 
 	i = 0;
 	l_tmp = list;

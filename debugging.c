@@ -26,7 +26,7 @@ void	print_list(t_data *data)
 	}
 }
 
-void	print_lstchar(t_charlist *data)
+void	print_lstchar(t_charlst *data)
 {
 	while (data != NULL)
 	{

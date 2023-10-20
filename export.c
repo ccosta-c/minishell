@@ -12,7 +12,7 @@
 
 #include "./includes/minishell.h"
 
-void	ft_swap(t_charlist *list)
+void	ft_swap(t_charlst *list)
 {
 	char	*tmp;
 
@@ -24,10 +24,10 @@ void	ft_swap(t_charlist *list)
 	free(tmp);
 }
 
-int	count_variables(t_charlist *list)
+int	count_variables(t_charlst *list)
 {
 	int			i;
-	t_charlist	*tmp;
+	t_charlst	*tmp;
 
 	tmp = list;
 	i = 0;
@@ -39,11 +39,11 @@ int	count_variables(t_charlist *list)
 	return (i);
 }
 
-void	export_builtin(t_charlist *list, int i)
+void	export_builtin(t_charlst *list, int i)
 {
 	int			j;
 	int			size;
-	t_charlist	*tmp;
+	t_charlst	*tmp;
 
 	size = count_variables(list);
 	tmp = list;
@@ -68,10 +68,10 @@ void	export_builtin(t_charlist *list, int i)
 	}
 }
 
-void	print_export(t_charlist *list, int size, int i)
+void	print_export(t_charlst *list, int size, int i)
 {
 	int			j;
-	t_charlist	*tmp;
+	t_charlst	*tmp;
 	int			check_equal;
 
 	tmp = list;

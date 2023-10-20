@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 12:06:48 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:39:22 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ enum	e_type
 	CMD,
 };
 
-typedef struct s_charlist
+typedef struct s_charlst
 {
 	char				*content;
-	struct s_charlist	*next;
-}			t_charlist;
+	struct s_charlst	*next;
+}			t_charlst;
 
 typedef struct s_tokens
 {
@@ -55,8 +55,8 @@ typedef struct s_tokens
 
 typedef struct s_data
 {
-	t_charlist	*env;
-	t_charlist	*export;
+	t_charlst	*env;
+	t_charlst	*export;
 	pid_t		*pid;
 	char		*og_command;
 	char		*prompt;
@@ -88,33 +88,33 @@ void		copy_envp(t_data *data, char **envp);
 t_tokens	*initialize_tokens(int end, int start, char *arg);
 void		add_to_list(t_tokens **lst, t_tokens *new);
 void		ft_cleartokens(t_tokens **lst);
-void		ft_clearcharlist(t_charlist **lst);
+void		ft_clearcharlist(t_charlst **lst);
 
 ////////////////////////utils.c//////////////////////
 char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
 void		free_array(char **array);
 int			len_of(char *str);
-int			name_variable(char *str, t_charlist *data);
+int			name_variable(char *str, t_charlst *data);
 
 ////////////////////////utils2.c//////////////////////
 int			check_name(char *str);
 int			ft_stop_exp(char c);
 int			ft_strcmp(const char *str1, const char *str2);
-void		change_env_exp(t_charlist *en, t_charlist *ex, char *old, char *nw);
-void		change_env_exp2(t_charlist *exp, char *old, char *new);
+void		change_env_exp(t_charlst *en, t_charlst *ex, char *old, char *nw);
+void		change_env_exp2(t_charlst *exp, char *old, char *new);
 
 ////////////////////////utils3.c//////////////////////
 void		remove_quote_list(t_data *data);
 void		remove_quote_topdata(t_data *data);
 char		*remove_quote(char *data, int i, int j, char q);
 int			num_of_quotes(char *data);
-char		*get_variable(char *str, t_charlist *list, int size);
+char		*get_variable(char *str, t_charlst *list, int size);
 
 ////////////////////////utils4.c//////////////////////
 char		*get_exp(char *str, int i, t_data *data);
 char		*get_tmp(char *str, int j, int k, int i);
-char		*search_ex(char *str, t_charlist *list, int size, int i);
+char		*search_ex(char *str, t_charlst *list, int size, int i);
 char		*join_exp_str(char *exp, char *str, int total, int j);
 char		*cut_exp_str(char *str, int total, int j);
 
@@ -133,9 +133,9 @@ int			backslash_search(char *str, int i, int b);
 int			semicolon_search(char *str, int i, int s);
 
 ////////////////////////lstops2.c//////////////////////
-void		add_to_charlist(t_charlist **top, char *content);
-t_charlist	*ft_addnew(char *content);
-t_charlist	*ft_golast(t_charlist *lst);
+void		add_to_charlist(t_charlst **top, char *content);
+t_charlst	*ft_addnew(char *content);
+t_charlst	*ft_golast(t_charlst *lst);
 int			delete_redirects(t_tokens **lst, char *symb, t_data *data, int i);
 int			get_size_lst(t_data *data);
 
@@ -156,7 +156,7 @@ int			pipes_num2(char *str, int i, int p);
 //////////////////////debugging.c////////////////////
 void		print_list(t_data *data);
 void		print_array(char **array);
-void		print_lstchar(t_charlist *data);
+void		print_lstchar(t_charlst *data);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);
@@ -182,11 +182,11 @@ char		*get_tmp_path(t_data *data, int i, char **arg);
 void		cut_top_data_b(char *str, char **arg, size_t f);
 
 //////////////////////export.c/////////////////////
-void		ft_swap(t_charlist *list);
-void		export_builtin(t_charlist *list, int i);
-void		print_export(t_charlist *list, int size, int i);
+void		ft_swap(t_charlst *list);
+void		export_builtin(t_charlst *list, int i);
+void		print_export(t_charlst *list, int size, int i);
 void		add_export(t_data *data);
-int			count_variables(t_charlist *list);
+int			count_variables(t_charlst *list);
 
 //////////////////////builtins.c///////////////////
 void		fork_redirects(t_data *data);
@@ -214,7 +214,7 @@ void		echo_minus_n(t_data *data);
 int			handle_specials1(char *str, int i);
 int			handle_specials2(char *str, int i, t_data *data);
 int			handle_exp(char *str, int i, t_data *data);
-void		search_print(char *str, t_charlist *list, int size);
+void		search_print(char *str, t_charlst *list, int size);
 
 //////////////////////cd.c///////////////////////////
 void		cd(t_data *data, char *str);
@@ -225,7 +225,8 @@ void		cd_else_dir(t_data *data, char *dir);
 
 //////////////////////unset.c////////////////////////
 void		unset_builtin(t_data *data);
-void		actual_loop(t_tokens *tmp, t_data *data, t_charlist *list);
+void		actual_loop(t_tokens *tmp, t_data *data, t_charlst *list);
+void		else_unset(t_data *data, t_charlst *actl, t_charlst *prv, int i);
 
 //////////////////////exit.c///////////////////////////
 void		exit_builtin(t_data *data);
