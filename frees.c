@@ -17,7 +17,7 @@ void	frees(t_data *data)
 	ft_cleartokens(&data->top);
 	ft_clearcharlist(&data->env);
 	ft_clearcharlist(&data->export);
-	if (data->og_command)
+	if (data->og_command != NULL)
 		free(data->og_command);
 	free(data->prompt);
 	free(data->pwd);

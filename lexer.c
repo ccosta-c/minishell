@@ -28,6 +28,7 @@ int	lexer(t_data *data, char *input)
 		return (free (data->og_command), 0);
 	execution(data);
 	free (data->og_command);
+	data->og_command = NULL;
 	return (0);
 }
 
