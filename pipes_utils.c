@@ -6,31 +6,31 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:31:29 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/17 14:41:07 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:31:04 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
 
-int	lexer_pipes(t_data *data, char *input)
+int	lexer_pipes(t_data *data, char **input, int i)
 {
 	char	*str;
 
 	ft_cleartokens(&data->top);
-	if (!input)
+	if (!input[i])
 		return (-1);
-	str = ft_strtrim(input, " ");
+	str = ft_strtrim(input[i], " ");
 	if (check_first(str) == -1)
 		return (free(str), 0);
 	lexer_continuation(data, str, 0, 0);
 	free(str);
 	if (check_second(data) == -1)
 		return (0);
-	execution_pipes(data);
+	execution_pipes(data, input);
 	exit (0);
 }
 
-void	execution_pipes(t_data *data)
+void	execution_pipes(t_data *data, char **commands)
 {
 	char	**arg;
 
@@ -39,7 +39,7 @@ void	execution_pipes(t_data *data)
 	{
 		arg = list_to_array(data);
 		get_envpaths(data);
-		execve_pipes(data, arg, 0);
+		execve_pipes(data, arg, 0, commands);
 		free_array(arg);
 		free_array(data->paths);
 	}

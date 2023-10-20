@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:24:53 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:24:36 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ void	first_pipes_cmd_check(char original_command, bool *quotes)
 
 void	free_child(t_data *data, char **array)
 {
-	int	i;
-
-	i = 0;
 	free_array(array);
 	free(data->pipes_fds);
 	ft_cleartokens(&data->top);

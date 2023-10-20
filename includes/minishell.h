@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 18:12:29 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:30:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,15 +331,15 @@ int			redi_append_no_node(t_data *data, char *temp);
 
 //////////////////////pipes.c//////////////////////
 void		pipes_execution(t_data *data);
-int			execute_pipes_command(t_data *data, char *command, int i);
+int			execute_pipes_command(t_data *data, char **commands, int i);
 void		redirect(int fd_in, int fd_out);
 void		pipes_wiring(t_data *data, int i);
-void		execve_pipes(t_data *data, char **arg, int i);
+void		execve_pipes(t_data *data, char **arg, int i, char **commands);
 
 //////////////////////pipes_utils.c//////////////////////
 
-int			lexer_pipes(t_data *data, char *input);
-void		execution_pipes(t_data *data);
+int			lexer_pipes(t_data *data, char **commands, int i);
+void		execution_pipes(t_data *data, char **commands);
 void		reset_fd(t_data *data);
 void		pipe_closing(t_data *data);
 

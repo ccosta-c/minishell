@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:34:10 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 16:29:20 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:35:19 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	pipes_execution(t_data *data)
 	i = 0;
 	while (commands[i])
 	{
-		execute_pipes_command(data, commands[i], i);
+		execute_pipes_command(data, commands, i);
 		i++;
 	}
 	pipe_closing(data);
@@ -38,7 +38,7 @@ void	pipes_execution(t_data *data)
 		;
 }
 
-int	execute_pipes_command(t_data *data, char *command, int i)
+int	execute_pipes_command(t_data *data, char **commands, int i)
 {
 	data->pid[i] = fork();
 	if (data->pid[i] < 0)
@@ -46,7 +46,7 @@ int	execute_pipes_command(t_data *data, char *command, int i)
 	if (data->pid[i] == 0)
 	{
 		pipes_wiring(data, i);
-		lexer_pipes(data, command);
+		lexer_pipes(data, commands, i);
 		frees(data);
 	}
 	return (0);
@@ -69,7 +69,7 @@ void	pipes_wiring(t_data	*data, int i)
 	pipe_closing(data);
 }
 
-void	execve_pipes(t_data *data, char **arg, int i)
+void	execve_pipes(t_data *data, char **arg, int i, char **commands)
 {
 	char	*tmp_path;
 
@@ -87,6 +87,8 @@ void	execve_pipes(t_data *data, char **arg, int i)
 	write(2, data->top->data, ft_strlen(data->top->data));
 	write(2, ": command not found\n", 21);
 	frees(data);
+	free_array(commands);
 	free_child(data, arg);
+	free_array(data->paths);
 	exit (127);
 }
