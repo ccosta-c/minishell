@@ -46,6 +46,8 @@ int	handle_specials1(char *str, int i)
 	int		k;
 	char	*tmp;
 
+	if (str[i + 1] == '\0')
+		return (i + 1);
 	if (str[i + 1] == '\'')
 		return (i + 2);
 	j = i;
@@ -70,6 +72,8 @@ int	handle_specials2(char *str, int i, t_data *data)
 	int		k;
 	char	*tmp;
 
+	if (str[i + 1] == '\0')
+		return (i + 1);
 	if (str[i + 1] == '\"')
 		return (i + 2);
 	j = i;

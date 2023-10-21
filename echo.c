@@ -116,6 +116,8 @@ void	echo_normal2(char *str, t_data *data)
 			printf("%i", g_exit);
 			i = i + 2;
 		}
+		else if (str[i] == '$' && (str[i + 1] == '\'' || str[i + 1] == '\"'))
+			i = i + 2;
 		else if (str[i] == '$' && str[i + 1])
 			i = handle_exp(str, i, data);
 		else
