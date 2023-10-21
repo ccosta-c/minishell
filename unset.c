@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:07 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 15:40:48 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:25:15 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	unset_builtin(t_data *data)
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
+		unset_checks(tmp->data);
 		actual_loop(tmp, data, data->export);
 		actual_loop(tmp, data, data->env);
 		tmp = tmp->next;
@@ -64,6 +65,24 @@ void	else_unset(t_data *data, t_charlst *actl, t_charlst *prv, int i)
 		free(actl->content);
 		free(actl);
 	}
+}
+
+int	unset_checks(char *data)
+{
+	int		i;
+
+	i = 0;
+	while (data[i] != '\0')
+	{
+		if ((data[i] < 65 || data[i] > 90) && (data[i] < 97 || data[i] > 122))
+		{
+			g_exit = 1;
+			printf("unset: not a valid identifier\n");
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
 
 void	handle_exit_pipes(t_data *data)

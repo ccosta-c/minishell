@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 18:30:57 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:22:58 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,7 @@ void		unset_builtin(t_data *data);
 void		actual_loop(t_tokens *tmp, t_data *data, t_charlst *list);
 void		else_unset(t_data *data, t_charlst *actl, t_charlst *prv, int i);
 void		handle_exit_pipes(t_data *data);
+int			unset_checks(char *data);
 
 //////////////////////exit.c///////////////////////////
 void		exit_builtin(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:38:42 by macastan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:13:25 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:18:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void	execution_env(t_data *data)
 void	execution_export(t_data *data)
 {
 	char	*tmp;
-	int		i;
 
-	i = 0;
 	if (data->top->next)
 	{
 		tmp = remove_quote(data->top->next->data, 0, 0, 0);
@@ -70,8 +68,9 @@ void	execution_export(t_data *data)
 			return ;
 		}
 		add_export(data);
+		if (g_exit != 1)
+			g_exit = 0;
 		free(tmp);
-		g_exit = 0;
 	}
 	else
 	{
