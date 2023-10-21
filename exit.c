@@ -33,6 +33,13 @@ void	exit_builtin2(t_data *data)
 	long long	e;
 
 	e = ft_atol(data->top->next->data);
+	if (e == 0)
+	{
+		printf("exit\n");
+		g_exit = 0;
+		frees(data);
+		exit(g_exit);
+	}
 	if (ft_nlen(e) != ft_strlen(data->top->next->data))
 	{
 		printf("exit\n");
@@ -78,7 +85,7 @@ int	check_exit_data(char *str)
 			return (-1);
 		i++;
 	}
-	return (0);
+	return (free(ws),0);
 }
 
 char	*handle_whitespaces(char *input)

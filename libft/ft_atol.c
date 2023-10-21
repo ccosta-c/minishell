@@ -43,6 +43,8 @@ long long	ft_atol(const char *nptr)
 	int			i;
 
 	result = 0;
+	if (ft_zeros(nptr) == 0)
+		return (0);
 	sign = ft_whitespace(nptr, &i);
 	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
@@ -52,4 +54,20 @@ long long	ft_atol(const char *nptr)
 	}
 	result *= sign;
 	return (result);
+}
+
+int	ft_zeros(const char *n)
+{
+	int	i;
+
+	i = 0;
+	if (n[i] == '-' || n[i] == '+')
+		i++;
+	while (n[i])
+	{
+		if (n[i] != '0')
+			return (-1);
+		i++;
+	}
+	return (0);
 }

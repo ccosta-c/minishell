@@ -143,5 +143,6 @@ int			ft_address(unsigned long address);
 size_t		ft_strlenwithoutn(const char *s);
 int			c_words(const char *s, char c);
 long long	ft_atol(const char *nptr);
+int			ft_zeros(const char *n);
 
 #endif
