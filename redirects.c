@@ -77,22 +77,24 @@ int	redirects_here(t_data *data, t_tokens *n, t_tokens *c)
 	t_tokens	*next;
 	t_tokens	*current;
 	static int	i;
-	char		*h;
 
+	if (data->h != NULL)
+		free(data->h);
 	next = n;
 	current = c;
-	h = ft_itoa(i);
+	data->h = ft_itoa(i);
 	if (n)
 	{
-		if (redi_heredoc(data, current->data, next->data, h) == -1)
+		if (redi_heredoc(data, current->data, next->data, data->h) == -1)
 			return (-1);
 	}
 	else
 	{
-		if (redi_heredoc(data, current->data, "maluca", h) == -1)
+		if (redi_heredoc(data, current->data, "maluca", data->h) == -1)
 			return (-1);
 	}
-	free(h);
+	free(data->h);
+	data->h = NULL;
 	i++;
 	return (0);
 }

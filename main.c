@@ -23,24 +23,34 @@ int	main(int argc, char **argv, char **envp)
 		return (printf("minishell: %s: No such file or directory\n", argv[1]));
 	get_prompt(&data);
 	handle_signals();
-	data.env = NULL;
-	data.export = NULL;
-	data.paths = NULL;
-	data.og_command = NULL;
-	data.top = NULL;
-	data.og_envp = envp;
-	copy_envp(&data, envp);
-	data.pwd = get_variable("PWD", data.env, count_variables(data.env));
-	data.old_pwd = get_variable("OLDPWD", data.env, count_variables(data.env));
-	data.home = get_variable("HOME", data.env, count_variables(data.env));
-	data.stdin_fd = STDIN_FILENO;
-	data.stdout_fd = STDOUT_FILENO;
-	data.red_flag = 0;
-	data.red_n = 0;
-	data.fd_out = NULL;
-	data.o_flag_out = 0;
-	data.heredoc = NULL;
+	init_stuff(&data, envp);
 	prompt_loop(&data);
+}
+
+void	init_stuff(t_data *data, char **envp)
+{
+	int	cv;
+
+	cv = count_variables(data->env);
+	data->env = NULL;
+	data->export = NULL;
+	data->paths = NULL;
+	data->og_command = NULL;
+	data->top = NULL;
+	data->og_envp = envp;
+	copy_envp(data, envp);
+	data->pwd = get_variable("PWD", data->env, cv);
+	data->old_pwd = get_variable("OLDPWD", data->env, cv);
+	data->home = get_variable("HOME", data->env, cv);
+	data->stdin_fd = STDIN_FILENO;
+	data->stdout_fd = STDOUT_FILENO;
+	data->red_flag = 0;
+	data->red_n = 0;
+	data->fd_out = NULL;
+	data->o_flag_out = 0;
+	data->heredoc = NULL;
+	data->tmp_r = NULL;
+	data->h = NULL;
 }
 
 void	prompt_loop(t_data *data)

@@ -66,6 +66,8 @@ typedef struct s_data
 	char		*old_pwd;
 	char		*home;
 	char		*heredoc;
+	char		*tmp_r;
+	char		*h;
 	int			lst_size;
 	int			*pipes_fds;
 	int			stdin_fd;
@@ -80,6 +82,7 @@ typedef struct s_data
 
 ////////////////////////main.c//////////////////////
 void		prompt_loop(t_data *data);
+void		init_stuff(t_data *data, char **envp);
 
 ////////////////////////prompt.c//////////////////////
 void		get_prompt(t_data *data);
@@ -170,6 +173,7 @@ void		get_exit_status_one(int pids, t_data *data);
 
 //////////////////////frees.c////////////////////////
 void		frees(t_data *data);
+void		frees2(t_data *data);
 int			open_heredoc(char *h);
 void		open_fd_out(t_data *data);
 void		handler_sigint(int sig);
