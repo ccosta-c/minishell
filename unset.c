@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:07 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/21 15:25:15 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:35:15 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	unset_builtin(t_data *data)
 	tmp = data->top->next;
 	while (tmp != NULL)
 	{
-		unset_checks(tmp->data);
+		if (unset_checks(tmp->data) == 1)
+			return ;
 		actual_loop(tmp, data, data->export);
 		actual_loop(tmp, data, data->env);
 		tmp = tmp->next;
 	}
+	g_exit = 0;
 }
 
 void	actual_loop(t_tokens *tmp, t_data *data, t_charlst *list)

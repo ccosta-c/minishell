@@ -100,7 +100,6 @@ void	execution_unset(t_data *data)
 		}
 		unset_builtin(data);
 		free(tmp);
-		g_exit = 0;
 	}
 }
 
