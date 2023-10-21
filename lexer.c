@@ -56,6 +56,8 @@ int	check_first(char *in)
 {
 	char	c;
 
+	if (!in || ck_whitespaces(in) == -1)
+		return (g_exit = 0, -1);
 	c = check_redirect(in, -1, 0);
 	if (check_quotes(in, 0) == 0)
 	{

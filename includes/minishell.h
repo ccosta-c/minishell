@@ -163,6 +163,7 @@ int			pipes_num2(char *str, int i, int p);
 void		print_list(t_data *data);
 void		print_array(char **array);
 void		print_lstchar(t_charlst *data);
+int			ck_whitespaces(char *in);
 
 //////////////////////signals.c//////////////////////
 void		handle_signals(void);

@@ -47,3 +47,15 @@ void	print_array(char **array)
 		printf("\n");
 	}
 }
+
+int	ck_whitespaces(char *in)
+{
+	int	i;
+
+	i = 0;
+	while (in[i] && (in[i] == ' ' || in[i] == '\t'))
+		i++;
+	if (in[i] == '\0')
+		return (-1);
+	return (0);
+}
