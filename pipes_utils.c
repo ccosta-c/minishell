@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:31:29 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/20 18:31:04 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 14:50:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	lexer_pipes(t_data *data, char **input, int i)
 	if (check_second(data) == -1)
 		return (0);
 	execution_pipes(data, input);
+	frees(data);
+	free(data->pid);
+	free(data->pipes_fds);
 	exit (0);
 }
 
@@ -43,6 +46,7 @@ void	execution_pipes(t_data *data, char **commands)
 		free_array(arg);
 		free_array(data->paths);
 	}
+	free_array(commands);
 }
 
 void	reset_fd(t_data *data)
