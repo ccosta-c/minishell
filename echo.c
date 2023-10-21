@@ -108,7 +108,7 @@ void	echo_normal2(char *str, t_data *data)
 	while (str[i])
 	{
 		if (str[i] == '\'')
-			i = handle_specials1(str, i) + 1;
+			i = handle_specials1(str, i);
 		else if (str[i] == '\"')
 			i = handle_specials2(str, i, data) + 1;
 		else if (str[i] == '$' && str[i + 1] == '?')
