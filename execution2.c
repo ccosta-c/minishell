@@ -106,7 +106,7 @@ void	execution_unset(t_data *data)
 void	execution_exit(t_data *data)
 {
 	if (data->pipes_nums != 0)
-		handle_exit_pipes(data);
+		handle_exit_pipes(data, 0);
 	else if (!data->top->next)
 	{
 		printf("exit\n");

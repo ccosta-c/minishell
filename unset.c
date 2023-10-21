@@ -87,29 +87,28 @@ int	unset_checks(char *data)
 	return (0);
 }
 
-void	handle_exit_pipes(t_data *data)
+void	handle_exit_pipes(t_data *data, long long e)
 {
-	long long	e;
-
-	e = ft_atol(data->top->next->data);
-	remove_quote_list(data);
-	if (check_exit_data(data->top->next->data) == -1)
-	{
-		printf("bash: exit: %s:", data->top->next->data);
-		printf(" numeric argument required\n");
-		g_exit = 2;
-	}
+	if (!data->top->next)
+		g_exit = 0;
 	else
 	{
+		e = ft_atol(data->top->next->data);
+		remove_quote_list(data);
 		if (e == 0)
 			g_exit = 0;
-		if (ft_nlen(e) != ft_strlen(data->top->next->data))
+		else if (check_exit_data(data->top->next->data) == -1)
 		{
 			printf("bash: exit: %s:", data->top->next->data);
 			printf(" numeric argument required\n");
 			g_exit = 2;
 		}
-		printf("exit\n");
+		else if (ft_nlen(e) != ft_strlen(data->top->next->data))
+		{
+			printf("bash: exit: %s:", data->top->next->data);
+			printf(" numeric argument required\n");
+			g_exit = 2;
+		}
 		g_exit = (e % 256);
 	}
 }
