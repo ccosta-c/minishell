@@ -31,7 +31,6 @@ void	init_stuff(t_data *data, char **envp)
 {
 	int	cv;
 
-	cv = count_variables(data->env);
 	data->env = NULL;
 	data->export = NULL;
 	data->paths = NULL;
@@ -39,6 +38,7 @@ void	init_stuff(t_data *data, char **envp)
 	data->top = NULL;
 	data->og_envp = envp;
 	copy_envp(data, envp);
+	cv = count_variables(data->env);
 	data->pwd = get_variable("PWD", data->env, cv);
 	data->old_pwd = get_variable("OLDPWD", data->env, cv);
 	data->home = get_variable("HOME", data->env, cv);
