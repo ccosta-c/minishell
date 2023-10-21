@@ -238,6 +238,7 @@ void		cd_else_dir(t_data *data, char *dir);
 void		unset_builtin(t_data *data);
 void		actual_loop(t_tokens *tmp, t_data *data, t_charlst *list);
 void		else_unset(t_data *data, t_charlst *actl, t_charlst *prv, int i);
+void		handle_exit_pipes(t_data *data);
 
 //////////////////////exit.c///////////////////////////
 void		exit_builtin(t_data *data);

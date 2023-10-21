@@ -85,7 +85,7 @@ int	check_exit_data(char *str)
 			return (-1);
 		i++;
 	}
-	return (free(ws),0);
+	return (free(ws), 0);
 }
 
 char	*handle_whitespaces(char *input)

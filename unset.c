@@ -65,3 +65,30 @@ void	else_unset(t_data *data, t_charlst *actl, t_charlst *prv, int i)
 		free(actl);
 	}
 }
+
+void	handle_exit_pipes(t_data *data)
+{
+	long long	e;
+
+	e = ft_atol(data->top->next->data);
+	remove_quote_list(data);
+	if (check_exit_data(data->top->next->data) == -1)
+	{
+		printf("bash: exit: %s:", data->top->next->data);
+		printf(" numeric argument required\n");
+		g_exit = 2;
+	}
+	else
+	{
+		if (e == 0)
+			g_exit = 0;
+		if (ft_nlen(e) != ft_strlen(data->top->next->data))
+		{
+			printf("bash: exit: %s:", data->top->next->data);
+			printf(" numeric argument required\n");
+			g_exit = 2;
+		}
+		printf("exit\n");
+		g_exit = (e % 256);
+	}
+}
