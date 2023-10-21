@@ -187,9 +187,10 @@ int			search_red(t_data *data);
 
 //////////////////////execution.c///////////////////
 void		execution(t_data *data);
-void		execution_single(t_data *data, int j, char **arg, int i);
+int			execution_single(t_data *data, int j, char **arg, int i);
 char		*get_tmp_path(t_data *data, int i, char **arg);
 void		cut_top_data_b(char *str, char **arg, size_t f);
+void		print_error(char *arg, char *erro);
 
 //////////////////////export.c/////////////////////
 void		ft_swap(t_charlst *list);
@@ -199,7 +200,7 @@ void		add_export(t_data *data);
 int			count_variables(t_charlst *list);
 
 //////////////////////builtins.c///////////////////
-void		fork_redirects(t_data *data);
+void		fork_redirects(t_data *data, int redi);
 int			search_red_total(t_data *data, int redi);
 int			check_builtins(t_data *data);
 int			check_builtins2(t_data *data);

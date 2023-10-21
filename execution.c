@@ -33,7 +33,7 @@ void	execution(t_data *data)
 	}
 }
 
-void	execution_single(t_data *data, int j, char **arg, int i)
+int	execution_single(t_data *data, int j, char **arg, int i)
 {
 	char	*tmp_path;
 	pid_t	pid;
@@ -49,17 +49,22 @@ void	execution_single(t_data *data, int j, char **arg, int i)
 				execve(tmp_path, arg, data->og_envp);
 			get_exit_status_one(pid, data);
 			wait(NULL);
-			free(tmp_path);
-			return ;
+			return (free(tmp_path), 0);
 		}
 		free(tmp_path);
 	}
 	if (j == 0)
-	{
-		write(2, arg[0], ft_strlen(arg[0]));
-		ft_putstr_fd(": command not found\n", 2);
-		g_exit = 127;
-	}
+		print_error(arg[0], strerror(errno));
+	return (0);
+}
+
+void	print_error(char *arg, char *erro)
+{
+	write(2, arg, ft_strlen(arg));
+	write(2, ": ", 2);
+	ft_putstr_fd(erro, 2);
+	write(2, "\n", 1);
+	g_exit = 127;
 }
 
 void	cut_top_data_b(char *str, char **arg, size_t f)

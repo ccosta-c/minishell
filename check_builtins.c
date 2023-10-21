@@ -12,9 +12,8 @@
 
 #include "./includes/minishell.h"
 
-void	fork_redirects(t_data *data)
+void	fork_redirects(t_data *data, int redi)
 {
-	int		redi;
 	pid_t	pid;
 
 	pid = fork();
@@ -27,7 +26,10 @@ void	fork_redirects(t_data *data)
 		while (redi > 0)
 		{
 			if (redirects(data, data->top) == -1)
+			{
+				frees(data);
 				exit(1);
+			}
 			redi--;
 		}
 		if (data->lst_size > 0)
@@ -56,7 +58,7 @@ int	check_builtins(t_data *data)
 {
 	if (search_red(data) == 1)
 	{
-		fork_redirects(data);
+		fork_redirects(data, 0);
 		return (1);
 	}
 	if (ft_strcmp("echo", data->top->data) == 0)
