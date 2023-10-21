@@ -117,9 +117,7 @@ void	echo_normal2(char *str, t_data *data)
 			i = i + 2;
 		}
 		else if (str[i] == '$' && str[i + 1])
-		{
 			i = handle_exp(str, i, data);
-		}
 		else
 		{
 			printf("%c", str[i]);
