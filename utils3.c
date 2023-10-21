@@ -14,12 +14,12 @@
 
 void	remove_quote_topdata(t_data *data)
 {
-	char		*tmp;
+	char		*tmp2;
 
-	tmp = ft_strdup(data->top->data);
+	tmp2 = get_exp(data->top->data, 0, data);
 	free(data->top->data);
-	data->top->data = remove_quote(tmp, 0, 0, 0);
-	free(tmp);
+	data->top->data = remove_quote(tmp2, 0, 0, 0);
+	free(tmp2);
 }
 
 void	remove_quote_list(t_data *data)
