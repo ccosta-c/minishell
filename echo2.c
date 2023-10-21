@@ -6,7 +6,7 @@
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:17:22 by macastan          #+#    #+#             */
-/*   Updated: 2023/09/18 16:49:53 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:19:56 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,14 @@ int	handle_specials1(char *str, int i)
 	while (str[i] != '\'')
 		i++;
 	tmp = malloc(sizeof(char) * ((i - j) + 1));
-	while (j < i)
+	while (++j < i)
 	{
 		tmp[k] = str[j];
 		k++;
-		j++;
 	}
 	tmp[k] = '\0';
 	simpleq_echo(tmp);
-	return (free(tmp), i);
+	return (free(tmp), j + 1);
 }
 
 int	handle_specials2(char *str, int i, t_data *data)
@@ -79,15 +78,14 @@ int	handle_specials2(char *str, int i, t_data *data)
 	while (str[i] != '\"')
 		i++;
 	tmp = malloc(sizeof(char) * ((i - j) + 1));
-	while (j < i)
+	while (++j < i)
 	{
 		tmp[k] = str[j];
 		k++;
-		j++;
 	}
 	tmp[k] = '\0';
 	doubleq_echo(tmp, data);
-	return (free(tmp), i);
+	return (free(tmp), j + 1);
 }
 
 int	handle_exp(char *str, int i, t_data *data)
