@@ -33,9 +33,17 @@ void	execution_pwd(t_data *data)
 
 void	execution_env(t_data *data)
 {
-	if (data->top->next)
+	char	*tmp;
+
+	tmp = get_variable("PATH", data->export, count_variables(data->export));
+	if (!tmp)
 	{
-		printf("env: No options or arguments supported\n");
+		printf("minishell: env: No such file or directory\n");
+		g_exit = 127;
+	}
+	else if (data->top->next)
+	{
+		printf("minishell: env: No options or arguments supported\n");
 		g_exit = 2;
 	}
 	else
@@ -43,6 +51,7 @@ void	execution_env(t_data *data)
 		print_lstchar(data->env);
 		g_exit = 0;
 	}
+	free(tmp);
 }
 
 void	execution_export(t_data *data)
