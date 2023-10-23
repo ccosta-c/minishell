@@ -17,9 +17,10 @@ void	exit_builtin(t_data *data)
 	remove_quote_list(data);
 	if (check_exit_data(data->top->next->data) == -1)
 	{
-		printf("exit\n");
-		printf("bash: exit: %s:", data->top->next->data);
-		printf(" numeric argument required\n");
+		write(2, "exit\n", 5);
+		write(2, "minishell: exit: ", 17);
+		write(2, &data->top->next->data, ft_strlen(data->top->next->data));
+		write(2, " numeric argument required\n", 27);
 		g_exit = 2;
 		frees(data);
 		exit(g_exit);
@@ -35,21 +36,22 @@ void	exit_builtin2(t_data *data)
 	e = ft_atol(data->top->next->data);
 	if (e == 0)
 	{
-		printf("exit\n");
+		write(2, "exit\n", 5);
 		g_exit = 0;
 		frees(data);
 		exit(g_exit);
 	}
 	if (ft_nlen(e) != ft_strlen(data->top->next->data))
 	{
-		printf("exit\n");
-		printf("bash: exit: %s:", data->top->next->data);
-		printf(" numeric argument required\n");
+		write(2, "exit\n", 5);
+		write(2, "minishell: exit: ", 17);
+		write(2, &data->top->next->data, ft_strlen(data->top->next->data));
+		write(2, " numeric argument required\n", 27);
 		g_exit = 2;
 		frees(data);
 		exit(g_exit);
 	}
-	printf("exit\n");
+	write(2, "exit\n", 5);
 	g_exit = (e % 256);
 	frees(data);
 	exit(g_exit);
@@ -82,7 +84,7 @@ int	check_exit_data(char *str)
 	while (ws[i])
 	{
 		if (ws[i] < 48 || ws[i] > 57)
-			return (-1);
+			return (free(ws), -1);
 		i++;
 	}
 	return (free(ws), 0);

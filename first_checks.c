@@ -34,22 +34,22 @@ int	check_pipes(char *input)
 {
 	if (input && input[0] == '|' && input[1] != '|')
 	{
-		printf("minishell: syntax error near unexpected token '|'\n");
+		write(2, "minishell: syntax error near unexpected token '|'\n", 50);
 		return (g_exit = 2, 0);
 	}
 	else if (input && input[0] == '|' && input[1] == '|')
 	{
-		printf("minishell: syntax error near unexpected token '|'\n");
+		write(2, "minishell: syntax error near unexpected token '|'\n", 50);
 		return (g_exit = 2, 0);
 	}
 	if (input[ft_strlen(input) - 1] == '|')
 	{
-		printf("minishell: syntax error near unexpected token '|'\n");
+		write(2, "minishell: syntax error near unexpected token '|'\n", 50);
 		return (g_exit = 2, 0);
 	}
 	if (input[ft_strlen(input) - 1] == ';')
 	{
-		printf("minishell: syntax error near unexpected token `;'\n");
+		write(2, "minishell: syntax error near unexpected token ';'\n", 50);
 		return (g_exit = 2, 0);
 	}
 	return (1);

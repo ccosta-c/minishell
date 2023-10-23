@@ -99,14 +99,16 @@ void	handle_exit_pipes(t_data *data, long long e)
 			g_exit = 0;
 		else if (check_exit_data(data->top->next->data) == -1)
 		{
-			printf("bash: exit: %s:", data->top->next->data);
-			printf(" numeric argument required\n");
+			write(2, "minishell: exit: ", 17);
+			write(2, data->top->next->data, ft_strlen(data->top->next->data));
+			write(2, " numeric argument required\n", 27);
 			g_exit = 2;
 		}
 		else if (ft_nlen(e) != ft_strlen(data->top->next->data))
 		{
-			printf("bash: exit: %s:", data->top->next->data);
-			printf(" numeric argument required\n");
+			write(2, "minishell: exit: ", 17);
+			write(2, &data->top->next->data, ft_strlen(data->top->next->data));
+			write(2, " numeric argument required\n", 27);
 			g_exit = 2;
 		}
 		g_exit = (e % 256);
