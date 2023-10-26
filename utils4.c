@@ -25,7 +25,7 @@ char	*get_exp(char *str, int i, t_data *data)
 		return (ret = ft_strdup(str), ret);
 	tmp = get_tmp(str, i, 0, i);
 	if (tmp[0] == '$')
-		return (ret = ft_strdup(str), ret);
+		return (free(tmp), ret = ft_strdup(str), ret);
 	ret = search_ex(tmp, data->env, count_variables(data->env), 0);
 	if (ret)
 	{
@@ -101,7 +101,7 @@ char	*get_tmp(char *str, int j, int k, int i)
 	i++;
 	if (str[0] == '$' && str[1] == '?')
 		return (tmp = ft_strdup("?"), tmp);
-	if (str[0] == '$' && !str[1])
+	if ((str[0] == '$' && !str[1]) || (str[0] == '$' && str[1] == '$'))
 		return (tmp = ft_strdup("$"), tmp);
 	while (str[i])
 	{
@@ -124,6 +124,7 @@ char	*get_tmp(char *str, int j, int k, int i)
 char	*search_ex(char *str, t_charlst *list, int size, int i)
 {
 	char		*fim;
+	int			j;
 	t_charlst	*l_tmp;
 
 	l_tmp = list;
@@ -132,7 +133,10 @@ char	*search_ex(char *str, t_charlst *list, int size, int i)
 		return (ft_itoa(g_exit));
 	while (i <= (size - 1))
 	{
-		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
+		j = 0;
+		while (l_tmp->content[j] != '=')
+			j++;
+		if (ft_strncmp(str, l_tmp->content, j) == 0)
 		{
 			fim = cut_env_exp(l_tmp->content, 0, 0);
 			break ;

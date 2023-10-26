@@ -368,4 +368,11 @@ void		free_child(t_data *data, char **array);
 void		check_if_exists(t_data *data, char *tmp);
 int			execution_checks(char *data);
 
+////////////////////////utils7.c//////////////////////
+int			write_here(char *in, t_data *data, int fd_file);
+void		write_here2(char *in, int fd_file);
+int			count_exp(char *in, int i);
+int			cut_exp(char *str);
+char		*get_exp_here(char *str, int i, t_data *data);
+
 #endif

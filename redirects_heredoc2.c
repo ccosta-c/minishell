@@ -39,7 +39,6 @@ int	redi_here_two_nodes(t_data *data, char *str, char *here, char *h)
 int	do_here(char *hered, char *h, t_data *data, int fd_file)
 {
 	char	*input;
-	char	*tmp;
 
 	data->heredoc = ft_strjoin(".heredoc", h);
 	fd_file = open(data->heredoc, O_WRONLY | O_CREAT | O_TRUNC, 0777);
@@ -55,12 +54,11 @@ int	do_here(char *hered, char *h, t_data *data, int fd_file)
 			break ;
 		if (ft_strcmp(hered, input) == 0)
 			break ;
-		tmp = get_exp(input, 0, data);
-		write(fd_file, tmp, ft_strlen(tmp));
-		write(fd_file, "\n", 1);
+		write_here(input, data, fd_file);
 		free(input);
-		free(tmp);
 	}
+	if (input)
+		free(input);
 	close(fd_file);
 	return (open_fd_out(data), free(data->heredoc), data->heredoc = NULL, 0);
 }
