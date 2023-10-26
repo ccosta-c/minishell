@@ -61,7 +61,7 @@ int	check_first(char *in)
 	c = check_redirect(in, -1, 0);
 	if (check_quotes(in, 0) == 0)
 	{
-		write(2, "minishell: unclosed quotes\n", 28);
+		write(2, "minishell: unclosed quotes\n", 27);
 		return (g_exit = 2, -1);
 	}
 	if (check_pipes(in) == 0 || check_not_exc(in) == -1)

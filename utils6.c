@@ -23,17 +23,17 @@ int	check_not_exc(char *in)
 {
 	if (ecomercial_search(in, 0, 0) != 0)
 	{
-		write(2, "minishell: `&' not interpreted\n", 29);
+		write(2, "minishell: `&' not interpreted\n", 31);
 		return (g_exit = 127, -1);
 	}
 	if (backslash_search(in, 0, 0) != 0)
 	{
-		write(2, "minishell: `\\' not interpreted\n", 29);
+		write(2, "minishell: `\\' not interpreted\n", 32);
 		return (g_exit = 127, -1);
 	}
 	if (semicolon_search(in, 0, 0) != 0)
 	{
-		write(2, "minishell: `;' not interpreted\n", 29);
+		write(2, "minishell: `;' not interpreted\n", 31);
 		return (g_exit = 127, -1);
 	}
 	return (0);
