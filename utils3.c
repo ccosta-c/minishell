@@ -94,6 +94,7 @@ int	num_of_quotes(char *data)
 char	*get_variable(char *str, t_charlst *list, int size)
 {
 	int			i;
+	int			j;
 	char		*ret;
 	t_charlst	*l_tmp;
 
@@ -101,7 +102,10 @@ char	*get_variable(char *str, t_charlst *list, int size)
 	l_tmp = list;
 	while (i <= (size - 1))
 	{
-		if (ft_strncmp(str, l_tmp->content, ft_strlen(str)) == 0)
+		j = 0;
+		while (l_tmp->content[j] != '=')
+			j++;
+		if (ft_strncmp(str, l_tmp->content, j) == 0)
 		{
 			ret = cut_env_exp(l_tmp->content, 0, 0);
 			return (ret);
