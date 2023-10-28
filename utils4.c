@@ -98,11 +98,11 @@ char	*get_tmp(char *str, int j, int k, int i)
 {
 	char	*tmp;
 
-	i++;
 	if (str[i] == '$' && str[i + 1] == '?')
 		return (tmp = ft_strdup("?"), tmp);
 	if ((str[i] == '$' && !str[i + 1]) || (str[i] == '$' && str[i + 1] == '$'))
 		return (tmp = ft_strdup("$"), tmp);
+	i++;
 	while (str[i])
 	{
 		if (ft_stop_exp(str[i]) == 0)
