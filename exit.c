@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:14:36 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/11 15:41:42 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:33:13 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	exit_builtin(t_data *data)
 	{
 		write(2, "exit\n", 5);
 		write(2, "minishell: exit: ", 17);
-		write(2, &data->top->next->data, ft_strlen(data->top->next->data));
+		write(2, data->top->next->data, ft_strlen(data->top->next->data));
 		write(2, " numeric argument required\n", 27);
 		g_exit = 2;
 		frees(data);
@@ -45,8 +45,8 @@ void	exit_builtin2(t_data *data)
 	{
 		write(2, "exit\n", 5);
 		write(2, "minishell: exit: ", 17);
-		write(2, &data->top->next->data, ft_strlen(data->top->next->data));
-		write(2, " numeric argument required\n", 27);
+		write(2, data->top->next->data, ft_strlen(data->top->next->data));
+		write(2, ": numeric argument required\n", 27);
 		g_exit = 2;
 		frees(data);
 		exit(g_exit);
