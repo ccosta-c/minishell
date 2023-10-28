@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:01:41 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/21 15:22:58 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:52:44 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char		**list_to_array(t_data *data);
 void		get_envpaths(t_data *data);
 void		free_array(char **array);
 int			len_of(char *str);
-int			name_variable(char *str, t_charlst *data);
+int			name_variable(char *str, t_charlst *lst, t_data *data);
 
 ////////////////////////utils2.c//////////////////////
 int			check_name(char *str);

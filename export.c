@@ -6,7 +6,7 @@
 /*   By: ccosta-c <ccosta-c@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:50:38 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/10/21 15:19:19 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:59:47 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ void	add_export(t_data *data)
 		{
 			no_quotes = remove_quote(tmp->data, 0, 0, 0);
 			free(tmp->data);
-			tmp->data = ft_strdup(no_quotes);
+			tmp->data = get_exp(no_quotes, 0, data);
 			free (no_quotes);
 		}
-		if (name_variable(tmp->data, data->export) == 1)
+		if (name_variable(tmp->data, data->export, data) == 1)
 		{
 			if (ft_strchr(tmp->data, '=') != 0)
-				name_variable(tmp->data, data->env);
+				name_variable(tmp->data, data->env, data);
 		}
 		else
 			check_if_exists(data, tmp->data);
