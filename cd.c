@@ -21,13 +21,13 @@ int	cd(t_data *data, char *str)
 		g_exit = 1;
 		return (printf("minishell: cd: too many arguments\n"));
 	}
-	if (ft_strncmp("-", str, ft_strlen(str)) == 0)
+	if (ft_strcmp("-", str) == 0)
 		cd_minus_dir(data);
-	else if (ft_strncmp("~", str, ft_strlen(str)) == 0)
+	else if (ft_strcmp("~", str) == 0)
 		cd_home_dir(data);
-	else if (ft_strncmp("..", str, ft_strlen(str)) == 0)
+	else if (ft_strcmp("..", str) == 0)
 		cd_double_dot_dir(data);
-	else if (ft_strncmp(".", str, ft_strlen(str)) == 0)
+	else if (ft_strcmp(".", str) == 0)
 		return (g_exit = 0);
 	else
 	{
