@@ -18,6 +18,7 @@ int	write_here(char *in, t_data *data, int fd_file)
 	char	*re;
 	int		ex;
 
+	data->sti = 0;
 	ex = count_exp(in, 0);
 	if (ex == 0)
 		return (write_here2(in, fd_file), 0);
@@ -60,18 +61,17 @@ int	count_exp(char *in, int i)
 	return (ex);
 }
 
-int	cut_exp(char *str)
+int	cut_exp(char *str, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (str[data->sti])
 	{
-		if (str[i] == '$')
-			return (i);
-		i++;
+		while (str[data->sti] == '$' && str[data->sti + 1] == '$')
+			data->sti++;
+		if (str[data->sti] == '$' && str[data->sti + 1] != '$')
+			return (data->sti);
+		data->sti++;
 	}
-	return (i);
+	return (data->sti);
 }
 
 char	*get_exp_here(char *str, int i, t_data *data)
@@ -80,7 +80,7 @@ char	*get_exp_here(char *str, int i, t_data *data)
 	char	*ret;
 	int		total;
 
-	i = cut_exp(str);
+	i = cut_exp(str, data);
 	if (str[i] == '\0')
 		return (ret = ft_strdup(str), ret);
 	tmp = get_tmp(str, i, 0, i);
