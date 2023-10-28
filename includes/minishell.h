@@ -68,6 +68,7 @@ typedef struct s_data
 	char		*heredoc;
 	char		*tmp_r;
 	char		*h;
+	int			sti;
 	int			lst_size;
 	int			*pipes_fds;
 	int			stdin_fd;
@@ -372,7 +373,7 @@ int			execution_checks(char *data);
 int			write_here(char *in, t_data *data, int fd_file);
 void		write_here2(char *in, int fd_file);
 int			count_exp(char *in, int i);
-int			cut_exp(char *str);
+int			cut_exp(char *str, t_data *data);
 char		*get_exp_here(char *str, int i, t_data *data);
 
 #endif

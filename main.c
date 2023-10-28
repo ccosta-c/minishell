@@ -51,6 +51,7 @@ void	init_stuff(t_data *data, char **envp)
 	data->heredoc = NULL;
 	data->tmp_r = NULL;
 	data->h = NULL;
+	data->sti = 0;
 }
 
 void	prompt_loop(t_data *data)

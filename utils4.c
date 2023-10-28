@@ -99,9 +99,9 @@ char	*get_tmp(char *str, int j, int k, int i)
 	char	*tmp;
 
 	i++;
-	if (str[0] == '$' && str[1] == '?')
+	if (str[i] == '$' && str[i + 1] == '?')
 		return (tmp = ft_strdup("?"), tmp);
-	if ((str[0] == '$' && !str[1]) || (str[0] == '$' && str[1] == '$'))
+	if ((str[i] == '$' && !str[i + 1]) || (str[i] == '$' && str[i + 1] == '$'))
 		return (tmp = ft_strdup("$"), tmp);
 	while (str[i])
 	{
